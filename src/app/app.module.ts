@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
 import { WhyUsComponent } from './why-us/why-us.component';
+import { AboutComponent } from './about-us/about/about.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { WhyUsComponent } from './why-us/why-us.component';
     HeaderComponent,
     BannerComponent,
     FooterComponent,
-    WhyUsComponent
+    WhyUsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
