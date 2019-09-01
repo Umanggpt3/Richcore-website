@@ -5,5 +5,9 @@
 .list li a {
     text-decoration: none;
     color: black;
-    text-align: justify
+    text-align: justify;
+}
+
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
 }

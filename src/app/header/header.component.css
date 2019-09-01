@@ -1,0 +1,15 @@
+.navbar li a{
+    border-bottom: 7px solid white;
+}
+.navbar li a:hover {
+    border-bottom: 7px solid #3399ff;
+}
+.navbar li a:active {
+    border-bottom: 7px solid #3399ff;
+}
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+.back-blue {
+    background-color: #3399ff !important;
+}
