@@ -1,7 +1,52 @@
-.banner {
-    background-image: url(../../assets/img/AOF_2_child_vaccine.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+#myCarousel {
+    width: 100%;
+}
+
+.carousel-control {
+    margin-top: 20px;
+}
+
+.carousel-inner .carousel-item {
+    width: 100%;
     height: 35rem;
+}
+
+.ad1 {
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../../assets/img/AOF_2_child_vaccine.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+.ad2 {
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../../assets/img/AOF_1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.ad3 {
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../../assets/img/banner-img1.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+.assistant {
+    font-family: 'Assistant', sans-serif;
+    letter-spacing: 3px !important;
+    color: white;
+}
+
+.back-blue {
+    background-color: #3399ff !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
 }

@@ -12,4 +12,6 @@
 }
 .back-blue {
     background-color: #3399ff !important;
+    color: white !important;
+    cursor: pointer;
 }

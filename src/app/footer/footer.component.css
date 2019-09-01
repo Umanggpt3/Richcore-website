@@ -11,3 +11,7 @@
 .open-sans {
     font-family: 'Open Sans', sans-serif;
 }
+
+.jumbotron {
+    border-top: 3px solid #d8ecff;
+}
