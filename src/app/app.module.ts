@@ -12,6 +12,8 @@ import { FooterComponent } from './footer/footer.component';
 import { WhyUsComponent } from './why-us/why-us.component';
 import { AboutComponent } from './about-us/about/about.component';
 import { AdminComponent } from './Admin/admin/admin.component';
+import { ContactFormComponent } from './contact-us/contact-form/contact-form.component';
+import { AdminLocationComponent } from './Admin/admin-location/admin-location.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AdminComponent } from './Admin/admin/admin.component';
     FooterComponent,
     WhyUsComponent,
     AboutComponent,
-    AdminComponent
+    AdminComponent,
+    ContactFormComponent,
+    AdminLocationComponent
   ],
   imports: [
     BrowserModule,

@@ -23,5 +23,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
+  navtocontact(){
+    this.router.navigate(['/contact']);
+  }
 
 }
