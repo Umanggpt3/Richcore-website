@@ -4,6 +4,10 @@ import {locationInfo} from "../../models/locationInfoModel";
 import {ContactLocationService} from "../../Services/contact-location.service";
 import { ActivatedRoute } from '@angular/router';
 
+import { Router } from "@angular/router";
+import { Subscription } from 'rxjs';
+
+
 @Component({
   selector: 'app-admin-location',
   templateUrl: './admin-location.component.html',
@@ -12,6 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class AdminLocationComponent implements OnInit {
 
   form:FormGroup;
+  locationDisplay:locationInfo[] = [];
+  private locationSub : Subscription;
 
   constructor(public locationService:ContactLocationService,public route :ActivatedRoute) { }
 
@@ -26,27 +32,57 @@ export class AdminLocationComponent implements OnInit {
       
       location3: new FormControl(null,{validators:[Validators.required]
       }),
+      
+      location4: new FormControl(null,{validators:[Validators.required]
+      }),
   
     });
 
+
+    this.locationService.getLocation();
+    this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locationDetails:locationInfo[])=>{
+      console.log("location details",locationDetails);
+      this.locationDisplay = locationDetails;
+    })
+
+    console.log("in contact admin ",this.locationDisplay);
+
   }
 
-  onAddLocation(){
-    console.log(this.form.value.location1);
-    console.log(this.form.value.location2);
-    console.log(this.form.value.location3);
-
+  onUpdateLocation(locationID:string,){
+    console.log("Location Id",locationID)
+    
     if(this.form.invalid) {
      return;
-    }   
-    
-    this.locationService.addLocation(
-      this.form.value.location1,
-      this.form.value.location2,
-      this.form.value.location3,
-    )
+    }  
+
+   this.locationService.updateLocation(locationID, this.form.value.location1, this.form.value.location2, this.form.value.location3,
+    this.form.value.location4);
+  
 
   }
+
+
+
+//Code to add new location to database
+
+  // onAddLocation(){
+  //   console.log(this.form.value.location1);
+  //   console.log(this.form.value.location2);
+  //   console.log(this.form.value.location3);
+
+  //   if(this.form.invalid) {
+  //    return;
+  //   }   
+    
+  //   this.locationService.addLocation(
+  //     this.form.value.location1,
+  //     this.form.value.location2,
+  //     this.form.value.location3,
+  //     this.form.value.location4
+  //   )
+
+  // }
  
 
 }

@@ -14,6 +14,7 @@ import { AboutComponent } from './about-us/about/about.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 import { ContactFormComponent } from './contact-us/contact-form/contact-form.component';
 import { AdminLocationComponent } from './Admin/admin-location/admin-location.component';
+import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AdminLocationComponent } from './Admin/admin-location/admin-location.co
     AboutComponent,
     AdminComponent,
     ContactFormComponent,
-    AdminLocationComponent
+    AdminLocationComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

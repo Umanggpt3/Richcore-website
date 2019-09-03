@@ -17,8 +17,9 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit() {
     this.locationService.getLocation();
-    this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locatinDetails:locationInfo[])=>{
-      console.log("location details",locatinDetails);
+    this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locationDetails:locationInfo[])=>{
+      console.log("location details",locationDetails);
+      this.locationDisplay = locationDetails;
     })
   }
 

@@ -4,21 +4,96 @@
         <h4 align=center style="color:cornsilk; margin-left: 380px; font-size: 40px; font-weight: 700; letter-spacing: 5px">ADMIN PANEL</h4>
     </nav>
 </div>
+<app-admin-dashboard></app-admin-dashboard>
 
-<form [formGroup]="form" (submit)="onAddLocation()">
-    <div class="form-group">
-        <label for="location1">Location 1</label>
-        <textarea class="form-control" id="location1" name="location1" rows="3" class="form-control" formControlName="location1"></textarea>
+<div class="container" *ngFor=" let i of locationDisplay">
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="location1">Location 1</label>
+            <input type="text" class="form-control" id="location1" name="location1" class="form-control" formControlName="location1">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location2" name="location2" class="form-control" formControlName="location2">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location3" name="location3" class="form-control" formControlName="location3">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location4" name="location4" class="form-control" formControlName="location4">
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button (click)="onUpdateLocation(i[0]._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Update Location 1</button>
+        </div>
+    </form>
+
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="location1">Location 2</label>
+            <input type="text" class="form-control" id="location2l1" name="location1" class="form-control" formControlName="location1">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location2l2" name="location2" class="form-control" formControlName="location2">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location2l3" name="location3" class="form-control" formControlName="location3">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location2l4" name="location4" class="form-control" formControlName="location4">
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button (click)="onUpdateLocation(i[1]._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Update Location 2</button>
+        </div>
+    </form>
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="location1">Location 3</label>
+            <input type="text" class="form-control" id="location3l1" name="location1" class="form-control" formControlName="location1">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location3l2" name="location2" class="form-control" formControlName="location2">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location3l3" name="location3" class="form-control" formControlName="location3">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="location3l4" name="location4" class="form-control" formControlName="location4">
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button (click)="onUpdateLocation(i[2]._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Update Location 3</button>
+        </div>
+    </form>
+
+
+
+
+    <div class="row">
+        <h2 class="mb-5">Other Office Locations</h2>
     </div>
-    <div class="form-group">
-        <label for="location2">Location 2</label>
-        <textarea class="form-control" id="location2" name="location2" rows="3" class="form-control" formControlName="location2"></textarea>
+    <div class="row mb-5">
+        <div class="col-md-4">
+
+            <p>{{i[0].location1}}</p>
+            <p>{{i[0].location2}}</p>
+            <p>{{i[0].location3}}</p>
+            <p>{{i[0].location4}}</p>
+
+        </div>
+        <div class="col-md-4">
+
+            <p>{{i[1].location1}}</p>
+            <p>{{i[1].location2}}</p>
+            <p>{{i[1].location3}}</p>
+            <p>{{i[1].location4}}</p>
+        </div>
+        <div class="col-md-4">
+
+            <p>{{i[2].location1}}</p>
+            <p>{{i[2].location2}}</p>
+            <p>{{i[2].location3}}</p>
+            <p>{{i[2].location4}}</p>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="location3">Location 3</label>
-        <textarea class="form-control" id="location3" name="location3" rows="3" class="form-control" formControlName="location3"></textarea>
-    </div>
-    <div class="form-row m-3 justify-content-center">
-        <button type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Add Location</button>
-    </div>
-</form>
+</div>

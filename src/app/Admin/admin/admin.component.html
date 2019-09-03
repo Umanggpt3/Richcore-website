@@ -5,12 +5,16 @@
     </nav>
 </div>
 
-<form (submit)="onAddInfo(homeForm)" [formGroup]="form">
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">ADD HOME INFO</label>
-        <textarea name="data" required class="form-control " id="exampleFormControlTextarea1" rows="3" formControlName="infoText"></textarea>
-    </div>
-    <div class="form-row m-3 justify-content-center">
-        <button type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Add Info</button>
-    </div>
-</form>
+<app-admin-dashboard></app-admin-dashboard>
+<div class="container">
+
+    <form (submit)="onAddInfo(homeForm)" [formGroup]="form">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">ADD HOME INFO</label>
+            <textarea name="data" required class="form-control " id="exampleFormControlTextarea1" rows="3" formControlName="infoText"></textarea>
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Add Info</button>
+        </div>
+    </form>
+</div>

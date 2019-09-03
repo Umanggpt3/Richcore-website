@@ -84,19 +84,26 @@
     </div>
     <div class="row mb-5">
         <div class="col-md-4">
-            <address>
-                Plot No. 204 and 237,<br>Bommasandra-Jigani Link Road,<br>K.I.A.D.B Industrial Area,<br>Bengaluru-560105, Karnataka
-            </address>
+
+            <p *ngFor=" let i of locationDisplay">{{i[0].location1}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[0].location2}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[0].location3}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[0].location4}}</p>
+
         </div>
         <div class="col-md-4">
-            <address>
-                Plot No. 204 and 237,<br>Bommasandra-Jigani Link Road,<br>K.I.A.D.B Industrial Area,<br>Bengaluru-560105, Karnataka
-            </address>
+
+            <p *ngFor=" let i of locationDisplay">{{i[1].location1}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[1].location2}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[1].location3}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[1].location4}}</p>
         </div>
         <div class="col-md-4">
-            <address>
-                Plot No. 204 and 237,<br>Bommasandra-Jigani Link Road,<br>K.I.A.D.B Industrial Area,<br>Bengaluru-560105, Karnataka
-            </address>
+
+            <p *ngFor=" let i of locationDisplay">{{i[2].location1}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[2].location2}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[2].location3}}</p>
+            <p *ngFor=" let i of locationDisplay">{{i[2].location4}}</p>
         </div>
     </div>
 

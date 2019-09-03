@@ -16,7 +16,8 @@ router.post('/info', (req, res, next) => {
         id: req.body.id,
         location1: req.body.location1,
         location2: req.body.location2,
-        location3: req.body.location3
+        location3: req.body.location3,
+        location4: req.body.location4
     });
 
     newlocation.save().then(addedLocation => {
@@ -29,25 +30,40 @@ router.post('/info', (req, res, next) => {
 
 router.get('/info', (req, res, next) => {
 
-    locationInfoSchema.find(function(err, result) {
+    locationInfoSchema.find().then(result => {
 
-        if (err) {
-            console.log(err);
-            res.status(500).json({
-                err: err
-            })
-        } else {
-            console.log("Hello", result);
 
-            res.status(200).json({
+        console.log("Hello", result);
 
-                status: "success",
-                data: result
+        res.status(200).json({
 
-            })
-        }
+            status: "success",
+            data: result
+
+        })
+
 
     })
+})
+
+router.put('/update', (req, res, next) => {
+    console.log("Update location", req.body);
+    locationInfoSchema.findByIdAndUpdate(req.body.id, {
+            $set: { location1: req.body.location1, location2: req.body.location2, location3: req.body.location3, location4: req.body.location4 }
+        }, {
+            new: true
+        },
+        function(err, updatedLocation) {
+            if (err) {
+                res.send("Error updating location");
+            } else {
+                res.json({
+                    status: "success",
+                    data: updatedLocation
+                })
+            }
+        }
+    )
 })
 
 
