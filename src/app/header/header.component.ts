@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
   navtoabout(){
     this.router.navigate(['/about']);
-
   }
 
   navtohome(){

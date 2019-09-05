@@ -7,14 +7,57 @@
 
 <app-admin-dashboard></app-admin-dashboard>
 <div class="container">
+    <div *ngFor=" let i of homeInfoDisplay">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="infoText">ADD HOME INFO</label>
+                <textarea name="data" required class="form-control " id="infoText" rows="5" formControlName="infoText" value="{{i.data}}"></textarea>
+            </div>
+            <div class="form-row m-3 justify-content-center">
+                <button (click)="onUpdateInfo(i._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE HOME INFO</button>
+            </div>
+        </form>
 
-    <form (submit)="onAddInfo(homeForm)" [formGroup]="form">
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">ADD HOME INFO</label>
-            <textarea name="data" required class="form-control " id="exampleFormControlTextarea1" rows="3" formControlName="infoText"></textarea>
+        <div class="jumbotron" style="background-color: white;">
+            <p class="open-sans text-center">{{i.data}}</p>
         </div>
-        <div class="form-row m-3 justify-content-center">
-            <button type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">Add Info</button>
+    </div>
+
+    <form [formGroup]="form">
+        <div *ngFor="let i of whyusInfoDisplay">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea2">ADD QUALITY INFO</label>
+                <textarea name="quality" required class="form-control " id="exampleFormControlTextarea2" rows="3" formControlName="qualityText" value="{{i.quality}}"></textarea>
+            </div>
+            <div class="form-row m-3 justify-content-center">
+                <button (click)="onUpdateWhyUsQualityInfo(i._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE QUALITY INFO</button>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea3">ADD INNOVATION INFO</label>
+                <textarea name="innovation" required class="form-control " id="exampleFormControlTextarea3" rows="3" formControlName="innovationText" value="{{i.innovation}}"></textarea>
+            </div>
+            <div class="form-row m-3 justify-content-center">
+                <button (click)="onUpdateWhyUsInnovationInfo(i._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE INNOVATION INFO</button>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea4">ADD FACILITY INFO</label>
+                <textarea name="facility" required class="form-control " id="exampleFormControlTextarea4" rows="3" formControlName="facilityText" value="{{i.facility}}"></textarea>
+            </div>
+            <div class="form-row m-3 justify-content-center">
+                <button (click)="onUpdateWhyUsFacilityInfo(i._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE FACILITY INFO</button>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea5">ADD LOCATION INFO</label>
+                <textarea name="location" required class="form-control " id="exampleFormControlTextarea5" rows="3" formControlName="locationText" value="{{i.location}}"></textarea>
+            </div>
+            <div class="form-row m-3 justify-content-center">
+                <button (click)="onUpdateWhyUsLocationInfo(i._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE LOCATION INFO</button>
+            </div>
         </div>
     </form>
 </div>
+
+<app-why-us></app-why-us>

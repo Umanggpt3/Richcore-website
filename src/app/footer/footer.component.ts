@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+  navtoabout(){
+    this.router.navigate(['/about']);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+  }
+
+  navtocontact(){
+    this.router.navigate(['/contact']);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+  }
 }

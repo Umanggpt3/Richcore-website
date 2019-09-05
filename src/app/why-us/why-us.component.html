@@ -22,22 +22,22 @@
             <p class="nav-link h3" id="pills-location-tab" data-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="false">Location</p>
         </li>
     </ul>
-    <div class="tab-content my-5 pb-5" id="pills-tabContent">
+    <div class="tab-content my-5 pb-5" id="pills-tabContent" *ngFor="let i of whyusInfoDisplay">
         <div class="tab-pane fade lead" id="pills-quality" role="tabpanel" aria-labelledby="pills-quality-tab">
-                <h3>Quality</h3>
-            We develop novel enzymatic solutions for Industrial Biotechnology and Animal Origin Free recombinant proteins and enzymes for Biopharma. Richcore is venture and PE investment backed, and has multiple patent filings, and a high capacity GMP certified manufacturing plant. Its solutions are used in the global food, water, energy, and biopharma industries. At the root of its innovation is the vision and commitment to create cleaner, greener and sustainable solutions to tackle the current industrial problems. Richcore's corporate goals are aligned with the goals of the society at large to achieve meaningful economic development. Richcore intrinsically believes that doing well happens by doing good!
+            <h3>Quality</h3>
+            {{i.quality}}
         </div>
         <div class="tab-pane fade lead" id="pills-innovation" role="tabpanel" aria-labelledby="pills-innovation-tab">
-                <h3>Innovation</h3>
-            We develop novel enzymatic solutions for Industrial Biotechnology and Animal Origin Free recombinant proteins and enzymes for Biopharma. Richcore is venture and PE investment backed, and has multiple patent filings, and a high capacity GMP certified manufacturing plant. Its solutions are used in the global food, water, energy, and biopharma industries. At the root of its innovation is the vision and commitment to create cleaner, greener and sustainable solutions to tackle the current industrial problems. Richcore's corporate goals are aligned with the goals of the society at large to achieve meaningful economic development. Richcore intrinsically believes that doing well happens by doing good!
+            <h3>Innovation</h3>
+            {{i.innovation}}
         </div>
         <div class="tab-pane fade lead" id="pills-facility" role="tabpanel" aria-labelledby="pills-facility-tab">
-                <h3>Facility</h3>
-            We develop novel enzymatic solutions for Industrial Biotechnology and Animal Origin Free recombinant proteins and enzymes for Biopharma. Richcore is venture and PE investment backed, and has multiple patent filings, and a high capacity GMP certified manufacturing plant. Its solutions are used in the global food, water, energy, and biopharma industries. At the root of its innovation is the vision and commitment to create cleaner, greener and sustainable solutions to tackle the current industrial problems. Richcore's corporate goals are aligned with the goals of the society at large to achieve meaningful economic development. Richcore intrinsically believes that doing well happens by doing good!
+            <h3>Facility</h3>
+            {{i.facility}}
         </div>
         <div class="tab-pane fade lead" id="pills-location" role="tabpanel" aria-labelledby="pills-location-tab">
-                <h3>Location</h3>
-            We develop novel enzymatic solutions for Industrial Biotechnology and Animal Origin Free recombinant proteins and enzymes for Biopharma. Richcore is venture and PE investment backed, and has multiple patent filings, and a high capacity GMP certified manufacturing plant. Its solutions are used in the global food, water, energy, and biopharma industries. At the root of its innovation is the vision and commitment to create cleaner, greener and sustainable solutions to tackle the current industrial problems. Richcore's corporate goals are aligned with the goals of the society at large to achieve meaningful economic development. Richcore intrinsically believes that doing well happens by doing good!
+            <h3>Location</h3>
+            {{i.location}}
         </div>
     </div>
 </div>

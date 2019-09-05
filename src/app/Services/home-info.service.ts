@@ -4,24 +4,177 @@ import { Subject } from 'rxjs';
 import { Router } from "@angular/router";
 
 import {homeInfo} from "../models/homeInfoModel"
+import {whyUsInfo} from "../models/whyusinfoModel"
 
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class HomeInfoService {
 
-  // private homeInfoUpdated = new Subject<string>();
-
+  private homeInfoDetails:homeInfo;
   homeDetails:homeInfo;
+  private homeInfoUpdated = new Subject<homeInfo>();
+
+  private whyusInfoDetails:whyUsInfo;
+  whyusDetails:whyUsInfo;
+  private whyusInfoUpdated = new Subject<whyUsInfo>();
+
   constructor(private http: HttpClient) { }
 
-  addInfo(homeInfo:string){
+/*FUNCTION TO ADD HOME DATA TO DATABASE */
+
+  /*addInfo(homeInfo:string){
    console.log("In service ",homeInfo);
-   const homeDetails = {data:homeInfo,id:null}
-   this.http.post("http://localhost:1025/home/info",this.homeDetails).subscribe(responseData => {
+   const homeDetails:homeInfo = {id:null,data:homeInfo}
+   console.log("In service homeDetails ",homeDetails);
+
+   this.http.post<{message:string;dataID:string}>("http://localhost:1025/home/info",homeDetails).subscribe(responseData => {
      console.log(responseData);
+     homeDetails.id = responseData.dataID;
    });
+  }*/
+
+  /*FUNCTION TO GET HOME DATA FROM DATABASE */
+
+  getInfo(){
+    this.http.get("http://localhost:1025/home/info").subscribe(responseData =>{
+      console.log("Response Data",responseData);
+      var homeDetails = responseData["data"];
+      console.log("Response Data 2",homeDetails);
+      this.homeInfoDetails = homeDetails;
+      this.homeInfoUpdated.next(this.homeInfoDetails);
+
+    })
   }
+
+   /*FUNCTION TO UPDATE HOME DATA IN DATABASE */
+
+
+  updateHomeInfo(id:string,data:string){
+    const homeDetails:homeInfo = {id:id,data:data};
+    console.log("in updateHomeInfo",homeDetails);
+
+    this.http.put("http://localhost:1025/home/update",homeDetails).subscribe(responseData =>{
+        console.log("After info update",responseData);
+        if(responseData["status"]=="success")
+        {
+          var homeDetails = responseData["data"];
+          alert("Information Updated Successfully");
+        }
+        else{
+          alert("Fail to update data");
+        }
+    })
+
+  }
+
+  gethomeUpdateListener(){
+    return this.homeInfoUpdated.asObservable();
+
+ }
+
+
+ /*FUNCTION TO ADD WHY-US DATA TO DATABASE */
+ 
+ /*addWhyUsInfo(qualityInfo:string,innovationInfo:string,facilityInfo:string,locationInfo:string){
+  console.log("In service ",qualityInfo);
+  const whyusDetails:whyUsInfo = {id:null,quality:qualityInfo,innovation:innovationInfo,facility:facilityInfo,location:locationInfo}
+  console.log("In service whyusDetails ",whyusDetails);
+
+  this.http.post<{message:string;dataID:string}>("http://localhost:1025/home/whyus",whyusDetails).subscribe(responseData => {
+    console.log(responseData);
+    whyusDetails.id = responseData.dataID;
+    console.log("response data");
+  });
+ }*/
+
+
+ getWhyIUsInfo(){
+  this.http.get("http://localhost:1025/home/whyus").subscribe(responseData =>{
+    console.log("Response Data of WHY US",responseData);
+    var whyusDetails = responseData["data"];
+    console.log("Response Data 2",whyusDetails);
+    this.whyusInfoDetails = whyusDetails;
+    this.whyusInfoUpdated.next(this.whyusInfoDetails);
+
+  })
+}
+
+
+  /*FUNCTION TO UPDATE WHY US QUALITY DATA IN DATABASE */
+
+
+  updateWhyusQualityInfo(id:string,qualityInfo:string){
+    const whyusQualityInfo:any = {id:id,quality:qualityInfo};
+    console.log("in updatequality Info",whyusQualityInfo);
+
+    this.http.put("http://localhost:1025/home/update-quality",whyusQualityInfo).subscribe(responseData =>{
+        console.log("After info update",responseData);
+        if(responseData["status"]=="success")
+        {
+          var whyusQualityInfoResponse:whyUsInfo = responseData["data"];
+          alert("Information Updated Successfully");
+        }
+    })
+  }
+
+    /*FUNCTION TO UPDATE WHY US INNOVATION DATA IN DATABASE */
+
+
+    updateWhyusInnovationInfo(id:string,innovationInfo:string){
+      const whyusInnovationInfo:any = {id:id,innovation:innovationInfo};
+      console.log("in updateInnovation Info",whyusInnovationInfo);
+
+  
+      this.http.put("http://localhost:1025/home/update-innovation",whyusInnovationInfo).subscribe(responseData =>{
+          if(responseData["status"]=="success")
+          {
+            var whyusQualityInfoResponse:whyUsInfo = responseData["data"];
+            alert("Information Updated Successfully");
+          }
+      })
+    }
+
+       /*FUNCTION TO UPDATE WHY US FACILITY DATA IN DATABASE */
+
+
+       updateWhyusFacilityInfo(id:string,facilityInfo:string){
+        const whyusFacilitynInfo:any = {id:id,facility:facilityInfo};
+  
+    
+        this.http.put("http://localhost:1025/home/update-facility",whyusFacilitynInfo).subscribe(responseData =>{
+            if(responseData["status"]=="success")
+            {
+              var whyusFacilityInfoResponse:whyUsInfo = responseData["data"];
+              alert("Information Updated Successfully");
+            }
+        })
+      }
+  
+             /*FUNCTION TO UPDATE WHY US LOCATION DATA IN DATABASE */
+
+
+             updateWhyusLocationInfo(id:string,locationInfo:string){
+              const whyusLocationInfo:any = {id:id,location:locationInfo};
+        
+              console.log("in update why us loation",whyusLocationInfo)
+              this.http.put("http://localhost:1025/home/update-location",whyusLocationInfo).subscribe(responseData =>{
+                  if(responseData["status"]=="success")
+                  {
+                    var whyusLocationInfoResponse:whyUsInfo = responseData["data"];
+                    alert("Information Updated Successfully");
+                  }
+              })
+            }
+        
+
+getwhyusUpdateListener(){
+  return this.whyusInfoUpdated.asObservable();
+
+}
+
+
 }

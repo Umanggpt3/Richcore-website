@@ -7,8 +7,6 @@ const mongoose = require('mongoose');
 
 const locationInfoSchema = require('../model/location');
 
-mongoose.connect('mongodb://localhost/Richcore');
-
 router.post('/info', (req, res, next) => {
     console.log(req.body);
 

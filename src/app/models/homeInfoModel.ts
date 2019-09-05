@@ -1,4 +1,4 @@
 export interface homeInfo{
+    id:string,
     data:string;
-    id:string
 }

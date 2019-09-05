@@ -51,15 +51,10 @@ export class AdminLocationComponent implements OnInit {
 
   onUpdateLocation(locationID:string,){
     console.log("Location Id",locationID)
-    
-    if(this.form.invalid) {
-     return;
-    }  
 
    this.locationService.updateLocation(locationID, this.form.value.location1, this.form.value.location2, this.form.value.location3,
     this.form.value.location4);
   
-
   }
 
 
