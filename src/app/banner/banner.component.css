@@ -37,8 +37,9 @@
 
 .assistant {
     font-family: 'Assistant', sans-serif;
-    letter-spacing: 3px !important;
+    letter-spacing: 2px !important;
     color: white;
+    font-weight: 200
 }
 
 .back-blue {

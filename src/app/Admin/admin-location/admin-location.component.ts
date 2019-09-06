@@ -43,6 +43,8 @@ export class AdminLocationComponent implements OnInit {
     this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locationDetails:locationInfo[])=>{
       console.log("location details",locationDetails);
       this.locationDisplay = locationDetails;
+      console.log("in contact admin ",this.locationDisplay);
+
     })
 
     console.log("in contact admin ",this.locationDisplay);
@@ -61,23 +63,23 @@ export class AdminLocationComponent implements OnInit {
 
 //Code to add new location to database
 
-  // onAddLocation(){
-  //   console.log(this.form.value.location1);
-  //   console.log(this.form.value.location2);
-  //   console.log(this.form.value.location3);
+  onAddLocation(){
+    console.log(this.form.value.location1);
+    console.log(this.form.value.location2);
+    console.log(this.form.value.location3);
 
-  //   if(this.form.invalid) {
-  //    return;
-  //   }   
+    if(this.form.invalid) {
+     return;
+    }   
     
-  //   this.locationService.addLocation(
-  //     this.form.value.location1,
-  //     this.form.value.location2,
-  //     this.form.value.location3,
-  //     this.form.value.location4
-  //   )
+    this.locationService.addLocation(
+      this.form.value.location1,
+      this.form.value.location2,
+      this.form.value.location3,
+      this.form.value.location4
+    )
 
-  // }
+  }
  
 
 }

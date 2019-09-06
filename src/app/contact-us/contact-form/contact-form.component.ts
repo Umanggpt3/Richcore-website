@@ -11,7 +11,7 @@ import {locationInfo} from "../../models/locationInfoModel"
 })
 export class ContactFormComponent implements OnInit {
 
-  locationDisplay:locationInfo[] = [];
+  locationDisplay:locationInfo[]=[];
   private locationSub : Subscription;
   constructor(public locationService:ContactLocationService,private route:Router) { }
 

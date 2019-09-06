@@ -20,27 +20,39 @@ export class ContactLocationService {
 
   constructor(private http:HttpClient,private router:Router) { }
 
-  // addLocation(location1:string,location2:string,location3:string,location4:string)
-  // {
-  //  const location:locationInfo= {id:null,location1:location1,location2:location2,location3:location3,location4:location4};
-  //  console.log("in service",location);
-  //  this.http.post<{message:string;locationId:string}>("http://localhost:1025/location/info",location).subscribe(responseData => {
-  //    console.log("responseData",responseData);
-  //     location.id = responseData.locationId;
-  //     this.locations.push(location);
-  //     this.locationUpdated.next([...this.locations]);
-  //  });
-  // }
+  addLocation(location1:string,location2:string,location3:string,location4:string)
+  {
+   const location:locationInfo= {id:null,location1:location1,location2:location2,location3:location3,location4:location4};
+   console.log("in service",location);
+   this.http.post<{message:string;locationId:string}>("http://localhost:1025/location/info",location).subscribe(responseData => {
+     console.log("responseData",responseData);
+      location.id = responseData.locationId;
+      this.locations=[];
+      this.locations.push(location);
+      this.locationUpdated.next([...this.locations]);
+   });
+  }
 
   getLocation(){
-    this.http.get("http://localhost:1025/location/info").subscribe(responseData => {
-      if(responseData["status"]== "success"){
-        console.log("getLocation response",responseData)
-        var locationData = responseData["data"];
+    this.http.get<{message:string,data:any}>("http://localhost:1025/location/info"
+    ).pipe(map((locationData)=>{
+      return  locationData.data.map(location =>{
+        return {
+          location1:location.location1,
+          location2:location.location2,
+          location3:location.location3,
+          location4:location.location4,
+          _id:location._id
+        };
+      });
+    }))
+    .subscribe(responseData => {
+        var locationData = responseData;
+        this.locations= [];
         this.locations.push(locationData);
         this.locationUpdated.next([...this.locations]);
 
-      }
+      
     })
   }
 
@@ -52,6 +64,7 @@ export class ContactLocationService {
         if(responseData["status"]=="success")
         {
           var locationData = responseData["data"];
+          console.log("updated location data",locationData);
           alert("Location Updated Successfully");
         }
     })
