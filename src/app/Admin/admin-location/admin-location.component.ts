@@ -81,5 +81,8 @@ export class AdminLocationComponent implements OnInit {
 
   }
  
+  onDeleteLocation(locationID:string){
+    this.locationService.deleteLocation(locationID);
+  }
 
 }

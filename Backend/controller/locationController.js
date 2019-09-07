@@ -20,7 +20,7 @@ router.post('/info', (req, res, next) => {
 
     newlocation.save().then(addedLocation => {
         res.status(201).json({
-            message: "location added successfully",
+            message: "success",
             locationId: addedLocation._id,
         })
     })
@@ -64,6 +64,13 @@ router.put('/update', (req, res, next) => {
     )
 })
 
+router.delete("/:id", (req, res, next) => {
+
+    locationInfoSchema.deleteOne({ _id: req.params.id }).then(result => {
+        console.log(result);
+        res.status(200).json({ message: "Item deleted!" });
+    });
+})
 
 
 module.exports = router;

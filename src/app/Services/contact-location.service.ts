@@ -26,6 +26,8 @@ export class ContactLocationService {
    console.log("in service",location);
    this.http.post<{message:string;locationId:string}>("http://localhost:1025/location/info",location).subscribe(responseData => {
      console.log("responseData",responseData);
+     if(responseData["message"]=="success")
+        alert("Location Added Successfully");
       location.id = responseData.locationId;
       this.locations=[];
       this.locations.push(location);
@@ -68,6 +70,16 @@ export class ContactLocationService {
           alert("Location Updated Successfully");
         }
     })
+
+  }
+
+  deleteLocation(locationID:string){
+    this.http.delete("http://localhost:1025/location/" + locationID)
+    .subscribe(() => {
+     const locationUpdated = this.locations.filter(locationItem => locationItem[0]._id !== locationID);
+     this.locations = locationUpdated;
+     this.locationUpdated.next([...this.locations]);
+    });
 
   }
 
