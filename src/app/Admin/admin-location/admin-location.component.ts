@@ -23,6 +23,12 @@ export class AdminLocationComponent implements OnInit {
 
   ngOnInit() {
 
+    this.locationService.getLocation();
+    this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locationDetails:locationInfo[])=>{
+      this.locationDisplay = locationDetails;
+
+    })
+
     this.form = new FormGroup({
       location1: new FormControl(null,{validators:[Validators.required]
       }),
@@ -39,20 +45,12 @@ export class AdminLocationComponent implements OnInit {
     });
 
 
-    this.locationService.getLocation();
-    this.locationSub = this.locationService.getLocationUpdateListener().subscribe((locationDetails:locationInfo[])=>{
-      console.log("location details",locationDetails);
-      this.locationDisplay = locationDetails;
-      console.log("in contact admin ",this.locationDisplay);
+    
 
-    })
-
-    console.log("in contact admin ",this.locationDisplay);
 
   }
 
   onUpdateLocation(locationID:string,){
-    console.log("Location Id",locationID)
 
    this.locationService.updateLocation(locationID, this.form.value.location1, this.form.value.location2, this.form.value.location3,
     this.form.value.location4);

@@ -9,8 +9,12 @@ import {HomeInfoService} from "../Services/home-info.service"
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
+
   private homeInfoSub : Subscription;
   private homeInfoDisplay:homeInfo;
+
+  private imagePathInfoSub :Subscription;
+  private imagePathInfoDisplay:any;
 
   constructor(private homeInfoService:HomeInfoService) { }
 
@@ -19,8 +23,15 @@ export class BannerComponent implements OnInit {
 
     this.homeInfoService.getInfo();
     this.homeInfoSub = this.homeInfoService.gethomeUpdateListener().subscribe((homeDetails:homeInfo)=>{
-      console.log("Home details",homeDetails);
       this.homeInfoDisplay = homeDetails;
+
+    });
+
+
+    this.homeInfoService.getImagepath();
+    this.imagePathInfoSub = this.homeInfoService.getImagePathUpdateListener().subscribe((imagePathDetails)=>{
+      console.log("Image path details admin ts file",imagePathDetails);
+      this.imagePathInfoDisplay = imagePathDetails;
 
     })
 

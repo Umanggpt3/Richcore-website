@@ -10,8 +10,8 @@
 <div class="container">
     <form [formGroup]="form">
         <div class="form-group">
-            <label for="location1">ADD NEW LOCATION</label>
-            <input rows="1" type="text" required class="form-control" id="location1" name="location1" class="form-control" formControlName="location1">
+            <label for="location10">ADD NEW LOCATION</label>
+            <input rows="1" type="text" required class="form-control" id="location10" name="location1" class="form-control" formControlName="location1">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="location2" name="location2" class="form-control" formControlName="location2">
@@ -32,17 +32,17 @@
 
     <form [formGroup]="form" *ngFor="let j of i;let k = index">
         <div class="form-group">
-            <label for="location1">Location {{k+1}}</label>
-            <input type="text" required class="form-control" id="location1" name="location1" class="form-control" formControlName="location1" value="{{j.location1}}">
+            <label for="location{{k}}">Location {{k+1}}</label>
+            <input type="text" required class="form-control" id="location{{k}}" name="location1" class="form-control" formControlName="location1" value="{{j.location1}}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="location2" name="location2" class="form-control" formControlName="location2" value="{{j.location2}}">
+            <input type="text" class="form-control" id="location2" name="location{{k}}" class="form-control" formControlName="location2" value="{{j.location2}}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="location3" name="location3" class="form-control" formControlName="location3" value="{{j.location3}}">
+            <input type="text" class="form-control" id="location3" name="location{{k}}" class="form-control" formControlName="location3" value="{{j.location3}}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="location4" name="location4" class="form-control" formControlName="location4" value="{{j.location4}}">
+            <input type="text" class="form-control" id="location4" name="location{{k}}" class="form-control" formControlName="location4" value="{{j.location4}}">
         </div>
         <div class="form-row m-3 justify-content-center">
             <button (click)="onUpdateLocation(j._id)" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPDATE LOCATION {{k+1}}</button>

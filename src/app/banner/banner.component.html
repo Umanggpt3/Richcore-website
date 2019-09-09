@@ -1,7 +1,45 @@
-<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
+<div id="myCarousel" class="carousel slide carousel-slide" data-ride="carousel" data-interval="3000">
     <!-- Carousel items -->
     <div class="carousel-inner">
-        <div class="carousel-item active ad1">
+        <div class="carousel-item active ">
+            <div class="ad2">
+                <div class="row" style="height: 30rem">
+                    <div class="d-flex flex-column justify-content-center col-md-8 text-center mt-5">
+                        <h1 class="display-4 assistant p-3">ANIMAL ORIGIN FREE</h1>
+                        <h3 class="assistant p-3">RECOMBIANT PROTEIN</h3>
+                        <div class="row p-3">
+                            <div class="offset-md-3 col-md-6 input-group mb-3">
+                                <input type="text" class="form-control " placeholder="Enter your work mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="input-group-text back-blue" id="basic-addon2">Know More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="carousel-item ad2" *ngFor="let i of imagePathInfoDisplay">
+            <div class="ad1" [ngStyle]="{'background-image':'url(' + i.imagePath + ')'}">
+                <div class="row" style="height: 30rem">
+                    <div class="d-flex flex-column justify-content-center col-md-8 text-center mt-5">
+                        <h1 class="display-4 assistant p-3">ANIMAL ORIGIN FREE</h1>
+                        <h3 class="assistant p-3">RECOMBIANT PROTEIN</h3>
+                        <div class="row p-3">
+                            <div class="offset-md-3 col-md-6 input-group mb-3">
+                                <input type="text" class="form-control " placeholder="Enter your work mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="input-group-text back-blue" id="basic-addon2">Know More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="carousel-item ad3">
             <div class="row" style="height: 30rem">
                 <div class="d-flex flex-column justify-content-center col-md-8 text-center mt-5">
                     <h1 class="display-4 assistant p-3">ANIMAL ORIGIN FREE</h1>
@@ -16,39 +54,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-item ad2">
-            <div class="row" style="height: 30rem">
-                <div class="d-flex flex-column justify-content-center col-md-8 text-center mt-5">
-                    <h1 class="display-4 assistant p-3">ANIMAL ORIGIN FREE</h1>
-                    <h3 class="assistant p-3">RECOMBIANT PROTEIN</h3>
-                    <div class="row p-3">
-                        <div class="offset-md-3 col-md-6 input-group mb-3">
-                            <input type="text" class="form-control " placeholder="Enter your work mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="input-group-text back-blue" id="basic-addon2">Know More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item ad3">
-            <div class="row" style="height: 30rem">
-                <div class="d-flex flex-column justify-content-center col-md-8 text-center mt-5">
-                    <h1 class="display-4 assistant p-3">ANIMAL ORIGIN FREE</h1>
-                    <h3 class="assistant p-3">RECOMBIANT PROTEIN</h3>
-                    <div class="row p-3">
-                        <div class="offset-md-3 col-md-6 input-group mb-3">
-                            <input type="text" class="form-control " placeholder="Enter your work mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="input-group-text back-blue" id="basic-addon2">Know More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <!--<div class="container ">

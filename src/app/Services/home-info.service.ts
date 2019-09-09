@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Subject } from 'rxjs';
+import { Subject, from } from 'rxjs';
 import { Router } from "@angular/router";
 
 import {homeInfo} from "../models/homeInfoModel"
 import {whyUsInfo} from "../models/whyusinfoModel"
+import { FormControl } from '@angular/forms';
+import {imagePathInfo} from "../models/imagePathModel"
+import { map } from 'rxjs/operators';
 
 
 
@@ -13,6 +16,10 @@ import {whyUsInfo} from "../models/whyusinfoModel"
 })
 
 export class HomeInfoService {
+
+  private imagePathDetails:imagePathInfo[]=[];
+  imagePath:imagePathInfo;
+  private imagePathUpdated = new Subject<any>();
 
   private homeInfoDetails:homeInfo;
   homeDetails:homeInfo;
@@ -23,6 +30,30 @@ export class HomeInfoService {
   private whyusInfoUpdated = new Subject<whyUsInfo>();
 
   constructor(private http: HttpClient) { }
+
+uploadImage(image:File){
+  console.log("Image data in service", image)
+  const imageData = new FormData();
+   imageData.append("image",image);
+   console.log("Image data in service", imageData)
+
+   this.http.post<{message:string,imageID:string,imagePath:string}>("http://localhost:1025/home/uploadImage",imageData).subscribe(responseData =>{
+     console.log("Image upload response data",responseData);
+   })
+}
+
+getImagepath(){
+  this.http.get("http://localhost:1025/home/imagePath").subscribe(ImageData =>{
+    console.log("inside getImagePath in service",ImageData);
+
+   var imagePathData = ImageData;
+    this.imagePathDetails = Object.values(ImageData);
+   console.log("inside getImagePath in service",this.imagePathDetails);
+    this.imagePathUpdated.next(this.imagePathDetails);
+
+  })
+}
+
 
 /*FUNCTION TO ADD HOME DATA TO DATABASE */
 
@@ -61,7 +92,9 @@ export class HomeInfoService {
         console.log("After info update",responseData);
         if(responseData["status"]=="success")
         {
-          var homeDetails = responseData["data"];
+          console.log("response data in updateeeeeeeee",responseData)
+  
+
           alert("Information Updated Successfully");
         }
         else{
@@ -112,10 +145,11 @@ export class HomeInfoService {
     console.log("in updatequality Info",whyusQualityInfo);
 
     this.http.put("http://localhost:1025/home/update-quality",whyusQualityInfo).subscribe(responseData =>{
-        console.log("After info update",responseData);
+        console.log("After qualityinfo update",responseData);
         if(responseData["status"]=="success")
         {
           var whyusQualityInfoResponse:whyUsInfo = responseData["data"];
+
           alert("Information Updated Successfully");
         }
     })
@@ -174,6 +208,10 @@ export class HomeInfoService {
 getwhyusUpdateListener(){
   return this.whyusInfoUpdated.asObservable();
 
+}
+
+getImagePathUpdateListener(){
+  return this.imagePathUpdated.asObservable();
 }
 
 

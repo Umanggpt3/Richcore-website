@@ -62,11 +62,15 @@ export class ContactLocationService {
     const location:locationInfo= {id:id,location1:location1,location2:location2,location3:location3,location4:location4};
     console.log("in updateLocation",location);
     this.http.put("http://localhost:1025/location/update",location).subscribe(responseData =>{
-        console.log("After location update",responseData);
         if(responseData["status"]=="success")
         {
           var locationData = responseData["data"];
+          const updatedLocation = [...this.locations];
           console.log("updated location data",locationData);
+          const oldLocationIndex = updatedLocation.findIndex(p => p.id === id);
+          updatedLocation[oldLocationIndex]= locationData;
+          this.locations = updatedLocation;
+          this.locationUpdated.next([...this.locations]);
           alert("Location Updated Successfully");
         }
     })
@@ -76,6 +80,7 @@ export class ContactLocationService {
   deleteLocation(locationID:string){
     this.http.delete("http://localhost:1025/location/" + locationID)
     .subscribe(() => {
+      console.log("mskamkasm",this.locations)
      const locationUpdated = this.locations.filter(locationItem => locationItem[0]._id !== locationID);
      this.locations = locationUpdated;
      this.locationUpdated.next([...this.locations]);

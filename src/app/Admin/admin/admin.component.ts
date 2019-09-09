@@ -3,10 +3,11 @@ import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import {HomeInfoService} from '../../Services/home-info.service'
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 
 import {homeInfo} from "../../models/homeInfoModel";
 import {whyUsInfo} from "../../models/whyusinfoModel";
+import {mimeType} from "./mime-type.validator";
 
 @Component({
   selector: 'app-admin',
@@ -16,6 +17,11 @@ import {whyUsInfo} from "../../models/whyusinfoModel";
 export class AdminComponent implements OnInit {
 
   form: FormGroup;
+  imagePreview:string;
+
+  private imagePathInfoSub :Subscription;
+  private imagePathInfoDisplay:any;
+
   private homeInfoSub : Subscription;
   private homeInfoDisplay:homeInfo;
 
@@ -28,6 +34,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
 
+      image: new FormControl(null,{validators:[Validators.required],asyncValidators:[mimeType]}),
       /*FORM CONTROLS FORHOME INFO SECTION*/
       infoText: new FormControl(null,{validators:[Validators.required]
       }),
@@ -55,6 +62,13 @@ export class AdminComponent implements OnInit {
 
     })
 
+    this.homeInfoService.getImagepath();
+    this.imagePathInfoSub = this.homeInfoService.getImagePathUpdateListener().subscribe((imagePathDetails)=>{
+      console.log("Image path details admin ts file",imagePathDetails);
+      this.imagePathInfoDisplay = imagePathDetails;
+
+    })
+
 
       /*****GET WHY US DATA ON INITIALIZATION*******/
       this.homeInfoService.getWhyIUsInfo();
@@ -63,6 +77,21 @@ export class AdminComponent implements OnInit {
         this.whyusInfoDisplay = whyusDetails;
       })
 
+  }
+
+  onImagePicked(event:Event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image:file});
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file); 
+  }
+
+  onAddImage(){
+    this.homeInfoService.uploadImage(this.form.value.image)
   }
 
 
@@ -88,6 +117,7 @@ onUpdateInfo(infoID:string){
     this.homeInfoService.addWhyUsInfo(this.form.value.qualityText,this.form.value.innovationText,this.form.value.facilityText,this.form.value.locationText)
 
   }*/
+
 
   onUpdateWhyUsQualityInfo(whyusID:string){
     console.log("why us id",whyusID);

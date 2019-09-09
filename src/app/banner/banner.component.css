@@ -12,11 +12,13 @@
 }
 
 .ad1 {
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../../assets/img/slide1.jpg) no-repeat center center fixed;
+    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
 .ad2 {
@@ -24,19 +26,12 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
-}
-
-.ad3 {
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../../assets/img/banner-img1.jpeg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-position: center;
     background-size: cover;
 }
 
 .assistant {
-    font-family: 'Assistant', sans-serif;
+    font-family: sans-serif;
     letter-spacing: 2px !important;
     color: white;
     font-weight: 200

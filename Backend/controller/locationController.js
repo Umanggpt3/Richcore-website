@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const locationInfoSchema = require('../model/location');
 
 router.post('/info', (req, res, next) => {
-    console.log(req.body);
 
     var newlocation = new locationInfoSchema({
         id: req.body.id,
@@ -29,18 +28,12 @@ router.post('/info', (req, res, next) => {
 router.get('/info', (req, res, next) => {
 
     locationInfoSchema.find().then(result => {
-
-
-        console.log("Hello", result);
-
         res.status(200).json({
 
             status: "success",
             data: result
 
         })
-
-
     })
 })
 
@@ -67,7 +60,6 @@ router.put('/update', (req, res, next) => {
 router.delete("/:id", (req, res, next) => {
 
     locationInfoSchema.deleteOne({ _id: req.params.id }).then(result => {
-        console.log(result);
         res.status(200).json({ message: "Item deleted!" });
     });
 })

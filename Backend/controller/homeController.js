@@ -1,15 +1,65 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
+const multer = require('multer');
+
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 const homeInfoSchema = require('../model/home-info');
 const whyUsInfoSchema = require('../model/why-us');
+const bannerImageSchema = require('../model/banner-img');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/Richcore');
 
+const MIME_TYPE_MAP = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/jpeg': 'jpg'
+};
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error("INVALID MIME TYPE");
+        if (isValid) {
+            error = null;
+        }
+
+        cb(error, "images");
+    },
+    filename: (req, file, cb) => {
+        const name = file.originalname.toLowerCase().split(' ').join('-');
+        const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, name + '-' + Date.now() + '.' + ext)
+    }
+});
+
+router.post('/uploadImage', multer({ storage: storage }).single("image"), (req, res, next) => {
+    console.log("Inside uploadImage post ");
+    const url = req.protocol + '://' + req.get("host");
+    const bannerSchema = new bannerImageSchema({
+        imagePath: url + "/images/" + req.file.filename
+    })
+
+    bannerSchema.save().then(imageAdded => {
+        res.status(200).json({
+            status: "success",
+            imagePath: imageAdded.imagePath,
+            imageID: imageAdded._id
+        })
+    })
+})
+
+router.get('/imagePath', (req, res, next) => {
+    bannerImageSchema.find().then(result => {
+        console.log("result of get image", result);
+        res.status(200).json({
+            ...result
+        })
+    })
+})
 
 /*******Home Info post Start**********/
 
@@ -37,10 +87,6 @@ mongoose.connect('mongodb://localhost/Richcore');
 router.get('/info', (req, res, next) => {
 
         homeInfoSchema.find().then(result => {
-
-
-            console.log("Hello", result);
-
             res.status(200).json({
 
                 status: "success",
@@ -58,7 +104,6 @@ router.get('/info', (req, res, next) => {
 /*******Home Info Update Start**********/
 
 router.put('/update', (req, res, next) => {
-    console.log("Update homeInfo", req.body);
     homeInfoSchema.findByIdAndUpdate(req.body.id, {
             $set: { data: req.body.data }
         }, {
@@ -82,7 +127,6 @@ router.put('/update', (req, res, next) => {
 /*******Why-Us post Start**********/
 
 /*router.post('/whyus', (req, res, next) => {
-    console.log("Why us post info", req.body.location);
 
     var whyUsinfoSchema = new whyUsInfoSchema({
         quality: req.body.quality,
@@ -125,7 +169,6 @@ router.get('/whyus', (req, res, next) => {
 /*******WHY US QUALITY UPDATE START**********/
 
 router.put('/update-quality', (req, res, next) => {
-    console.log("Update why us quality info", req.body);
     whyUsInfoSchema.findByIdAndUpdate(req.body.id, {
             $set: {
                 quality: req.body.quality,
@@ -150,7 +193,6 @@ router.put('/update-quality', (req, res, next) => {
 /*******WHY US INNOVATION UPDATE START**********/
 
 router.put('/update-innovation', (req, res, next) => {
-    console.log("Update why us innovation info", req.body);
     whyUsInfoSchema.findByIdAndUpdate(req.body.id, {
             $set: {
                 innovation: req.body.innovation,
@@ -174,7 +216,6 @@ router.put('/update-innovation', (req, res, next) => {
 /*******WHY US FACILITY UPDATE START**********/
 
 router.put('/update-facility', (req, res, next) => {
-    console.log("Update why us facility info", req.body);
     whyUsInfoSchema.findByIdAndUpdate(req.body.id, {
             $set: {
                 facility: req.body.facility,
@@ -199,7 +240,6 @@ router.put('/update-facility', (req, res, next) => {
 /*******WHY US LOCATION UPDATE START**********/
 
 router.put('/update-location', (req, res, next) => {
-    console.log("Update why us facility info", req.body);
     whyUsInfoSchema.findByIdAndUpdate(req.body.id, {
             $set: {
                 location: req.body.location,

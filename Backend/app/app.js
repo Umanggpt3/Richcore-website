@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
@@ -8,6 +9,7 @@ const locationController = require('../controller/locationController');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join("images")));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

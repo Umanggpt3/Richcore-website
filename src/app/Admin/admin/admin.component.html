@@ -7,6 +7,34 @@
 
 <app-admin-dashboard></app-admin-dashboard>
 <div class="container">
+
+    <form>
+        <div class="image-preview" *ngIf="imagePreview != '' && imagePreview && form.get('image').valid ">
+            <img [src]="imagePreview" alt="Banner image 1">
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="validatedCustomFile" required (change)="onImagePicked($event)">
+            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+            <!-- <div class="invalid-feedback">Example invalid custom file feedback</div> -->
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button (click)="onAddImage()" type="submit" class="btn btn-lg text-white" style="background-color: midnightblue">UPLOAD IMAGE</button>
+        </div>
+    </form>
+
+
+    <div class="d-flex test">
+        <div class="row">
+            <div class="col-4" *ngFor="let i of imagePathInfoDisplay ">
+                <img src="{{i.imagePath}}" alt="" height="400" width="350">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div *ngFor=" let i of homeInfoDisplay">
         <form [formGroup]="form">
             <div class="form-group">
