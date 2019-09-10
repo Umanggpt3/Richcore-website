@@ -39,7 +39,26 @@ uploadImage(image:File){
 
    this.http.post<{message:string,imageID:string,imagePath:string}>("http://localhost:1025/home/uploadImage",imageData).subscribe(responseData =>{
      console.log("Image upload response data",responseData);
+     alert("image updated successfully")
    })
+}
+
+updateImage(imageID:string,image:File){
+  console.log("Image data in service", image)
+  const imageData = new FormData();
+  imageData.append("id",imageID)
+  imageData.append("image",image);
+  this.http.put("http://localhost:1025/home/imageUpdate",imageData).subscribe(responseData =>{
+    console.log("response data in update image function",responseData);
+    alert("Successfully updated image");
+  })
+}
+
+deleteImage(imageID:string){
+  this.http.delete("http://localhost:1025/home/"+ imageID).subscribe(()=>{
+    console.log("image deleted");
+    alert("image deleted");
+  })
 }
 
 getImagepath(){

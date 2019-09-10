@@ -90,6 +90,13 @@ export class AdminComponent implements OnInit {
     reader.readAsDataURL(file); 
   }
 
+  onUpdateImage(imageID:string){
+    this.homeInfoService.updateImage(imageID,this.form.value.image);
+  }
+  onDeleteImage(imageID:string){
+    this.homeInfoService.deleteImage(imageID);
+  }
+
   onAddImage(){
     this.homeInfoService.uploadImage(this.form.value.image)
   }

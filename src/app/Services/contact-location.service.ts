@@ -80,10 +80,10 @@ export class ContactLocationService {
   deleteLocation(locationID:string){
     this.http.delete("http://localhost:1025/location/" + locationID)
     .subscribe(() => {
-      console.log("mskamkasm",this.locations)
      const locationUpdated = this.locations.filter(locationItem => locationItem[0]._id !== locationID);
      this.locations = locationUpdated;
      this.locationUpdated.next([...this.locations]);
+     alert("Location deleted successfully")
     });
 
   }

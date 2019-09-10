@@ -52,6 +52,37 @@ router.post('/uploadImage', multer({ storage: storage }).single("image"), (req, 
     })
 })
 
+router.put('/imageUpdate/', multer({ storage: storage }).single("image"), (req, res, next) => {
+    let imagePath
+    const url = req.protocol + '://' + req.get("host");
+    imagePath = url + "/images/" + req.file.filename;
+    bannerImageSchema.findByIdAndUpdate(req.body.id, {
+            $set: { imagePath: imagePath }
+        }, {
+            new: true
+        },
+        function(err, updatedImagePath) {
+            if (err) {
+                res.send("Error updating imagePath");
+            } else {
+                res.json({
+                    status: "success",
+                    data: updatedImagePath
+                })
+            }
+        }
+    )
+
+})
+
+router.delete("/:id", (req, res, next) => {
+
+    bannerImageSchema.deleteOne({ _id: req.params.id }).then(result => {
+        res.status(200).json({ message: "Item deleted!" });
+    });
+})
+
+
 router.get('/imagePath', (req, res, next) => {
     bannerImageSchema.find().then(result => {
         console.log("result of get image", result);
