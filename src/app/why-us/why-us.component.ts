@@ -6,6 +6,7 @@ import {HomeInfoService} from '../Services/home-info.service'
 import {whyUsInfo} from "../models/whyusinfoModel";
 import { Subscription } from 'rxjs';
 
+declare var $: any;
 
 @Component({
   selector: 'app-why-us',
@@ -28,6 +29,12 @@ export class WhyUsComponent implements OnInit {
         this.whyusInfoDisplay = whyusDetails;
       })
 
+  }
+
+  ngAfterViewChecked() {
+    $('#pills-tab li p').hover(function() {
+      $(this).tab('show');
+    });
   }
 
 }
