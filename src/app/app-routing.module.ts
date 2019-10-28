@@ -5,12 +5,13 @@ import { BannerComponent } from './banner/banner.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 import { ContactFormComponent } from './contact-us/contact-form/contact-form.component';
 import { AdminLocationComponent } from './Admin/admin-location/admin-location.component';
+import { ProteinComponent } from './Products/Product-Protein/protein/protein.component';
+import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
 
 const routes: Routes = [
   {
     path:'',component:BannerComponent
   },
-
   {
       path: 'about',
       component: AboutComponent
@@ -23,8 +24,13 @@ const routes: Routes = [
   },
   {
     path:'admin-location',component:AdminLocationComponent
+  },
+  {
+    path:'products',component:ProteinComponent
+  },
+  {
+    path:'products-info',component:ProteinInfoComponent
   }
-
 ];
 
 @NgModule({
