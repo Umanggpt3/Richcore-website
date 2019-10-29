@@ -3,6 +3,7 @@
 }
 .navbar li a:hover {
     border-bottom: 7px solid #3399ff;
+    cursor: pointer;
 }
 .navbar li a:active {
     border-bottom: 7px solid #3399ff;

@@ -25,5 +25,8 @@ export class HeaderComponent implements OnInit {
   navtocontact(){
     this.router.navigate(['/contact']);
   }
+  navtoproducts(){
+    this.router.navigate(['/products']);
+  }
 
 }

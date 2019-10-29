@@ -15,6 +15,10 @@ import { AdminComponent } from './Admin/admin/admin.component';
 import { ContactFormComponent } from './contact-us/contact-form/contact-form.component';
 import { AdminLocationComponent } from './Admin/admin-location/admin-location.component';
 import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard/admin-dashboard.component';
+import { ProteinComponent } from './Products/Product-Protein/protein/protein.component';
+import { GrowthfactorComponent } from './Products/Product-Growthfactor/growthfactor/growthfactor.component';
+import { ProteinMenuComponent } from './Products/Product-Protein/protein-menu/protein-menu.component';
+import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard
     AdminComponent,
     ContactFormComponent,
     AdminLocationComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ProteinComponent,
+    GrowthfactorComponent,
+    ProteinMenuComponent,
+    ProteinInfoComponent
   ],
   imports: [
     BrowserModule,
