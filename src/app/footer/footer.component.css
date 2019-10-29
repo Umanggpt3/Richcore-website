@@ -15,3 +15,11 @@
 .jumbotron {
     border-top: 3px solid #d8ecff;
 }
+
+.fontsize12{
+    font-size: 15px;
+}
+
+.fontweigth900{
+    font-weight: 900;
+}
