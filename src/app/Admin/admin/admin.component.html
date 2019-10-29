@@ -55,6 +55,33 @@
         </div>
     </div>
 
+
+    <!-- FORM TO ADD WHY US DATA -->
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputQuality1" formControlName="qualityText" placeholder="QUALITY INFO">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputInnovation1" formControlName="innovationText" placeholder="INNOVATION INFO">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputFacility1" formControlName="facilityText" placeholder="FACILITY INFO">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputLocation1" formControlName="locationText" placeholder="LOCATION INFO">
+        </div>
+        <button (click)="onAddWhyUsInfo()" class="btn btn-primary">ADD DATA</button>
+    </form>
+
+
+
+
+
+
+
+
+
     <form [formGroup]="form">
         <div *ngFor="let i of whyusInfoDisplay">
             <div class="form-group">

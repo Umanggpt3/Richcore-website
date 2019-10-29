@@ -6,6 +6,7 @@ const router = express.Router();
 
 const homeController = require('../controller/homeController');
 const locationController = require('../controller/locationController');
+const mailController = require('../controller/mailController');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 app.use('/home', homeController);
 app.use('/location', locationController);
+app.use('/mail', mailController);
 app.get('/', (req, res, next) => {
     res.status(200).json({
         name: 'Richcore'

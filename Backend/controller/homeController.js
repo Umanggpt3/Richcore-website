@@ -157,7 +157,7 @@ router.put('/update', (req, res, next) => {
 
 /*******Why-Us post Start**********/
 
-/*router.post('/whyus', (req, res, next) => {
+router.post('/whyus', (req, res, next) => {
 
     var whyUsinfoSchema = new whyUsInfoSchema({
         quality: req.body.quality,
@@ -172,7 +172,7 @@ router.put('/update', (req, res, next) => {
             dataID: addedInfo._id
         })
     })
-})*/
+})
 
 /*******WHY US POST END**********/
 

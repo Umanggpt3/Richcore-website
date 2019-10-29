@@ -112,8 +112,6 @@ getImagepath(){
         if(responseData["status"]=="success")
         {
           console.log("response data in updateeeeeeeee",responseData)
-  
-
           alert("Information Updated Successfully");
         }
         else{
@@ -131,7 +129,7 @@ getImagepath(){
 
  /*FUNCTION TO ADD WHY-US DATA TO DATABASE */
  
- /*addWhyUsInfo(qualityInfo:string,innovationInfo:string,facilityInfo:string,locationInfo:string){
+ addWhyUsInfo(qualityInfo:string,innovationInfo:string,facilityInfo:string,locationInfo:string){
   console.log("In service ",qualityInfo);
   const whyusDetails:whyUsInfo = {id:null,quality:qualityInfo,innovation:innovationInfo,facility:facilityInfo,location:locationInfo}
   console.log("In service whyusDetails ",whyusDetails);
@@ -141,7 +139,7 @@ getImagepath(){
     whyusDetails.id = responseData.dataID;
     console.log("response data");
   });
- }*/
+ }
 
 
  getWhyIUsInfo(){

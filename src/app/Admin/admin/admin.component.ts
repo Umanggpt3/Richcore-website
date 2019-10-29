@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import {HomeInfoService} from '../../Services/home-info.service'
@@ -119,11 +118,11 @@ onUpdateInfo(infoID:string){
   }
 
 /*FUNCTION CALL TO SEND WHY US SECTION DATA TO SERVICE */
-  /*onAddWhyUsInfo(){
+  onAddWhyUsInfo(){
 
     this.homeInfoService.addWhyUsInfo(this.form.value.qualityText,this.form.value.innovationText,this.form.value.facilityText,this.form.value.locationText)
 
-  }*/
+  }
 
 
   onUpdateWhyUsQualityInfo(whyusID:string){
