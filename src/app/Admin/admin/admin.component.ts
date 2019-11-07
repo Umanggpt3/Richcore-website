@@ -19,13 +19,13 @@ export class AdminComponent implements OnInit {
   imagePreview:string;
 
   private imagePathInfoSub :Subscription;
-  private imagePathInfoDisplay:any;
+  public imagePathInfoDisplay:any;
 
   private homeInfoSub : Subscription;
-  private homeInfoDisplay:homeInfo;
+  public homeInfoDisplay:homeInfo;
 
   private whyusInfoSub :Subscription;
-  private whyusInfoDisplay:whyUsInfo;
+  public whyusInfoDisplay:whyUsInfo;
 
 
   constructor(public homeInfoService:HomeInfoService) { }

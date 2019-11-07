@@ -13,7 +13,7 @@ export class MailServiceService {
   contactMail(contactData:contactusMail){
     console.log("in contact us service ",contactData);
     this.http.post(
-      "http://localhost:1025/mail/contactUs",contactData).subscribe(responseData =>{
+      "http://3.15.155.27:1035/mail/contactUs",contactData).subscribe(responseData =>{
         console.log(responseData);
       })
 

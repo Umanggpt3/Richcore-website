@@ -14,7 +14,7 @@ export class BannerComponent implements OnInit {
   private homeInfoDisplay:homeInfo;
 
   private imagePathInfoSub :Subscription;
-  private imagePathInfoDisplay:any;
+  public imagePathInfoDisplay:any;
 
   constructor(private homeInfoService:HomeInfoService) { }
 

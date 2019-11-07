@@ -87,12 +87,12 @@ router.get('/imagePath', (req, res, next) => {
     bannerImageSchema.find().then(result => {
         console.log("result of get image", result);
         res.status(200).json({
-            ...result
+            result:result
         })
     })
 })
 
-/*******Home Info post Start**********/
+/*******Home Info postƒ Start**********/
 
 /* router.post('/info', (req, res, next) => {
     console.log("Inside Homecontroller", req.body);
