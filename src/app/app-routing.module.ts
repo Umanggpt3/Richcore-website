@@ -7,6 +7,7 @@ import { ContactFormComponent } from './contact-us/contact-form/contact-form.com
 import { AdminLocationComponent } from './Admin/admin-location/admin-location.component';
 import { ProteinComponent } from './Products/Product-Protein/protein/protein.component';
 import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
+import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,10 @@ const routes: Routes = [
     path:'products',component:ProteinComponent
   },
   {
-    path:'products-info',component:ProteinInfoComponent
+    path:'products-info/:productID',component:ProteinInfoComponent
+  },
+  {
+    path:'admin-product',component:AdminProductsComponent
   }
 ];
 

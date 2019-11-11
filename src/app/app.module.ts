@@ -19,6 +19,7 @@ import { ProteinComponent } from './Products/Product-Protein/protein/protein.com
 import { GrowthfactorComponent } from './Products/Product-Growthfactor/growthfactor/growthfactor.component';
 import { ProteinMenuComponent } from './Products/Product-Protein/protein-menu/protein-menu.component';
 import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
+import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/pr
     ProteinComponent,
     GrowthfactorComponent,
     ProteinMenuComponent,
-    ProteinInfoComponent
+    ProteinInfoComponent,
+    AdminProductsComponent
   ],
   imports: [
     BrowserModule,

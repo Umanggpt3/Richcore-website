@@ -20,5 +20,9 @@ export class AdminDashboardComponent implements OnInit {
   navtohome(){
     this.router.navigate(['/admin']);
   }
+  navToProductAdmin(){
+    this.router.navigate(['/admin-product']);
+
+  }
 
 }

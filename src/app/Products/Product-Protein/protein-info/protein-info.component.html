@@ -6,24 +6,36 @@
     </div>
     <div class="row">
         <div class="col">
-            <app-protein-menu></app-protein-menu>
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded my-4">
+                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon">asd</span>
+                        </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav justify-content-around " style="width: 100%" *ngFor=" let i of productInfo">
+                        <li class="nav-item active" *ngFor=" let j of i">
+                            <a class="nav-link text-white" (click)="navToProductsInfo(j._id)">{{j.protein.proteinName}} <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </div>
     <div class="row my-2">
         <div class="col">
-            <p class="typojustify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod possimus odio consectetur consequuntur minima labore adipisci iste vel. Saepe veniam, a minima corporis voluptate consequatur nam ab explicabo iusto! Mollitia. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias obcaecati exercitationem et velit dolor! Blanditiis, veniam, tempora nesciunt ipsum odit, officiis soluta quae dolores voluptas facilis sunt quaerat quibusdam culpa!</p>
+            <p class="typojustify">{{productInfoDisplay.protein.proteinName}},{{productInfoDisplay.protein.proteinDescription}}</p>
         </div>
     </div>
     <div class="row my-1">
         <div class="col">
             <ul class="nav nav-fill border">
                 <li class="nav-item">
-                  <a class="nav-link active" id="powder-tab" data-toggle="tab" href="#powder" role="tab" aria-controls="powder" aria-selected="true">Powder</a>
+                    <a class="nav-link active" id="powder-tab" data-toggle="tab" href="#powder" role="tab" aria-controls="powder" aria-selected="true">Powder</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="liquid-tab" data-toggle="tab" href="#liquid" role="tab" aria-controls="liquid" aria-selected="false">Liquid</a>
+                    <a class="nav-link" id="liquid-tab" data-toggle="tab" href="#liquid" role="tab" aria-controls="liquid" aria-selected="false">Liquid</a>
                 </li>
-              </ul>
+            </ul>
         </div>
     </div>
     <div class="container-fluid tab-content my-3" id="myTabContent">
@@ -33,27 +45,16 @@
                     <h3 class="open-sans mt-2">Powder</h3>
                     <h4 class="open-sans mt-2">Applications</h4>
                     <ul>
-                        <li>
-                            Lorem, ipsum dolor.
+                        <li *ngFor=" let i of productInfoDisplay.protein.powder.ppApplication">
+                            {{i}}
                         </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>        
                     </ul>
                     <h4 class="open-sans mt-2">Advantages</h4>
                     <ul>
-                        <li>
-                            Lorem, ipsum dolor.
+                        <li *ngFor=" let i of productInfoDisplay.protein.powder.ppAdvantages">
+                            {{i}}
                         </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
+
                     </ul>
                 </div>
                 <div class="col-md-5 my-2">
@@ -71,26 +72,14 @@
                     <h3 class="open-sans mt-2">Liquid</h3>
                     <h4 class="open-sans mt-2">Applications</h4>
                     <ul>
-                        <li>
-                            Lorem, ipsum dolor.
+                        <li *ngFor=" let i of productInfoDisplay.protein.liquid.plApplication">
+                            {{i}}
                         </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>        
                     </ul>
                     <h4 class="open-sans mt-2">Advantages</h4>
                     <ul>
-                        <li>
-                            Lorem, ipsum dolor.
-                        </li>
-                        <li>
-                            Lorem, ipsum dolor.
+                        <li *ngFor=" let i of productInfoDisplay.protein.liquid.plAdvantages">
+                            {{i}}
                         </li>
                     </ul>
                 </div>

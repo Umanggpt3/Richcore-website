@@ -4,22 +4,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav justify-content-around " style="width: 100%">
-        <li class="nav-item active">
-          <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="#">Dheeraj</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Umang</a>
-          </li>
-      </ul>
+        <ul class="navbar-nav justify-content-around " style="width: 100%" *ngFor=" let i of productInfoDisplay">
+            <li class="nav-item active" *ngFor=" let j of i">
+                <a class="nav-link text-white" (click)="navToProductsInfo(j._id)">{{j.protein.proteinName}} <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>

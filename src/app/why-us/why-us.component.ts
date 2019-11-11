@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import {HomeInfoService} from '../Services/home-info.service'
-
-
-import {whyUsInfo} from "../models/whyusinfoModel";
+import { Renderer2, Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { HomeInfoService } from '../Services/home-info.service'
+import { whyUsInfo } from "../models/whyusinfoModel";
 import { Subscription } from 'rxjs';
 
 declare var $: any;
@@ -18,7 +16,9 @@ export class WhyUsComponent implements OnInit {
   private whyusInfoSub :Subscription;
   private whyusInfoDisplay:whyUsInfo;
 
-  constructor(public homeInfoService:HomeInfoService) { }
+  constructor(
+    public homeInfoService:HomeInfoService,
+  ) { }
 
   ngOnInit() {
 
@@ -36,5 +36,4 @@ export class WhyUsComponent implements OnInit {
       $(this).tab('show');
     });
   }
-
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription} from 'rxjs'
+import { Router, ActivatedRoute } from "@angular/router";
+import {ProductsService} from "../../../Services/products.service"
 
 @Component({
   selector: 'app-protein-info',
@@ -7,9 +10,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProteinInfoComponent implements OnInit {
 
-  constructor() { }
+  productInfoDisplay:any;
+  private productSub : Subscription;
+  private productID:string;
+  private routesub:Subscription;
+  private productInfo:any =[]
+
+  constructor(public productService: ProductsService,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    this.routesub = this.route.params.subscribe(params => {
+      console.log("params",params);
+      this.productID = params.productID;
+    })
+
+    this.productService.getProduct(this.productID);
+    this.productSub = this.productService.getproductdetailsUpdateListener().subscribe((productDetails:any[]) => {
+      console.log("productInfoDisplay cards asasasasasas",productDetails);
+      this.productInfoDisplay = productDetails
+    })
+
+    this.productService.getProducts();
+    this.productSub = this.productService.getProductUpdateListener().subscribe((productDetails:any[]) => {
+      console.log("productInfoDisplay cards",productDetails);
+      this.productInfo = productDetails
+    })
+
+  }
+
+  navToProductsInfo(productID:any){
+    this.router.navigate(["/products-info",productID])
+    console.log("kajskajsakjsa ffgg gfgfg gfgfg",productID)
+    this.productService.getProduct(this.productID);
+    this.productSub = this.productService.getproductdetailsUpdateListener().subscribe((productDetails:any[]) => {
+      console.log("productInfoDisplay cards asasasasasas",productDetails);
+      this.productInfoDisplay = productDetails
+    })
+
+    this.router.navigate(["/products-info",productID])
+
   }
 
 }
