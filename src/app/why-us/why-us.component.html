@@ -6,52 +6,45 @@
     </div>
     <ul class="row nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
         <li class="nav-item col-md-3">
-            <div class="nav-link" id="pills-quality-tab" data-toggle="pill" href="#pills-quality" role="tab" aria-controls="pills-quality" aria-selected="true">
+            <div class="nav-link" id="pills-quality-tab" data-toggle="tab" href="#pills-quality" role="tab" aria-controls="pills-quality" aria-selected="true">
                 <img style="margin-top:-60px; margin-left: -35px;" src="../../../assets/img/Path.png" width="70px" height="70px" />
                 <i class="fa fa-thumbs-o-up fa-2x" style="margin-left: -50px;" aria-hidden="true"></i>
                 <p class="h3">Quality</p>
             </div>
         </li>
         <li class="nav-item col-md-3">
-            <div class="nav-link" id="pills-innovation-tab" data-toggle="pill" href="#pills-innovation" role="tab" aria-controls="pills-innovation" aria-selected="false">
+            <div class="nav-link" id="pills-innovation-tab" data-toggle="tab" href="#pills-innovation" role="tab" aria-controls="pills-innovation" aria-selected="false">
                 <img style="margin-top:-60px; margin-left: -35px;" src="../../../assets/img/Path.png" width="70px" height="70px" />
                 <i class="fa fa-lightbulb-o fa-2x" style="margin-left: -50px;" aria-hidden="true"></i>
                 <p class="h3">Innovation</p>
             </div>
-            <!-- <i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i> -->
         </li>
         <li class="nav-item col-md-3">
-            <div class="nav-link" id="pills-facility-tab" data-toggle="pill" href="#pills-facility" role="tab" aria-controls="pills-facility" aria-selected="false">
+            <div class="nav-link" id="pills-facility-tab" data-toggle="tab" href="#pills-facility" role="tab" aria-controls="pills-facility" aria-selected="false">
                 <img style="margin-top:-60px; margin-left: -35px;" src="../../../assets/img/Path.png" width="70px" height="70px" />
                 <i class="fa fa-star-o fa-2x" style="margin-left: -50px;" aria-hidden="true"></i>
                 <p class="h3">Facility</p>
             </div>
-            <!-- <i class="fa fa-star-o fa-2x" aria-hidden="true"></i> -->
         </li>
         <li class="nav-item col-md-3">
-            <div class="nav-link" id="pills-location-tab" data-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="false">
+            <div class="nav-link" id="pills-location-tab" data-toggle="tab" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="false">
                 <img style="margin-top:-60px; margin-left: -35px;" src="../../../assets/img/Path.png" width="70px" height="70px" />
                 <i class="fa fa-map-marker fa-2x" style="margin-left: -50px;" aria-hidden="true"></i>
                 <p class="h3">Location</p>
             </div>
-            <!-- <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i> -->
         </li>
     </ul>
-    <div class="tab-content my-5 pb-5" id="pills-tabContent" *ngFor="let i of whyusInfoDisplay">
+    <div class="tab-content well my-5 pb-5" id="pills-tabContent" *ngFor="let i of whyusInfoDisplay">
         <div class="tab-pane fade lead" id="pills-quality" role="tabpanel" aria-labelledby="pills-quality-tab">
-            <!-- <h3>Quality</h3> -->
             {{i.quality}}
         </div>
         <div class="tab-pane fade lead" id="pills-innovation" role="tabpanel" aria-labelledby="pills-innovation-tab">
-            <!-- <h3>Innovation</h3> -->
             {{i.innovation}}
         </div>
         <div class="tab-pane fade lead" id="pills-facility" role="tabpanel" aria-labelledby="pills-facility-tab">
-            <!-- <h3>Facility</h3> -->
             {{i.facility}}
         </div>
         <div class="tab-pane fade lead" id="pills-location" role="tabpanel" aria-labelledby="pills-location-tab">
-            <!-- <h3>Location</h3> -->
             {{i.location}}
         </div>
     </div>
