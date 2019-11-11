@@ -1,4 +1,4 @@
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link, .nav-pills .nav-link:hover {
     color: #000000;
     background-color: #ffffff;
     border-bottom: 10px solid #d8ecff;
@@ -7,4 +7,14 @@
 .nav-pills .nav-link {
     border-radius: 0rem;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-link {
+        margin: 2rem 2rem;
+    }
+    .container h1{
+        margin-top: 2rem;
+        margin-bottom: 0rem !important;
+    }
 }

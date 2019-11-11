@@ -9,10 +9,10 @@
 }
 
 .open-sans {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.jumbotron {
+.container-fluid {
     border-top: 3px solid #d8ecff;
 }
 
@@ -22,4 +22,15 @@
 
 .fontweigth900{
     font-weight: 900;
+}
+
+@media only screen and (max-width: 768px) {
+    .jumbotron {
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        margin-bottom: 0% !important;
+    }
+    ul, li {
+        padding: 0;
+    }
 }

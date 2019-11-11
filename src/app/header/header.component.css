@@ -7,12 +7,39 @@
 }
 .navbar li a:active {
     border-bottom: 7px solid #3399ff;
+    font-weight: bold;
 }
 .open-sans {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .back-blue {
     background-color: #3399ff !important;
     color: white !important;
     cursor: pointer;
+}
+.navbar-brand {
+    cursor: pointer; 
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-brand {
+        margin-left: 20px;
+    }
+    ul {
+        margin-left: 20px !important;
+    }
+    .navbar li a{
+        border-bottom: 7px solid white;
+        width: 25%;
+    }
+    .navbar li a:hover {
+        border-bottom: 7px solid #3399ff;
+        cursor: pointer;
+        width: 25%;
+    }
+    .navbar li a:active {
+        border-bottom: 7px solid #3399ff;
+        width: 25%;
+    }
 }

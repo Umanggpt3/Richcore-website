@@ -8,5 +8,42 @@ p {
 }
 
 .open-sans {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    .jumbotron {
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        margin-bottom: 0% !important;
+    }
+    .form-group {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .form-row {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .submit-btn button {
+        width: 60px !important;
+        height: 60px !important;
+        margin-top: -50px !important;
+    }
+    .submit-btn img {
+        width: 60px !important;
+        height: 60px !important;
+        margin-top: -30px !important;
+    }
+    .idk {
+        height: auto !important;
+        margin-bottom: 1rem;
+    }
+    .offset-1 {
+        margin-left: 0px !important;
+    }
+    .contact-info .row{
+        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+    }
 }
