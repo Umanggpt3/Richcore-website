@@ -14,8 +14,7 @@ const routes: Routes = [
     path:'',component:BannerComponent
   },
   {
-      path: 'about',
-      component: AboutComponent
+      path: 'about',component: AboutComponent
   },
   {
     path:'contact',component:ContactFormComponent

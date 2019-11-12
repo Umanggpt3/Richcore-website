@@ -20,15 +20,15 @@ export class ProteinInfoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.routesub = this.route.params.subscribe(params => {
+      this.routesub = this.route.params.subscribe(params => {
       console.log("params",params);
       this.productID = params.productID;
-    })
-
-    this.productService.getProduct(this.productID);
-    this.productSub = this.productService.getproductdetailsUpdateListener().subscribe((productDetails:any[]) => {
+      this.productService.getProduct(this.productID);
+      this.productSub = this.productService.getproductdetailsUpdateListener().subscribe((productDetails:any[]) => {
       console.log("productInfoDisplay cards asasasasasas",productDetails);
       this.productInfoDisplay = productDetails
+    })
+
     })
 
     this.productService.getProducts();
@@ -40,16 +40,7 @@ export class ProteinInfoComponent implements OnInit {
   }
 
   navToProductsInfo(productID:any){
-    this.router.navigate(["/products-info",productID])
-    console.log("kajskajsakjsa ffgg gfgfg gfgfg",productID)
-    this.productService.getProduct(this.productID);
-    this.productSub = this.productService.getproductdetailsUpdateListener().subscribe((productDetails:any[]) => {
-      console.log("productInfoDisplay cards asasasasasas",productDetails);
-      this.productInfoDisplay = productDetails
-    })
-
-    this.router.navigate(["/products-info",productID])
-
+    this.router.navigate(["/products-info",productID]);
   }
 
 }
