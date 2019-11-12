@@ -12,7 +12,7 @@ export class AdminProductsComponent implements OnInit {
 
   form:FormGroup
   private productInfoSub:Subscription;
-  private productInfoDisplay:any;
+  public productInfoDisplay:any;
   constructor(public productService:ProductsService) { }
 
   ngOnInit() {

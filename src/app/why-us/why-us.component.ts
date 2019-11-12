@@ -14,7 +14,7 @@ declare var $: any;
 export class WhyUsComponent implements OnInit {
 
   private whyusInfoSub :Subscription;
-  private whyusInfoDisplay:whyUsInfo;
+  public whyusInfoDisplay:whyUsInfo;
 
   constructor(
     public homeInfoService:HomeInfoService,

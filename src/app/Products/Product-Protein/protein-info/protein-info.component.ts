@@ -14,7 +14,7 @@ export class ProteinInfoComponent implements OnInit {
   private productSub : Subscription;
   private productID:string;
   private routesub:Subscription;
-  private productInfo:any =[]
+  public productInfo:any =[]
 
   constructor(public productService: ProductsService,private route: ActivatedRoute, private router: Router) { }
 
