@@ -18,6 +18,23 @@ export class ProductsService {
 
   constructor(private http:HttpClient,private router:Router) { }
 
+  addProducts(productData:any)
+  {
+   console.log("in service",productData);
+   this.http.post<{message:string;productID:string}>("http://localhost:1025/products/info",productData).subscribe(responseData => {
+     console.log("responseData",responseData);
+     if(responseData["message"]=="success")
+        alert("Location Added Successfully");
+    //   location.id = responseData.locationId;
+    //   this.locations=[];
+    //   this.locations.push(location);
+    //   this.locationUpdated.next([...this.locations]);
+   });
+  }
+
+
+
+
   getProducts(){
     this.http.get<{message:string,data:any}>("http://localhost:1025/products/info"
     ).pipe(map((productData)=>{
@@ -54,7 +71,6 @@ export class ProductsService {
       })
     
   }
-
 
 
   updateProduct(productID:any,proteinName:any,proteinDescription:any){

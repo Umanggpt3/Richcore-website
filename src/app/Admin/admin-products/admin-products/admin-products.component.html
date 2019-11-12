@@ -5,6 +5,73 @@
             <!-- <app-protein-menu></app-protein-menu> -->
         </div>
     </div>
+    <h3>ADD PRODUCT</h3>
+    <form [formGroup]="form">
+        <div class="form-group">
+            <input type="text" class="form-control" id="proteinName" class="form-control" formControlName="proteinName" placeholder="ADD PROTEIN NAME">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="proteinDescription" id="" cols="30" rows="10" placeholder="ADD PROTEIN DECRIPTION"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="papplication" placeholder="ADD POWDER PROTEIN APPLICATIONS " id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each application must be separated by comma(,)</small>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="padvantages" placeholder="ADD POWDER PROTEIN ADVANTAGES" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="lapplication" placeholder="ADD LIQUID PROTEIN APPLICATIONS" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each application must be separated by comma(,)</small>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="ladvantages" placeholder="ADD LIQUID PROTEIN ADVANTAGES" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="growthName" class="form-control" formControlName="growthName" placeholder="ADD GROWTH FACTOR NAME">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="growthDescription" id="" cols="30" rows="10" placeholder="ADD GROWTH FACTOR DECRIPTION"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="gpapplication" placeholder="ADD POWDER GROWTH FACTORAPPLICATIONS" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each application must be separated by comma(,)</small>
+
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="gpadvantages" placeholder="ADD POWDER GROWTH FACTORADVANTAGES" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="glapplication" placeholder="ADD LIQUID GROWTH FACTOR APPLICATIONS" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each application must be separated by comma(,)</small>
+
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" formControlName="gladvantages" placeholder="ADD LIQUID GROWTH FACTOR ADVANTAGES" id="" cols="30" rows="7"></textarea>
+            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+
+        </div>
+        <div class="form-row m-3 justify-content-center">
+            <button (click)="onAddProduct()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD PRODUCT</button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
     <div class="row">
         <div class="col">
             <form [formGroup]="form" *ngFor=" let i of productInfoDisplay">
