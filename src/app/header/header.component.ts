@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/about']);
   }
 
+  navtoadmin(){
+    this.router.navigate(['/admin']);
+  }
+
   navtohome(){
     this.router.navigate(['/']);
 
