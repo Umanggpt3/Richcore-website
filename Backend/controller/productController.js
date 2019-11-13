@@ -14,7 +14,7 @@ const mongoose = require('mongoose');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'products/images');
+        cb(null, './images');
     },
     filename: (req, file, cb) => {
         console.log(file);
@@ -44,7 +44,7 @@ router.post('/upload', upload.single('file'), function(req, res, next) {
         return next(err);
     }
     console.log(req.protocol + req.get("host") + '/images/' + req.file.filename)
-    res.json({ fileUrl: 'http://localhost:1025/Backend/images/' + req.file.filename });
+    res.json({ fileUrl: req.protocol + req.get("host") + '/images/' + req.file.filename });
 })
 
 
