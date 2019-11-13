@@ -6,27 +6,33 @@ const multer = require('multer');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 const productInfoSchema = require('../model/products');
+const protienSchema = require('../model/protien.model');
+const growthFactorSchema = require('../model/growth_factor.model');
 
 
 const mongoose = require('mongoose');
 
 router.post('/info', (req, res, next) => {
     console.log("Product info data", req.body.protein.powder.ppimagePath);
-
-    var newproduct = new productInfoSchema({
-        // id: req.body.id,
-        protein: req.body.protein,
-        proteinName: req.body.protein.proteinName,
-        ppDescription: req.body.protein.proteinDescription,
-        powder: req.body.protein.powder,
-        ppAdvantages: req.body.protein.powder.ppAdvantages,
-        ppApplication: req.body.protein.powder.ppApplication,
-        ppimagePath: req.body.protein.powder.ppimagePath,
-        liquid: req.body.protein.liquid,
-        plAdvantages: req.body.protein.liquid.plAdvantages,
-        plApplication: req.body.protein.liquid.plApplication,
-        plimagePath: req.body.protein.liquid.plimagePath,
-        growthFactor: req.body.growthFactor,
+    var object;
+    if(req.body.type === 'prot'){
+        
+        object = new productInfoSchema({
+            protein: req.body.protein,
+            proteinName: req.body.protein.proteinName,
+            ppDescription: req.body.protein.proteinDescription,
+            powder: req.body.protein.powder,
+            ppAdvantages: req.body.protein.powder.ppAdvantages,
+            ppApplication: req.body.protein.powder.ppApplication,
+            ppimagePath: req.body.protein.powder.ppimagePath,
+            liquid: req.body.protein.liquid,
+            plAdvantages: req.body.protein.liquid.plAdvantages,
+            plApplication: req.body.protein.liquid.plApplication,
+            plimagePath: req.body.protein.liquid.plimagePath,
+        })
+    }else{
+        object = new growthFactorSchema({
+            growthFactor: req.body.growthFactor,
         growthFactorName: req.body.growthFactor.growthFactorName,
         gpDescription: req.body.growthFactor.growthFactorDescription,
         powder: req.body.growthFactor.powder,
@@ -36,16 +42,33 @@ router.post('/info', (req, res, next) => {
         liquid: req.body.growthFactor.liquid,
         glAdvantages: req.body.growthFactor.liquidglAdvantages,
         glApplication: req.body.growthFactor.liquid.glApplication,
-        glimagePath: req.body.growthFactor.liquid.glimagePath,
+        glimagePath: req.body.growthFactor.liquid.glimagePath
+        });
 
-    });
 
-    newproduct.save().then(addedProduct => {
+    }
+
+    object.save((err,rows) => {
         res.status(201).json({
-            message: "success",
-            productId: addedProduct._id
-        })
-    })
+                    message: "success",
+                    productId: rows._id
+                })
+
+    }); 
+
+    // var newproduct = new productInfoSchema({ ̰
+    //     // id: req.body.id,
+       
+        
+
+    // });
+
+    // newproduct.save().then(addedProduct => {
+    //     res.status(201).json({
+    //         message: "success",
+    //         productId: addedProduct._id
+    //     })
+    // })
 })
 
 router.get('/info', (req, res, next) => {
@@ -105,10 +128,7 @@ router.put('/info/:id', (req, res, next) => {
                     })
                 }
             }
-
         }
-
-
     )
 })
 
