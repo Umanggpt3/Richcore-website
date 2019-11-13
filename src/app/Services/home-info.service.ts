@@ -32,7 +32,7 @@ export class HomeInfoService {
   constructor(private http: HttpClient) { }
 
 uploadImage(image:File){
-  console.log("Image data in service", image)
+  console.log("Image data in service",image)
   const imageData = new FormData();
    imageData.append("image",image);
    console.log("Image data in service", imageData)
