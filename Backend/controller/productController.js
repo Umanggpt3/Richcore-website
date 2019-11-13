@@ -91,10 +91,25 @@ router.put('/info/:id', (req, res, next) => {
                     if (req.body.proteinDescription) {
                         foundObject.protein.proteinDescription = req.body.proteinDescription;
                     }
-                    // if (req.body.protein.powder.ppAdvantages) {
-                    //     foundObject.protein.powder.ppAdvantages.pop()
-                    // foundObject.protein.powder.ppAdvantages.push(req.body.protein.powder.ppAdvantages);
-                    // }
+                    if (req.body.proteinPowderAdvantage) {
+                        //     foundObject.protein.powder.ppAdvantages.pop()
+                        foundObject.protein.powder.ppAdvantages.push(req.body.proteinPowderAdvantage);
+                    }
+                    if (req.body.proteinPowderApplication) {
+                        foundObject.protein.powder.ppApplication.push(req.body.proteinPowderApplication);
+                    }
+                    if (req.body.proteinPowderApplicationArr) {
+                        foundObject.protein.powder.ppApplication = req.body.proteinPowderApplicationArr;
+                    }
+                    if (req.body.proteinPowderAdvantageArr) {
+                        foundObject.protein.powder.ppAdvantages = req.body.proteinPowderAdvantageArr;
+                    }
+                    if (req.body.proteinLiquidAdvantageArr) {
+                        foundObject.protein.liquid.plAdvantages = req.body.proteinLiquidAdvantageArr;
+                    }
+                    if (req.body.proteinLiquidApplicationArr) {
+                        foundObject.protein.liquid.plApplication = req.body.proteinLiquidApplicationArr;
+                    }
                     foundObject.save(function(err, updatedProduct) {
                         if (err) {
                             console.log(err);

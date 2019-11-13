@@ -1,7 +1,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col">
-            <h3 class="open-sans">PROTEINS</h3>
+            <h3 class="open-sans">GROWTH FACTOR</h3>
         </div>
     </div>
     <div class="row">
@@ -9,12 +9,12 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded my-4">
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon">asd</span>
-                        </button>
+                              <span class="navbar-toggler-icon">asd</span>
+                            </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav justify-content-around " style="width: 100%" *ngFor=" let i of productInfo">
                         <li class="nav-item active" *ngFor=" let j of i">
-                            <a class="nav-link text-white" (click)="navToProductsInfo(j._id)">{{j.protein.proteinName}} <span class="sr-only">(current)</span></a>
+                            <a class="nav-link text-white" (click)="navToGrowthInfo(j._id)">{{j.growthFactor.growthFactorName}} <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
@@ -23,17 +23,17 @@
     </div>
     <div class="row my-2">
         <div class="col">
-            <p class="typojustify">{{productInfoDisplay.protein.proteinName}},{{productInfoDisplay.protein.proteinDescription}}</p>
+            <p class="typojustify">{{productInfoDisplay.growthFactor.growthFactorName}},{{productInfoDisplay.growthFactor.growthFactorDescription}}</p>
         </div>
     </div>
     <div class="row my-1">
         <div class="col">
             <ul class="nav nav-fill border">
                 <li class="nav-item">
-                    <a class="nav-link active" id="powder-tab" data-toggle="tab" href="#powder" role="tab" aria-controls="powder" aria-selected="true" *ngIf="productInfoDisplay.protein.powder.ppApplication[0]">Powder</a>
+                    <a class="nav-link active" id="powder-tab" data-toggle="tab" href="#powder" role="tab" aria-controls="powder" aria-selected="true" *ngIf="productInfoDisplay.growthFactor.powder.gpApplication[0]">Powder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="liquid-tab" data-toggle="tab" href="#liquid" role="tab" aria-controls="liquid" aria-selected="false" *ngIf="productInfoDisplay.protein.liquid.plApplication[0]">Liquid</a>
+                    <a class="nav-link" id="liquid-tab" data-toggle="tab" href="#liquid" role="tab" aria-controls="liquid" aria-selected="false" *ngIf="productInfoDisplay.growthFactor.liquid.glApplication[0]">Liquid</a>
                 </li>
             </ul>
         </div>
@@ -41,17 +41,17 @@
     <div class="container-fluid tab-content my-3" id="myTabContent">
         <div class="my-2 tab-pane fade show active" id="powder" role="tabpanel" aria-labelledby="powder-tab">
             <div class="row">
-                <div class="col-md-7" *ngIf="productInfoDisplay.protein.powder.ppApplication[0]">
+                <div class="col-md-7" *ngIf="productInfoDisplay.growthFactor.powder.gpApplication[0]">
                     <h3 class="open-sans mt-2">Powder</h3>
                     <h4 class="open-sans mt-2">Applications</h4>
                     <ul>
-                        <li *ngFor=" let i of productInfoDisplay.protein.powder.ppApplication">
+                        <li *ngFor=" let i of productInfoDisplay.growthFactor.powder.gpApplication">
                             {{i}}
                         </li>
                     </ul>
                     <h4 class="open-sans mt-2">Advantages</h4>
                     <ul>
-                        <li *ngFor=" let i of productInfoDisplay.protein.powder.ppAdvantages">
+                        <li *ngFor=" let i of productInfoDisplay.growthFactor.powder.gpAdvantages">
                             {{i}}
                         </li>
 
@@ -66,19 +66,19 @@
                 </div>
             </div>
         </div>
-        <div class="my-2 tab-pane fade" id="liquid" role="tabpanel" aria-labelledby="liquid-tab" *ngIf="productInfoDisplay.protein.liquid.plApplication[0]">
+        <div class="my-2 tab-pane fade" id="liquid" role="tabpanel" aria-labelledby="liquid-tab" *ngIf="productInfoDisplay.growthFactor.liquid.glApplication[0]">
             <div class="row">
                 <div class="col-md-7">
                     <h3 class="open-sans mt-2">Liquid</h3>
                     <h4 class="open-sans mt-2">Applications</h4>
                     <ul>
-                        <li *ngFor=" let i of productInfoDisplay.protein.liquid.plApplication">
+                        <li *ngFor=" let i of productInfoDisplay.growthFactor.liquid.glApplication">
                             {{i}}
                         </li>
                     </ul>
                     <h4 class="open-sans mt-2">Advantages</h4>
                     <ul>
-                        <li *ngFor=" let i of productInfoDisplay.protein.liquid.plAdvantages">
+                        <li *ngFor=" let i of productInfoDisplay.growthFactor.liquid.glAdvantages">
                             {{i}}
                         </li>
                     </ul>

@@ -6,7 +6,10 @@
     </div>
     <div class="row my-3">
         <div class="col-12">
-            <p class="open-sans typojustify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam hic. Quia soluta nihil excepturi delectus.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam hic. Quia soluta nihil excepturi delectus.</p>
+            <p class="open-sans typojustify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit
+                id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam hic. Quia soluta nihil excepturi delectus.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa
+                repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam
+                hic. Quia soluta nihil excepturi delectus.</p>
         </div>
     </div>
     <div class="row">
@@ -20,11 +23,11 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav justify-content-around" style="width: 100%">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">IGF-LR3<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
+            <ul class="navbar-nav justify-content-around" style="width: 100%" *ngFor=" let i of productInfoDisplay">
+                <li class="nav-item active" *ngFor=" let j of i">
+                    <a class="nav-link" (click)="navToGrowthInfo(j._id)">{{j.growthFactor.growthFactorName}}<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
-      </nav>
+    </nav>
 </div>

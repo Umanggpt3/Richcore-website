@@ -23,6 +23,13 @@ export class FooterComponent implements OnInit {
   navtocontact(){
     this.router.navigate(['/contact']);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-
+  }
+  navToProducts(){
+    this.router.navigate(['/products']);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+  navToHome(){
+    this.router.navigate(['/']);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 }

@@ -16,6 +16,12 @@ export class AdminProductsComponent implements OnInit {
   public lApplicationArr:any[]=[];
   public lAdvantagesArr:any[]=[];
 
+  public ppApplicationUpdated:any[]=[];
+  public ppAdvantageUpdated:any[]=[];
+  public plAdvantageUpdated:any[]=[];
+  public plApplicationUpdated:any[]=[];
+
+
   public gpApplicationArr:any[]=[];
   public gpAdvantagesArr:any[]=[];
   public glApplicationArr:any[]=[];
@@ -60,6 +66,21 @@ export class AdminProductsComponent implements OnInit {
       glapplication:new FormControl(null,{validators:[Validators.required]        
       }),
       gladvantages:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+      proteinPowderAdvantage:new FormControl(null,{validators:[Validators.required]        
+      }),
+      proteinPowderApplication:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+      proteinPowderApllicationUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      proteinPowderAdvantageUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+      proteinLiquidAdvantageUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      proteinLiquidApllicationUpdate:new FormControl(null,{validators:[Validators.required]        
       }),
     });
 
@@ -156,6 +177,53 @@ export class AdminProductsComponent implements OnInit {
     this.productService.addProducts(productObj);
 
   }
+
+  onAddProteinPowderAdvantage(productID:any){
+    console.log("jsnjasajsjasajhs",productID);
+    this.productService.addProteinPowderAdvantage(productID,this.form.value.proteinPowderAdvantage);
+  }
+
+  onAddProteinPowderApplication(productID:any){
+    console.log("asasasas",productID);
+    this.productService.addProteinPowderApplication(productID,this.form.value.proteinPowderApplication)
+  }
   
+  onUpdatePPApplication(ppAppIndex:any,productIndex:any,productID:any){
+    this.productInfoDisplay.forEach(element => {
+      element[productIndex].protein.powder.ppApplication[ppAppIndex] = this.form.value.proteinPowderApllicationUpdate;
+      this.ppApplicationUpdated = element[productIndex].protein.powder.ppApplication
+    });
+    this.productService.updateProteinPowderApplication(productID,this.ppApplicationUpdated);
+  }
+
+  onUpdatePPAdvantage(ppAppIndex:any,productIndex:any,productID:any){
+    console.log("qwerty",this.form.value.proteinPowderAdvantageUpdate,ppAppIndex);
+    console.log(this.productInfoDisplay,"asasas",productIndex);
+    this.productInfoDisplay.forEach(element => {
+      console.log(element[productIndex]);
+      element[productIndex].protein.powder.ppAdvantages[ppAppIndex] = this.form.value.proteinPowderAdvantageUpdate;
+      console.log([element],"sdsdsdsd",this.productInfoDisplay)
+      this.ppAdvantageUpdated = element[productIndex].protein.powder.ppAdvantages
+      console.log("qwerty",this.ppAdvantageUpdated)
+    });
+    this.productService.updateProteinPowderAdvantage(productID,this.ppAdvantageUpdated);
+  }
+
+  onUpdatePLAdvantage(ppAppIndex:any,productIndex:any,productID:any){
+    this.productInfoDisplay.forEach(element => {
+      element[productIndex].protein.liquid.plAdvantages[ppAppIndex] = this.form.value.proteinLiquidAdvantageUpdate;
+      console.log([element],"sdsdsdsd",this.productInfoDisplay)
+      this.plAdvantageUpdated = element[productIndex].protein.liquid.plAdvantages
+    });
+    this.productService.updateProteinLiquidAdvantage(productID,this.plAdvantageUpdated);
+  }
+
+  onUpdatePLApplication(ppAppIndex:any,productIndex:any,productID:any){
+    this.productInfoDisplay.forEach(element => {
+      element[productIndex].protein.liquid.plApplication[ppAppIndex] = this.form.value.proteinLiquidApllicationUpdate;
+      this.plApplicationUpdated = element[productIndex].protein.liquid.plApplication
+    });
+    this.productService.updateProteinLiquidApplication(productID,this.plApplicationUpdated);
+  }
 
 }

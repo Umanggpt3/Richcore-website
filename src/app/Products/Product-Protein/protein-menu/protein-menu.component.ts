@@ -27,8 +27,6 @@ export class ProteinMenuComponent implements OnInit {
   navToProductsInfo(productID:any){
     this.router.navigate(["/products-info",productID]);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-
-
   }
 
 }

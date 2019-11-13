@@ -8,6 +8,7 @@ import { AdminLocationComponent } from './Admin/admin-location/admin-location.co
 import { ProteinComponent } from './Products/Product-Protein/protein/protein.component';
 import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
 import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component';
+import { GrowthInfoComponent } from './Products/Product-Growthfactor/growth-info/growth-info.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path:'admin-product',component:AdminProductsComponent
+  },
+  {
+    path:'growth-info/:productID',component:GrowthInfoComponent
   }
 ];
 

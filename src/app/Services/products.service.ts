@@ -95,6 +95,49 @@ export class ProductsService {
   }
 
 
+  addProteinPowderAdvantage(productID:any,proteinPowderAdvantage:any){
+    console.log("in updateProduct",productID,proteinPowderAdvantage);
+    var proteinData = {proteinPowderAdvantage:proteinPowderAdvantage}
+
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+
+  }
+
+  addProteinPowderApplication(productID:any,proteinPowderApplication:any){
+    console.log("in updateProduct service",productID,proteinPowderApplication);
+    var proteinData = {proteinPowderApplication:proteinPowderApplication}
+
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+
+    })
+  }
+  updateProteinPowderApplication(productID:any,ppAppArr:any){
+    console.log("in updateProduct",ppAppArr);
+    var proteinData = {proteinPowderApplicationArr:ppAppArr}
+
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
+
+  updateProteinPowderAdvantage(productID:any,ppAdvArr:any){
+    var proteinData = {proteinPowderAdvantageArr:ppAdvArr}
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
+
+  updateProteinLiquidAdvantage(productID:any,plAdvArr:any){
+    var proteinData = {proteinLiquidAdvantageArr:plAdvArr}
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
+
+  updateProteinLiquidApplication(productID:any,plAppArr:any){
+    var proteinData = {proteinLiquidApplicationArr:plAppArr}
+
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
 
 
 

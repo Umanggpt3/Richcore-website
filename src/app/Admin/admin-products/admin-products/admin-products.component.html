@@ -11,7 +11,7 @@
             <input type="text" class="form-control" id="proteinName" class="form-control" formControlName="proteinName" placeholder="ADD PROTEIN NAME">
         </div>
         <div class="form-group">
-            <textarea class="form-control" formControlName="proteinDescription" id="" cols="30" rows="10" placeholder="ADD PROTEIN DECRIPTION"></textarea>
+            <textarea class="form-control" formControlName="proteinDescription" id="" cols="30" rows="10" placeholder="ADD PROTEIN DESCRIPTION"></textarea>
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="papplication" placeholder="ADD POWDER PROTEIN APPLICATIONS " id="" cols="30" rows="7"></textarea>
@@ -37,15 +37,15 @@
             <input type="text" class="form-control" id="growthName" class="form-control" formControlName="growthName" placeholder="ADD GROWTH FACTOR NAME">
         </div>
         <div class="form-group">
-            <textarea class="form-control" formControlName="growthDescription" id="" cols="30" rows="10" placeholder="ADD GROWTH FACTOR DECRIPTION"></textarea>
+            <textarea class="form-control" formControlName="growthDescription" id="" cols="30" rows="10" placeholder="ADD GROWTH FACTOR DESCRIPTION"></textarea>
         </div>
         <div class="form-group">
-            <textarea class="form-control" formControlName="gpapplication" placeholder="ADD POWDER GROWTH FACTORAPPLICATIONS" id="" cols="30" rows="7"></textarea>
+            <textarea class="form-control" formControlName="gpapplication" placeholder="ADD POWDER GROWTH FACTOR APPLICATIONS" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each application must be separated by comma(,)</small>
 
         </div>
         <div class="form-group">
-            <textarea class="form-control" formControlName="gpadvantages" placeholder="ADD POWDER GROWTH FACTORADVANTAGES" id="" cols="30" rows="7"></textarea>
+            <textarea class="form-control" formControlName="gpadvantages" placeholder="ADD POWDER GROWTH FACTOR ADVANTAGES" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each advantage must be separated by comma(,)</small>
 
         </div>
@@ -76,11 +76,56 @@
         <div class="col">
             <form [formGroup]="form" *ngFor=" let i of productInfoDisplay">
                 <h3>UPDATE PROTEIN</h3>
-                <div class="form-group" *ngFor="let j of i">
-                    <label for="exampleInputEmail1">{{j.protein.proteinName}}</label>
+                <div class="form-group" *ngFor="let j of i ;let m = index">
+                    <h2><label for="exampleInputEmail1">{{j.protein.proteinName}}</label></h2>
                     <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME">
                     <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{j.protein.proteinDescription}}>{{j.protein.proteinDescription}}</textarea>
                     <button (click)="onUpdateProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Powder Advantages</h3>
+                            <div *ngFor=" let k of j.protein.powder.ppAdvantages;let l=index ">
+                                <input type="text" formControlName="proteinPowderAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPAdvantage(l,m,j._id)">UPDATE</button>
+                            </div>
+                            <input type="text" class="form-control mt-2" formControlName="proteinPowderAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
+                            <button (click)="onAddProteinPowderAdvantage(j._id)" class="btn btn-primary my-2">ADD</button>
+
+                        </div>
+                        <div class="col-6">
+                            <h3>Powder Applications</h3>
+                            <div *ngFor=" let k of j.protein.powder.ppApplication;let l=index ">
+                                <input type="text" formControlName="proteinPowderApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPApplication(l,m,j._id)">UPDATE</button>
+                            </div>
+                            <input type="email" class="form-control mt-2" formControlName="proteinPowderApplication" placeholder="NEW PROTEIN APPLICATION">
+                            <button (click)="onAddProteinPowderApplication(j._id)" class="btn btn-primary my-2">ADD</button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Liquid Advantages</h3>
+                            <div *ngFor=" let k of j.protein.liquid.plAdvantages;let l=index ">
+                                <input type="text" formControlName="proteinLiquidAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLAdvantage(l,m,j._id)">UPDATE</button>
+                            </div>
+                            <input type="text" class="form-control mt-2" formControlName="proteinPowderAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
+                            <button (click)="onAddProteinPowderAdvantage(j._id)" class="btn btn-primary mt-2">ADD</button>
+                        </div>
+                        <div class="col-6">
+                            <h3>Liquid Applications</h3>
+                            <div *ngFor=" let k of j.protein.liquid.plApplication;let l=index ">
+                                <input type="text" formControlName="proteinLiquidApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLApplication(l,m,j._id)">UPDATE</button>
+                            </div>
+                            <input type="email" class="form-control mt-2" formControlName="proteinPowderApplication" placeholder="NEW PROTEIN APPLICATION">
+                            <button (click)="onAddProteinPowderApplication(j._id)" class="btn btn-primary mt-2">ADD</button>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>

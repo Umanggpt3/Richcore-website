@@ -4,11 +4,11 @@ import { Router, ActivatedRoute } from "@angular/router";
 import {ProductsService} from "../../../Services/products.service"
 
 @Component({
-  selector: 'app-protein-info',
-  templateUrl: './protein-info.component.html',
-  styleUrls: ['./protein-info.component.css']
+  selector: 'app-growth-info',
+  templateUrl: './growth-info.component.html',
+  styleUrls: ['./growth-info.component.css']
 })
-export class ProteinInfoComponent implements OnInit {
+export class GrowthInfoComponent implements OnInit {
 
   productInfoDisplay:any;
   private productSub : Subscription;
@@ -20,7 +20,7 @@ export class ProteinInfoComponent implements OnInit {
 
   ngOnInit() {
 
-      this.routesub = this.route.params.subscribe(params => {
+    this.routesub = this.route.params.subscribe(params => {
       console.log("params",params);
       this.productID = params.productID;
       this.productService.getProduct(this.productID);
@@ -36,11 +36,10 @@ export class ProteinInfoComponent implements OnInit {
       console.log("productInfoDisplay cards",productDetails);
       this.productInfo = productDetails
     })
-
   }
 
-  navToProductsInfo(productID:any){
-    this.router.navigate(["/products-info",productID]);
+  navToGrowthInfo(productID:any){
+    this.router.navigate(["/growth-info",productID]);
   }
 
   navToAboutUs(){
