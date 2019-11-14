@@ -5,49 +5,67 @@ const multer = require('multer');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
-const productInfoSchema = require('../model/products');
 const protienSchema = require('../model/protien.model');
 const growthFactorSchema = require('../model/growth_factor.model');
 
 
 const mongoose = require('mongoose');
 
-router.post('/info', (req, res, next) => {
-    console.log("Product info data", req.body.protein.powder.ppimagePath);
-    var object;
-    if(req.body.type === 'prot'){
-        
-        object = new productInfoSchema({
-            protein: req.body.protein,
-            proteinName: req.body.protein.proteinName,
-            ppDescription: req.body.protein.proteinDescription,
-            powder: req.body.protein.powder,
-            ppAdvantages: req.body.protein.powder.ppAdvantages,
-            ppApplication: req.body.protein.powder.ppApplication,
-            ppimagePath: req.body.protein.powder.ppimagePath,
-            liquid: req.body.protein.liquid,
-            plAdvantages: req.body.protein.liquid.plAdvantages,
-            plApplication: req.body.protein.liquid.plApplication,
-            plimagePath: req.body.protein.liquid.plimagePath,
-        })
-    }else{
-        object = new growthFactorSchema({
-            growthFactor: req.body.growthFactor,
-        growthFactorName: req.body.growthFactor.growthFactorName,
-        gpDescription: req.body.growthFactor.growthFactorDescription,
-        powder: req.body.growthFactor.powder,
-        gpAdvantages: req.body.growthFactor.powder.gpAdvantages,
-        gpApplication: req.body.growthFactor.powder.gpApplication,
-        gpimagePath: req.body.growthFactor.powder.gpimagePath,
-        liquid: req.body.growthFactor.liquid,
-        glAdvantages: req.body.growthFactor.liquidglAdvantages,
-        glApplication: req.body.growthFactor.liquid.glApplication,
-        glimagePath: req.body.growthFactor.liquid.glimagePath
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './images');
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        var filetype = '';
+        if (file.mimetype === 'image/gif') {
+            filetype = 'gif';
+        }
+        else if (file.mimetype === 'image/png') {
+            filetype = 'png';
+        }
+        else if (file.mimetype === 'image/jpeg') {
+            filetype = 'jpg';
+        }
+        cb(null, 'image-' + Date.now() + '.' + filetype);
+    }
+});
+var upload = multer({ storage: storage });
+
+// image upload end
+
+//request to save the image
+
+router.post('/upload', upload.single('file'), function(req, res, next) {
+    console.log(req.file);
+    if (!req.file) {
+        res.status(500);
+        return next(err);
+    }
+    console.log(req.protocol + req.get("host") + '/images/' + req.file.filename)
+    res.json({ fileUrl: req.protocol + req.get("host") + '/images/' + req.file.filename });
+})
+
+
+router.post('/addProtien', (req, res, next) => {
+    console.log("Product info data", req.body);
+       var object = new protienSchema({
+            
+             proteinName: req.body.proteinName,
+             proteinDescription: req.body.proteinDescription,
+            powder: req.body.powder,
+            ppAdvantages: req.body.powder.ppAdvantages,
+            ppApplication: req.body.powder.ppApplication,
+            ppimagePath: req.body.powder.ppimagePath,
+            liquid: req.body.liquid,
+            plAdvantages: req.body.liquid.plAdvantages,
+            plApplication: req.body.liquid.plApplication,
+            plimagePath: req.body.liquid.plimagePath,
         });
 
-
-    }
-
+        console.log("object " , object);
+   
     object.save((err,rows) => {
         res.status(201).json({
                     message: "success",
@@ -56,24 +74,39 @@ router.post('/info', (req, res, next) => {
 
     }); 
 
-    // var newproduct = new productInfoSchema({ ̰
-    //     // id: req.body.id,
-       
+});
+
+router.post('/addGrowthFactor' , (req,res,next) => {
+    console.log("GF : " ,req.body);
+    var object = new growthFactorSchema({
         
+        growthFactorName: req.body.growthFactorName,
+        growthFactorDescription: req.body.growthFactorDescription,
+        powder: req.body.powder,
+        gpAdvantages: req.body.powder.gpAdvantages,
+        gpApplication: req.body.powder.gpApplication,
+        gpimagePath: req.body.powder.gpimagePath,
+        liquid: req.body.liquid,
+        glAdvantages: req.body.liquidglAdvantages,
+        glApplication: req.body.liquid.glApplication,
+        glimagePath: req.body.liquid.glimagePath
+        });
 
-    // });
+        console.log('object ' , object);
+    object.save((err,rows) => {
+        res.status(201).json({
+            message: "success",
+            productId: rows._id
+        });
+    })
 
-    // newproduct.save().then(addedProduct => {
-    //     res.status(201).json({
-    //         message: "success",
-    //         productId: addedProduct._id
-    //     })
-    // })
-})
 
-router.get('/info', (req, res, next) => {
 
-    productInfoSchema.find().then(result => {
+});
+
+router.get('/protienInfo', (req, res, next) => {
+
+    protienSchema.find().then(result => {
         res.status(200).json({
 
             status: "success",
@@ -81,21 +114,87 @@ router.get('/info', (req, res, next) => {
 
         })
     })
-})
+});
+
+router.get('/growthFactorInfo', (req,res,next) => {
+    growthFactorSchema.find((err,rows) => {
+        if(err){
+            res.status(500).json({
+                status : 'failure',
+            });
+        }else{
+            res.status(200).json({
+
+            status: "success",
+            data: rows
+            });
+        }
+    });
+} );
 
 
-router.get("/info/:id", (req, res, next) => {
+router.post("/protienInfoById", (req, res, next) => {
 
-    productInfoSchema.findById(req.params.id).then(product => {
+    protienSchema.findById(req.body.id).then(product => {
         if (product) {
             res.status(200).json({
-                message: "Product found successfully",
+                message: "Protien found successfully",
                 product: product
             });
         } else {
             res.status(404).json({ message: "Post not found!" });
         }
     });
+});
+
+router.post("/growthFactorInfoById", (req, res, next) => {
+
+    growthFactorSchema.findById(req.body.id).then(product => {
+        if (product) {
+            res.status(200).json({
+                message: "Gf found successfully",
+                product: product
+            });
+        } else {
+            res.status(404).json({ message: "Post not found!" });
+        }
+    });
+});
+
+
+router.post('/updateProduct' , (req,res,next) => {
+
+    protienSchema.update({_id:req.body._id}, req.body, (err,rows)=> {
+        if(err){
+            res.status(500).json({
+                status: "failure",
+            });
+        }else{
+            res.status(200).json({
+                status: "success",
+                data: rows
+               
+            });
+        }
+    } );
+});
+
+
+router.post('/updateGrowthFactor' , (req,res,next) => {
+
+    growthFactorSchema.update({_id:req.body._id}, req.body, (err,rows)=> {
+        if(err){
+            res.status(500).json({
+                status: "failure",
+            });
+        }else{
+            res.status(200).json({
+                status: "success",
+                data: rows
+               
+            });
+        }
+    } );
 });
 
 router.put('/info/:id', (req, res, next) => {
@@ -108,15 +207,15 @@ router.put('/info/:id', (req, res, next) => {
                 if (!foundObject) {
                     res.status(404).send();
                 } else {
-                    if (req.body.proteinName) {
-                        foundObject.protein.proteinName = req.body.proteinName;
+                    if (req.bodyName) {
+                        foundObject.protein.proteinName = req.bodyName;
                     }
-                    if (req.body.proteinDescription) {
-                        foundObject.protein.proteinDescription = req.body.proteinDescription;
+                    if (req.bodyDescription) {
+                        foundObject.protein.proteinDescription = req.bodyDescription;
                     }
-                    // if (req.body.protein.powder.ppAdvantages) {
+                    // if (req.body.powder.ppAdvantages) {
                     //     foundObject.protein.powder.ppAdvantages.pop()
-                    // foundObject.protein.powder.ppAdvantages.push(req.body.protein.powder.ppAdvantages);
+                    // foundObject.protein.powder.ppAdvantages.push(req.body.powder.ppAdvantages);
                     // }
                     foundObject.save(function(err, updatedProduct) {
                         if (err) {

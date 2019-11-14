@@ -9,8 +9,8 @@ const locationController = require('../controller/locationController');
 const mailController = require('../controller/mailController');
 const productController = require('../controller/productController')
 
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json({limit:'50mb'}));
+app.use(bodyparser.urlencoded({ limit:'50mb', extended: false }));
 app.use("/images", express.static(path.join("images")));
 
 app.use((req, res, next) => {
@@ -29,5 +29,6 @@ app.get('/', (req, res, next) => {
         name: 'Richcore'
     })
 })
+
 
 module.exports = app;

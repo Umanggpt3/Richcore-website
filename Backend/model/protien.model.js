@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const protienInfoSchema = mongoose.Schema({
-    protein: {
-        proteinName: { type: String },
+ 
+        proteinName: String,
         proteinDescription: String,
         powder: {
             ppAdvantages: [String],
@@ -15,7 +15,7 @@ const protienInfoSchema = mongoose.Schema({
             plimagePath: { type: String }
         }
 
-    }
+    
 });
 
 module.exports = mongoose.model("protienInfo", protienInfoSchema);

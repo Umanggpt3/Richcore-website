@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const growthFactorInfoSchema = mongoose.Schema({
-    growthFactor: {
+    
         growthFactorName: { type: String },
         growthFactorDescription: String,
         powder: {
@@ -15,7 +15,7 @@ const growthFactorInfoSchema = mongoose.Schema({
             glimagePath: { type: String }
         }
     
-    }
+    
 });
 
 module.exports = mongoose.model("growthFactorInfo", growthFactorInfoSchema);

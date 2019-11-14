@@ -25,7 +25,7 @@ router.post('/contactUs', (req, res, next) => {
     // send mail with defined transport object
     transporter.sendMail({
         from: 'sitshopnation@gmail.com', // sender address
-        to: 'dheerajsaraogi25@gmail.com', // list of receivers
+        to: 'chandansr95@gmail.com', // list of receivers
         subject: "Order placed successfully", // Subject line
         text: "Contact us data ", // plain text body
         html: "<b>req.body.userName</b>" // html body
