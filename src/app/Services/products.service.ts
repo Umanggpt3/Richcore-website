@@ -73,6 +73,8 @@ export class ProductsService {
   }
 
 
+//UPDATE PROTEIN FUNCTIONS
+
   updateProduct(productID:any,proteinName:any,proteinDescription:any){
     console.log("in updateProduct",productID,proteinName,proteinDescription);
     var proteinData = {proteinName:proteinName,proteinDescription:proteinDescription}
@@ -101,7 +103,6 @@ export class ProductsService {
 
     this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
     })
-
   }
 
   addProteinPowderApplication(productID:any,proteinPowderApplication:any){
@@ -132,6 +133,12 @@ export class ProductsService {
     })
   }
 
+  addProteinLiquidAdvantage(productID:any,proteinLiquidAdvantage:any){
+    var proteinData = {proteinLiquidAdvantage:proteinLiquidAdvantage}
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
+
   updateProteinLiquidApplication(productID:any,plAppArr:any){
     var proteinData = {proteinLiquidApplicationArr:plAppArr}
 
@@ -139,13 +146,76 @@ export class ProductsService {
     })
   }
 
+  addProteinLiquidApplication(productID:any,proteinLiquidApplication:any){
+    var proteinData = {proteinLiquidApplication:proteinLiquidApplication}
+    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    })
+  }
 
+
+//UPDATE GROWTH FACTOR FUNCTIONS
+
+updateGrowthProduct(productID:any,growthName:any,growthDescription:any){
+  console.log("in updateProduct",productID,growthName,growthDescription);
+  var proteinData = {growthName:growthName,growthDescription:growthDescription}
+
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+
+}
+
+
+updateGrowthPowderAdvantage(productID:any,gpAdvArr:any){
+  var proteinData = {growthPowderAdvantageArr:gpAdvArr}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+addGrowthPowderAdvantage(productID:any,growthPowderAdvantage:any){
+  var proteinData = {growthPowderAdvantage:growthPowderAdvantage}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+updateGrowthPowderApplication(productID:any,gpAppArr:any){
+  var proteinData = {growthPowderApplicationArr:gpAppArr}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+addGrowthPowderApplication(productID:any,growthPowderApplication:any){
+  var proteinData = {growthPowderApplication:growthPowderApplication}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+updateGrowthLiquidAdvantage(productID:any,glAdvArr:any){
+  var proteinData = {growthLiquidAdvantageArr:glAdvArr}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+addGrowthLiquidAdvantage(productID:any,growthLiquidAdvantage:any){
+  var proteinData = {growthLiquidAdvantage:growthLiquidAdvantage}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+updateGrowthLiquidApplication(productID:any,glAppArr:any){
+  var proteinData = {growthLiquidApplicationArr:glAppArr}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
+
+addGrowthLiquidApplication(productID:any,growthLiquidApplication:any){
+  var proteinData = {growthLiquidApplication:growthLiquidApplication}
+  this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+  })
+}
 
 getproductdetailsUpdateListener(){
   return this.productdetailsUpdated.asObservable();
 }
-
-
 
 getProductUpdateListener(){
   return this.productsUpdated.asObservable();

@@ -125,6 +125,8 @@ router.put('/info/:id', (req, res, next) => {
                 if (!foundObject) {
                     res.status(404).send();
                 } else {
+
+                    //UPDATE PROTEIN CONDITIONS
                     if (req.body.proteinName) {
                         foundObject.protein.proteinName = req.body.proteinName;
                     }
@@ -132,7 +134,6 @@ router.put('/info/:id', (req, res, next) => {
                         foundObject.protein.proteinDescription = req.body.proteinDescription;
                     }
                     if (req.body.proteinPowderAdvantage) {
-                        //     foundObject.protein.powder.ppAdvantages.pop()
                         foundObject.protein.powder.ppAdvantages.push(req.body.proteinPowderAdvantage);
                     }
                     if (req.body.proteinPowderApplication) {
@@ -147,8 +148,49 @@ router.put('/info/:id', (req, res, next) => {
                     if (req.body.proteinLiquidAdvantageArr) {
                         foundObject.protein.liquid.plAdvantages = req.body.proteinLiquidAdvantageArr;
                     }
+                    if (req.body.proteinLiquidAdvantage) {
+                        foundObject.protein.liquid.plAdvantages.push(req.body.proteinLiquidAdvantage);
+                    }
                     if (req.body.proteinLiquidApplicationArr) {
                         foundObject.protein.liquid.plApplication = req.body.proteinLiquidApplicationArr;
+                    }
+                    if (req.body.proteinLiquidApplication) {
+                        foundObject.protein.liquid.plApplication.push(req.body.proteinLiquidApplication);
+                    }
+
+
+
+                    //UPDATE GROWTH CONDITIONS
+
+                    if (req.body.growthName) {
+                        foundObject.growthFactor.growthFactorName = req.body.growthName;
+                    }
+                    if (req.body.growthDescription) {
+                        foundObject.growthFactor.growthFactorDescription = req.body.growthDescription;
+                    }
+                    if (req.body.growthPowderAdvantageArr) {
+                        foundObject.growthFactor.powder.gpAdvantages = req.body.growthPowderAdvantageArr;
+                    }
+                    if (req.body.growthPowderAdvantage) {
+                        foundObject.growthFactor.powder.gpAdvantages.push(req.body.growthPowderAdvantage);
+                    }
+                    if (req.body.growthPowderApplicationArr) {
+                        foundObject.growthFactor.powder.gpApplication = req.body.growthPowderApplicationArr;
+                    }
+                    if (req.body.growthPowderApplication) {
+                        foundObject.growthFactor.powder.gpApplication.push(req.body.growthPowderApplication);
+                    }
+                    if (req.body.growthLiquidAdvantageArr) {
+                        foundObject.growthFactor.liquid.glAdvantages = req.body.growthLiquidAdvantageArr;
+                    }
+                    if (req.body.growthLiquidAdvantage) {
+                        foundObject.growthFactor.liquid.glAdvantages.push(req.body.growthLiquidAdvantage);
+                    }
+                    if (req.body.growthLiquidApplicationArr) {
+                        foundObject.growthFactor.liquid.glApplication = req.body.growthLiquidApplicationArr;
+                    }
+                    if (req.body.growthLiquidApplication) {
+                        foundObject.growthFactor.liquid.glApplication.push(req.body.growthLiquidApplication);
                     }
                     foundObject.save(function(err, updatedProduct) {
                         if (err) {

@@ -21,6 +21,10 @@ export class AdminProductsComponent implements OnInit {
   public plAdvantageUpdated:any[]=[];
   public plApplicationUpdated:any[]=[];
 
+  public gpApplicationUpdated:any[]=[];
+  public gpAdvantageUpdated:any[]=[];
+  public glAdvantageUpdated:any[]=[];
+  public glApplicationUpdated:any[]=[];
 
   public gpApplicationArr:any[]=[];
   public gpAdvantagesArr:any[]=[];
@@ -82,6 +86,36 @@ export class AdminProductsComponent implements OnInit {
       }),
       proteinLiquidApllicationUpdate:new FormControl(null,{validators:[Validators.required]        
       }),
+      proteinLiquidAdvantage:new FormControl(null,{validators:[Validators.required]        
+      }),
+      proteinLiquidApplication:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+
+
+      growthProductName:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthProductDescription:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+      growthPowderAdvantageUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthPowderAdvantage:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthPowderApllicationUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthPowderApplication:new FormControl(null,{validators:[Validators.required]        
+      }),
+
+      growthLiquidAdvantageUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthLiquidAdvantage:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthLiquidApllicationUpdate:new FormControl(null,{validators:[Validators.required]        
+      }),
+      growthLiquidApplication:new FormControl(null,{validators:[Validators.required]        
+      }),
+
     });
 
 
@@ -90,14 +124,9 @@ export class AdminProductsComponent implements OnInit {
       console.log("products details protein menu component",productDetails);
       this.productInfoDisplay = productDetails;
     });
-
-    
   }
 
-  onUpdateProductName(productID:any){
-    console.log(this.form.value.productDescription,productID);
-    this.productService.updateProduct(productID,this.form.value.productName,this.form.value.productDescription);
-  }
+ 
 
   onAddProduct(){
     console.log("application data",this.form.value.padvantages);
@@ -178,6 +207,13 @@ export class AdminProductsComponent implements OnInit {
 
   }
 
+  //UPDATE PROTEIN FUNCTIONS
+
+  onUpdateProductName(productID:any){
+    console.log(this.form.value.productDescription,productID);
+    this.productService.updateProduct(productID,this.form.value.productName,this.form.value.productDescription);
+  }
+
   onAddProteinPowderAdvantage(productID:any){
     console.log("jsnjasajsjasajhs",productID);
     this.productService.addProteinPowderAdvantage(productID,this.form.value.proteinPowderAdvantage);
@@ -209,6 +245,11 @@ export class AdminProductsComponent implements OnInit {
     this.productService.updateProteinPowderAdvantage(productID,this.ppAdvantageUpdated);
   }
 
+  onAddProteinLiquidAdvantage(productID:any){
+    this.productService.addProteinLiquidAdvantage(productID,this.form.value.proteinLiquidAdvantage);
+  }
+
+
   onUpdatePLAdvantage(ppAppIndex:any,productIndex:any,productID:any){
     this.productInfoDisplay.forEach(element => {
       element[productIndex].protein.liquid.plAdvantages[ppAppIndex] = this.form.value.proteinLiquidAdvantageUpdate;
@@ -218,6 +259,10 @@ export class AdminProductsComponent implements OnInit {
     this.productService.updateProteinLiquidAdvantage(productID,this.plAdvantageUpdated);
   }
 
+  onAddProteinLiquidApplication(productID:any){
+    this.productService.addProteinLiquidApplication(productID,this.form.value.proteinLiquidApplication)
+  }
+
   onUpdatePLApplication(ppAppIndex:any,productIndex:any,productID:any){
     this.productInfoDisplay.forEach(element => {
       element[productIndex].protein.liquid.plApplication[ppAppIndex] = this.form.value.proteinLiquidApllicationUpdate;
@@ -225,5 +270,65 @@ export class AdminProductsComponent implements OnInit {
     });
     this.productService.updateProteinLiquidApplication(productID,this.plApplicationUpdated);
   }
+
+
+//GROWTH FACTOR UPDATE FUNCTIONS
+
+onUpdateGrowthProductName(productID:any){
+  console.log(this.form.value.growthProductDescription,productID,this.form.value.growthProductName);
+  this.productService.updateGrowthProduct(productID,this.form.value.growthProductName,this.form.value.growthProductDescription);
+}
+
+onUpdateGPAdvantage(ppAppIndex:any,productIndex:any,productID:any){
+  this.productInfoDisplay.forEach(element => {
+    element[productIndex].growthFactor.powder.gpAdvantages[ppAppIndex] = this.form.value.growthPowderAdvantageUpdate;
+    this.gpAdvantageUpdated = element[productIndex].growthFactor.powder.gpAdvantages
+  });
+  this.productService.updateGrowthPowderAdvantage(productID,this.gpAdvantageUpdated);
+}
+
+onAddGrowthPowderAdvantage(productID:any){
+  console.log("jsnjasajsjasajhs",productID);
+  this.productService.addGrowthPowderAdvantage(productID,this.form.value.growthPowderAdvantage);
+}
+
+onUpdateGPApplication(ppAppIndex:any,productIndex:any,productID:any){
+  this.productInfoDisplay.forEach(element => {
+    element[productIndex].growthFactor.powder.gpApplication[ppAppIndex] = this.form.value.growthPowderApllicationUpdate;
+    this.gpApplicationUpdated = element[productIndex].growthFactor.powder.gpApplication
+  });
+  this.productService.updateGrowthPowderApplication(productID,this.gpApplicationUpdated);
+}
+
+onAddGrowthPowderApplication(productID:any){
+  console.log("asasasas",productID);
+  this.productService.addGrowthPowderApplication(productID,this.form.value.growthPowderApplication)
+}
+
+
+onUpdateGLAdvantage(ppAppIndex:any,productIndex:any,productID:any){
+    this.productInfoDisplay.forEach(element => {
+    element[productIndex].growthFactor.liquid.glAdvantages[ppAppIndex] = this.form.value.growthLiquidAdvantageUpdate;
+    this.glAdvantageUpdated = element[productIndex].growthFactor.liquid.glAdvantages
+  });
+  this.productService.updateGrowthLiquidAdvantage(productID,this.glAdvantageUpdated);
+}
+
+onAddGrowthLiquidAdvantage(productID:any){
+  this.productService.addGrowthLiquidAdvantage(productID,this.form.value.growthLiquidAdvantage);
+}
+
+onUpdateGLApplication(ppAppIndex:any,productIndex:any,productID:any){
+  this.productInfoDisplay.forEach(element => {
+    element[productIndex].growthFactor.liquid.glApplication[ppAppIndex] = this.form.value.growthLiquidApllicationUpdate;
+    this.glApplicationUpdated = element[productIndex].growthFactor.liquid.glApplication
+  });
+  this.productService.updateGrowthLiquidApplication(productID,this.glApplicationUpdated);
+}
+
+onAddGrowthLiquidApplication(productID:any){
+  this.productService.addGrowthLiquidApplication(productID,this.form.value.growthLiquidApplication)
+}
+
 
 }
