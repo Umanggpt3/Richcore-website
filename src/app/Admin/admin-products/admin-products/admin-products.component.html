@@ -74,58 +74,65 @@
 
     <div class="row">
         <div class="col">
+
+
+
+
+
             <form [formGroup]="form" *ngFor=" let i of productInfoDisplay">
                 <h3>UPDATE PROTEIN</h3>
                 <div class="form-group" *ngFor="let j of i ;let m = index">
-                    <h2><label for="exampleInputEmail1">{{j.protein.proteinName}}</label></h2>
-                    <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME">
-                    <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{j.protein.proteinDescription}}>{{j.protein.proteinDescription}}</textarea>
-                    <button (click)="onUpdateProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
-                    <div class="row">
-                        <div class="col-6">
-                            <h3>Powder Advantages</h3>
-                            <div *ngFor=" let k of j.protein.powder.ppAdvantages;let l=index ">
-                                <input type="text" formControlName="proteinPowderAdvantageUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPAdvantage(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="text" class="form-control mt-2" formControlName="proteinPowderAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
-                            <button (click)="onAddProteinPowderAdvantage(j._id)" class="btn btn-primary my-2">ADD</button>
+                    <div *ngIf="j.protein.proteinName">
+                        <h2><label for="exampleInputEmail1">{{j.protein.proteinName}}</label></h2>
+                        <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME">
+                        <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{j.protein.proteinDescription}}>{{j.protein.proteinDescription}}</textarea>
+                        <button (click)="onUpdateProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Powder Advantages</h3>
+                                <div *ngFor=" let k of j.protein.powder.ppAdvantages;let l=index ">
+                                    <input type="text" formControlName="proteinPowderAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPAdvantage(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="text" class="form-control mt-2" formControlName="proteinPowderAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
+                                <button (click)="onAddProteinPowderAdvantage(j._id)" class="btn btn-primary my-2">ADD</button>
 
-                        </div>
-                        <div class="col-6">
-                            <h3>Powder Applications</h3>
-                            <div *ngFor=" let k of j.protein.powder.ppApplication;let l=index ">
-                                <input type="text" formControlName="proteinPowderApllicationUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPApplication(l,m,j._id)">UPDATE</button>
                             </div>
-                            <input type="email" class="form-control mt-2" formControlName="proteinPowderApplication" placeholder="NEW PROTEIN APPLICATION">
-                            <button (click)="onAddProteinPowderApplication(j._id)" class="btn btn-primary my-2">ADD</button>
+                            <div class="col-6">
+                                <h3>Powder Applications</h3>
+                                <div *ngFor=" let k of j.protein.powder.ppApplication;let l=index ">
+                                    <input type="text" formControlName="proteinPowderApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePPApplication(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="email" class="form-control mt-2" formControlName="proteinPowderApplication" placeholder="NEW PROTEIN APPLICATION">
+                                <button (click)="onAddProteinPowderApplication(j._id)" class="btn btn-primary my-2">ADD</button>
+                            </div>
                         </div>
+
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Liquid Advantages</h3>
+                                <div *ngFor=" let k of j.protein.liquid.plAdvantages;let l=index ">
+                                    <input type="text" formControlName="proteinLiquidAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLAdvantage(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="text" class="form-control mt-2" formControlName="proteinLiquidAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
+                                <button (click)="onAddProteinLiquidAdvantage(j._id)" class="btn btn-primary mt-2">ADD</button>
+                            </div>
+                            <div class="col-6">
+                                <h3>Liquid Applications</h3>
+                                <div *ngFor=" let k of j.protein.liquid.plApplication;let l=index ">
+                                    <input type="text" formControlName="proteinLiquidApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLApplication(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="email" class="form-control mt-2" formControlName="proteinLiquidApplication" placeholder="NEW PROTEIN APPLICATION">
+                                <button (click)="onAddProteinLiquidApplication(j._id)" class="btn btn-primary mt-2">ADD</button>
+                            </div>
+                        </div>
+
                     </div>
-
-
-
-                    <div class="row">
-                        <div class="col-6">
-                            <h3>Liquid Advantages</h3>
-                            <div *ngFor=" let k of j.protein.liquid.plAdvantages;let l=index ">
-                                <input type="text" formControlName="proteinLiquidAdvantageUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLAdvantage(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="text" class="form-control mt-2" formControlName="proteinLiquidAdvantage" placeholder="NEW PROTEIN ADVANTAGE">
-                            <button (click)="onAddProteinLiquidAdvantage(j._id)" class="btn btn-primary mt-2">ADD</button>
-                        </div>
-                        <div class="col-6">
-                            <h3>Liquid Applications</h3>
-                            <div *ngFor=" let k of j.protein.liquid.plApplication;let l=index ">
-                                <input type="text" formControlName="proteinLiquidApllicationUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdatePLApplication(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="email" class="form-control mt-2" formControlName="proteinLiquidApplication" placeholder="NEW PROTEIN APPLICATION">
-                            <button (click)="onAddProteinLiquidApplication(j._id)" class="btn btn-primary mt-2">ADD</button>
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>
@@ -136,66 +143,61 @@
 
 
 
-
-
-
-
-
-
     <div class="row">
-        <div class="col">
-            <form [formGroup]="form" *ngFor=" let i of productInfoDisplay">
+        <div class="col" *ngFor=" let i of productInfoDisplay;let n = index">
+            <form [formGroup]="form" *ngIf="i[n].growthFactor.growthFactorName != null">
                 <h3>UPDATE GROWTHFACTOR</h3>
                 <div class="form-group" *ngFor="let j of i ;let m = index">
-                    <h2>{{j.growthFactor.growthFactorName}}</h2>
-                    <input type="text" class="form-control" formControlName="growthProductName" placeholder="NEW GROWTHFACTOR NAME">
-                    <textarea class="form-control mt-2" cols="100" rows="10" formControlName="growthProductDescription" value={{j.growthFactor.growthFactorDescription}}></textarea>
-                    <button (click)="onUpdateGrowthProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
-                    <div class="row">
-                        <div class="col-6">
-                            <h3>Powder Advantages</h3>
-                            <div *ngFor=" let k of j.growthFactor.powder.gpAdvantages;let l=index ">
-                                <input type="text" formControlName="growthPowderAdvantageUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGPAdvantage(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="text" class="form-control mt-2" formControlName="growthPowderAdvantage" placeholder="NEW GROWTH FACTOR ADVANTAGE">
-                            <button (click)="onAddGrowthPowderAdvantage(j._id)" class="btn btn-primary my-2">ADD</button>
+                    <div *ngIf="j.growthFactor.growthFactorName">
+                        <h2>{{j.growthFactor.growthFactorName}}</h2>
+                        <input type="text" class="form-control" formControlName="growthProductName" placeholder="NEW GROWTHFACTOR NAME">
+                        <textarea class="form-control mt-2" cols="100" rows="10" formControlName="growthProductDescription" value={{j.growthFactor.growthFactorDescription}}></textarea>
+                        <button (click)="onUpdateGrowthProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Powder Advantages</h3>
+                                <div *ngFor=" let k of j.growthFactor.powder.gpAdvantages;let l=index ">
+                                    <input type="text" formControlName="growthPowderAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGPAdvantage(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="text" class="form-control mt-2" formControlName="growthPowderAdvantage" placeholder="NEW GROWTH FACTOR ADVANTAGE">
+                                <button (click)="onAddGrowthPowderAdvantage(j._id)" class="btn btn-primary my-2">ADD</button>
 
-                        </div>
-                        <div class="col-6">
-                            <h3>Powder Applications</h3>
-                            <div *ngFor=" let k of j.growthFactor.powder.gpApplication;let l=index ">
-                                <input type="text" formControlName="growthPowderApllicationUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGPApplication(l,m,j._id)">UPDATE</button>
                             </div>
-                            <input type="email" class="form-control mt-2" formControlName="growthPowderApplication" placeholder="NEW GROWTH FACTOR APPLICATION">
-                            <button (click)="onAddGrowthPowderApplication(j._id)" class="btn btn-primary my-2">ADD</button>
+                            <div class="col-6">
+                                <h3>Powder Applications</h3>
+                                <div *ngFor=" let k of j.growthFactor.powder.gpApplication;let l=index ">
+                                    <input type="text" formControlName="growthPowderApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGPApplication(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="email" class="form-control mt-2" formControlName="growthPowderApplication" placeholder="NEW GROWTH FACTOR APPLICATION">
+                                <button (click)="onAddGrowthPowderApplication(j._id)" class="btn btn-primary my-2">ADD</button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Liquid Advantages</h3>
+                                <div *ngFor=" let k of j.growthFactor.liquid.glAdvantages;let l=index ">
+                                    <input type="text" formControlName="growthLiquidAdvantageUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGLAdvantage(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="text" class="form-control mt-2" formControlName="growthLiquidAdvantage" placeholder="NEW GROWTH FACTOR ADVANTAGE">
+                                <button (click)="onAddGrowthLiquidAdvantage(j._id)" class="btn btn-primary mt-2">ADD</button>
+                            </div>
+                            <div class="col-6">
+                                <h3>Liquid Applications</h3>
+                                <div *ngFor=" let k of j.growthFactor.liquid.glApplication;let l=index ">
+                                    <input type="text" formControlName="growthLiquidApllicationUpdate" class="form-control mt-2" value="{{k}}">
+                                    <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGLApplication(l,m,j._id)">UPDATE</button>
+                                </div>
+                                <input type="email" class="form-control mt-2" formControlName="growthLiquidApplication" placeholder="NEW GROWTH FACTOR APPLICATION">
+                                <button (click)="onAddGrowthLiquidApplication(j._id)" class="btn btn-primary mt-2">ADD</button>
+                            </div>
                         </div>
                     </div>
-
-
-
-                    <div class="row">
-                        <div class="col-6">
-                            <h3>Liquid Advantages</h3>
-                            <div *ngFor=" let k of j.growthFactor.liquid.glAdvantages;let l=index ">
-                                <input type="text" formControlName="growthLiquidAdvantageUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGLAdvantage(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="text" class="form-control mt-2" formControlName="growthLiquidAdvantage" placeholder="NEW GROWTH FACTOR ADVANTAGE">
-                            <button (click)="onAddGrowthLiquidAdvantage(j._id)" class="btn btn-primary mt-2">ADD</button>
-                        </div>
-                        <div class="col-6">
-                            <h3>Liquid Applications</h3>
-                            <div *ngFor=" let k of j.growthFactor.liquid.glApplication;let l=index ">
-                                <input type="text" formControlName="growthLiquidApllicationUpdate" class="form-control mt-2" value="{{k}}">
-                                <button class="btn btn-primary mt-2 d-flex justify-content-around" (click)="onUpdateGLApplication(l,m,j._id)">UPDATE</button>
-                            </div>
-                            <input type="email" class="form-control mt-2" formControlName="growthLiquidApplication" placeholder="NEW GROWTH FACTOR APPLICATION">
-                            <button (click)="onAddGrowthLiquidApplication(j._id)" class="btn btn-primary mt-2">ADD</button>
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>

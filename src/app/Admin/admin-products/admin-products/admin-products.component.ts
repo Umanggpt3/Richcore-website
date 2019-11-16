@@ -11,6 +11,8 @@ import { ProductsService } from 'src/app/Services/products.service';
 export class AdminProductsComponent implements OnInit {
 
   form:FormGroup;
+
+
   public pApplicationArr:any[]=[];
   public pAdvantagesArr:any[]=[];
   public lApplicationArr:any[]=[];
@@ -38,6 +40,9 @@ export class AdminProductsComponent implements OnInit {
   ngOnInit() {
 
     this.form = new FormGroup({
+
+
+
 
          productName: new FormControl(null,{validators:[Validators.required]        
       }),
@@ -127,6 +132,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
  
+
 
   onAddProduct(){
     console.log("application data",this.form.value.padvantages);

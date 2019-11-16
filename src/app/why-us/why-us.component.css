@@ -3,7 +3,7 @@
 .nav-pills .nav-link:hover {
     color: #000000;
     background-color: #ffffff;
-    border-bottom: 10px solid #d8ecff;
+    border-bottom: 4px solid #d8ecff;
 }
 
 .nav-pills .nav-link {

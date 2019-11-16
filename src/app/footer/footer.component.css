@@ -6,6 +6,7 @@
     text-decoration: none;
     color: black;
     text-align: justify;
+    cursor: pointer;
 }
 
 .open-sans {
@@ -16,11 +17,11 @@
     border-top: 3px solid #d8ecff;
 }
 
-.fontsize12{
+.fontsize12 {
     font-size: 15px;
 }
 
-.fontweigth900{
+.fontweigth900 {
     font-weight: 900;
 }
 
@@ -30,7 +31,8 @@
         margin-right: 0% !important;
         margin-bottom: 0% !important;
     }
-    ul, li {
+    ul,
+    li {
         padding: 0;
     }
 }

@@ -17,9 +17,9 @@
             <img src="../../../../assets/img/slide1.jpg" alt="">
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded my-4 border">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white rounded my-4 border">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -28,6 +28,13 @@
                     <a class="nav-link" (click)="navToGrowthInfo(j._id)">{{j.growthFactor.growthFactorName}}<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+        </div> -->
+        <div class="container-fluid">
+            <div class="row text-center" style="width: 100%" *ngFor=" let i of productInfoDisplay">
+                <div class="col text-center" *ngFor=" let j of i">
+                    <a class="nav-link" (click)="navToGrowthInfo(j._id)">{{j.growthFactor.growthFactorName}}<span class="sr-only">(current)</span></a>
+                </div>
+            </div>
         </div>
     </nav>
 </div>

@@ -24,7 +24,7 @@ export class ProductsService {
    this.http.post<{message:string;productID:string}>("http://localhost:1025/products/info",productData).subscribe(responseData => {
      console.log("responseData",responseData);
      if(responseData["message"]=="success")
-        alert("Location Added Successfully");
+        alert("Product Added Successfully");
     //   location.id = responseData.locationId;
     //   this.locations=[];
     //   this.locations.push(location);

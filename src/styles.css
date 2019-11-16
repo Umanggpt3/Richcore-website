@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-.typojustify{
+
+.typojustify {
     text-align: justify;
     hyphens: auto;
 }
 
-.arialfont{
+.arialfont {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-group-append:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(58, 77, 182, 0.4);
 }
