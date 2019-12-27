@@ -1,0 +1,97 @@
+<div class="container my-5">
+        <ngx-spinner></ngx-spinner>
+        <div class="row">
+            <div class="col">
+                <!-- <h3 class="open-sans">{{productName}}</h3> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded my-4">
+                    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"> </span>
+                            </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav justify-content-around " style="width: 100%" *ngFor=" let i of protiens">
+                            <li class="nav-item active" >
+                                <a class="nav-link text-white" (click)="navToProductsInfo(i._id, i)">{{i.growthFactorName}} <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row my-2" *ngIf="product != null || product != undefined">
+            <div class="col">
+                <p class="typojustify"><b style="font-size: 20px;">{{product.growthFactorName}}</b>, {{product.growthFactorDescription}}</p>
+            </div>
+        </div>
+        <div class="row my-1" *ngIf="product != null || product != undefined">
+            <div class="col">
+                <ul class="nav nav-fill border">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="powder-tab" data-toggle="tab" href="#powder" role="tab" aria-controls="powder" aria-selected="true">Powder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="liquid-tab" data-toggle="tab" href="#liquid" role="tab" aria-controls="liquid" aria-selected="false">Liquid</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid tab-content my-3" id="myTabContent" *ngIf="product != null || product != undefined">
+            <div class="my-2 tab-pane fade show active" id="powder" role="tabpanel" aria-labelledby="powder-tab">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h3 class="open-sans mt-2">Powder</h3>
+                        <h4 class="open-sans mt-2">Applications</h4>
+                        <ul>
+                            <li *ngFor=" let i of product.powder.gpApplication">
+                                {{i}}
+                            </li>
+                        </ul>
+                        <h4 class="open-sans mt-2">Advantages</h4>
+                        <ul>
+                            <li *ngFor=" let i of product.powder.gpAdvantages">
+                                {{i}}
+                            </li>
+    
+                        </ul>
+                    </div>
+                    <div class="col-md-5 my-2">
+                        <img [src]="product.powder.gpimagePath" alt="" width="400px" height="200px">
+                        <div class="d-flex justify-content-around mt-3">
+                            <button routerLink="/contact" class="btn btn-primary rounded" style="width: 40%;">Know More</button>
+                            <button class="btn btn-primary rounded" style="width: 40%;">Technical Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2 tab-pane fade" id="liquid" role="tabpanel" aria-labelledby="liquid-tab">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h3 class="open-sans mt-2">Liquid</h3>
+                        <h4 class="open-sans mt-2">Applications</h4>
+                        <ul>
+                            <li *ngFor=" let i of product.liquid.glApplication">
+                                {{i}}
+                            </li>
+                        </ul>
+                        <h4 class="open-sans mt-2">Advantages</h4>
+                        <ul>
+                            <li *ngFor=" let i of product.liquid.glAdvantages">
+                                {{i}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5 my-2">
+                        <img [src]="product.liquid.glimagePath" alt="" width="400px" height="200px">
+                        <div class="d-flex justify-content-around mt-3">
+                            <button routerLink="/contact" class="btn btn-primary rounded" style="width: 40%;">Know More</button>
+                            <button class="btn btn-primary rounded" style="width: 40%;">Technical Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

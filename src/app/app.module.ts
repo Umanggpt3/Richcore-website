@@ -2,10 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { HeaderComponent } from './header/header.component';
 import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,7 +18,8 @@ import { ProteinComponent } from './Products/Product-Protein/protein/protein.com
 import { GrowthfactorComponent } from './Products/Product-Growthfactor/growthfactor/growthfactor.component';
 import { ProteinMenuComponent } from './Products/Product-Protein/protein-menu/protein-menu.component';
 import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
-import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component'
+import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component';
+import { GrothFacotorDisplayComponent } from './groth-facotor-display/groth-facotor-display.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { AdminProductsComponent } from './Admin/admin-products/admin-products/ad
     GrowthfactorComponent,
     ProteinMenuComponent,
     ProteinInfoComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    GrothFacotorDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,7 @@ import { AdminProductsComponent } from './Admin/admin-products/admin-products/ad
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

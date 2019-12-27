@@ -64,7 +64,11 @@ export class ContactFormComponent implements OnInit {
     } 
 
     console.log(contactData);
-    this.mailService.contactMail(contactData)
+    this.mailService.contactMail(contactData).subscribe((reponse) => {
+      if(reponse['status'] === 'success'){
+        alert(reponse['message']);
+      }
+    })
     
 
   }

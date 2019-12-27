@@ -8,31 +8,35 @@ import { AdminLocationComponent } from './Admin/admin-location/admin-location.co
 import { ProteinComponent } from './Products/Product-Protein/protein/protein.component';
 import { ProteinInfoComponent } from './Products/Product-Protein/protein-info/protein-info.component';
 import { AdminProductsComponent } from './Admin/admin-products/admin-products/admin-products.component';
+import { GrothFacotorDisplayComponent } from './groth-facotor-display/groth-facotor-display.component';
 
 const routes: Routes = [
   {
-    path:'',component:BannerComponent
+    path: '', component: BannerComponent
   },
   {
-      path: 'about',component: AboutComponent
+      path: 'about', component: AboutComponent
   },
   {
-    path:'contact',component:ContactFormComponent
+    path: 'growthFactors-info/:productID', component: GrothFacotorDisplayComponent
   },
   {
-    path:'admin',component:AdminComponent
+    path: 'contact', component: ContactFormComponent
   },
   {
-    path:'admin-location',component:AdminLocationComponent
+    path: 'admin', component: AdminComponent
   },
   {
-    path:'products',component:ProteinComponent
+    path: 'admin-location', component: AdminLocationComponent
   },
   {
-    path:'products-info/:productID',component:ProteinInfoComponent
+    path: 'products', component: ProteinComponent
   },
   {
-    path:'admin-product',component:AdminProductsComponent
+    path: 'products-info/:productID/:index', component: ProteinInfoComponent
+  },
+  {
+    path: 'admin-product', component: AdminProductsComponent
   }
 ];
 

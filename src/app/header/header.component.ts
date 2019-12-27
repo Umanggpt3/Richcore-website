@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Subscription} from 'rxjs';
+import { ProductsService } from '../Services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -8,28 +9,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  productInfoDisplay: any[] = [];
+  private productSub: Subscription;
+  growthInfoDisplay: any[] = [];
+  private gproductSub: Subscription;
 
-  constructor(public router:Router) { }
+  constructor(public router: Router, public productService: ProductsService) { }
 
   ngOnInit() {
+    this.productService.getProtien();
+    this.productService.getGrowthFactors();
   }
 
-  navtoabout(){
+  navtoabout() {
     this.router.navigate(['/about']);
   }
 
-  navtoadmin(){
+  navtoadmin() {
     this.router.navigate(['/admin']);
   }
 
-  navtohome(){
+  navtohome() {
     this.router.navigate(['/']);
 
   }
-  navtocontact(){
+  navtocontact() {
     this.router.navigate(['/contact']);
   }
-  navtoproducts(){
+  navtoproducts() {
     this.router.navigate(['/products']);
   }
 

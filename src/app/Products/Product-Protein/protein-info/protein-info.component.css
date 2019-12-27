@@ -6,3 +6,39 @@
     width: 100%;
     height: auto;
 }
+
+.powdercss{
+    border: none;
+}
+
+.liquidcss{
+    border: none;
+}
+
+.ltab:hover{
+    background: #efefef;
+}
+
+.activeTab{
+    color: black;
+    border-bottom: 2px solid blue;
+    font-weight: 500;
+}
+
+.bordergray{
+    border-bottom: 0.2px solid #efefef;
+    width: 100%;
+}
+
+.nactiveTab{
+}
+
+.aactiveTab{
+    color: blue;
+    border: none;
+}
+
+.anactiveTab{
+    color: black;
+    border: none;
+}

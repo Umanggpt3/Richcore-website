@@ -14,15 +14,15 @@
             <img src="../../../../assets/img/slide1.jpg" alt="">
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded my-4 border">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary rounded my-4 border">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav justify-content-around" style="width: 100%">
+          <ul class="navbar-nav justify-content-around" style="width: 100%" *ngFor=" let i of productInfoDisplay">
             <li class="nav-item active">
-              <a class="nav-link" href="#">IGF-LR3<span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" (click)="navToProductsInfo(i._id, i)">{{i.growthFactorName}} <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>

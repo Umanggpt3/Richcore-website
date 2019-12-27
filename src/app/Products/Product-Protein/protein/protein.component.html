@@ -1,20 +1,38 @@
 <div class="container my-5">
+    <ngx-spinner></ngx-spinner>
     <div class="row">
         <div class="col">
-            <h3 class="arialfont">PROTEINS</h3>
+            <h3 class="arialfont" style="font-size: 1.75em; font-weight: bold;">Proteins</h3>
         </div>
     </div>
-    <div class="row my-3">
-        <div class="col-12">
-            <p class="arialfont typojustify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam hic. Quia soluta nihil excepturi delectus.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, rerum, sint dolorum ipsum ipsa repellendus corporis a consequatur ratione, amet incidunt assumenda ut fugiat recusandae magni veniam temporibus qui officia? Eligendi velit id facilis tenetur rerum dolorem assumenda, voluptas corrupti, asperiores, inventore odio aperiam hic. Quia soluta nihil excepturi delectus.</p>
+    <div class="row"><p> </p></div>
+    <div class="row" >
+        <div id="{{product._id}}" class="col-lg-3 onHover"  (click)="navToProductsInfo(product._id)" *ngFor=" let product of productInfoDisplay; let k = index;" style=" margin-left: 20px;">
+           <a [routerLink]="['/products-info',  product._id,  k]"> 
+                <div style="border: 2px solid #cbcaca; border-radius: 5px;">
+                    <img [src]="product.liquid.plimagePath" alt="" width="400px" height="200px">
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: black">{{product.proteinName}}</p>
+            </a>
         </div>
     </div>
+    <div class="row" style="margin-top:20px;"><p> </p></div>
     <div class="row">
-        <div class="container col-12">
-            <img src="../../../../assets/img/slide1.jpg" alt="">
+            <div class="col">
+                <h3 class="arialfont" style="font-size: 1.75em; font-weight: bold;">Growth Factors</h3>
+            </div>
         </div>
-    </div>
-    <app-protein-menu></app-protein-menu>
+        <div class="row"><p> </p></div>
+        <div class="row" >
+            <div id="{{gproduct._id}}" class="col-lg-3 onHover" (click)="navToGProductsInfo(gproduct._id)" *ngFor=" let gproduct of growthInfoDisplay; let k = index;" style=" margin-left: 20px;">
+                <a [routerLink]="['/growthFactors-info', gproduct._id, k]">
+                    <div style="border: 2px solid #cbcaca; border-radius: 5px;">
+                        <img [src]="gproduct.liquid.glimagePath"  alt="" width="400px" height="200px">
+                    </div>
+                    <p style="text-align: center; margin-top: 10px; color: black">{{gproduct.growthFactorName}}</p>
+                </a>
+            </div>
+        </div>
 </div>
 
-<app-growthfactor></app-growthfactor>    
+<!-- <app-growthfactor></app-growthfactor>     -->

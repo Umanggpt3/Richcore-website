@@ -6,42 +6,53 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 const mongoose = require('mongoose');
 
-router.post('/contactUs', (req, res, next) => {
+router.post('/contactUs', (req, response, next) => {
 
 
     console.log("inside mail", req.body)
     let transporter = nodemailer.createTransport({
-        // host: "smtp.gmail.com",
-        // port: 587,
+        host: "smtp.office365.com",
+        port: 587,
         // secure: false, // true for 465, false for other ports
-        service: 'Gmail',
+        service: 'outlook',
 
         auth: {
-            user: 'sitshopnation@gmail.com', // generated ethereal user
-            pass: 'qwerty@123' // generated ethereal password
+            user: 'queries@richcoreindia.com', // generated ethereal user
+            pass: 'Poq78516' // generated ethereal password
         }
     });
+    console.log(req.body);
 
     // send mail with defined transport object
     transporter.sendMail({
-        from: 'sitshopnation@gmail.com', // sender address
-        to: 'chandansr95@gmail.com', // list of receivers
-        subject: "Order placed successfully", // Subject line
+        from: 'queries@richcoreindia.com', // sender address
+        to: 'queries@richcoreindia.com',
+        cc:'sonakshi.mishra@richcoreindia.com, chandansr95@gmail.com', // list of receivers
+        subject: "INFO from Website", // Subject line
         text: "Contact us data ", // plain text body
-        html: "<b>req.body.userName</b>" // html body
+        html: "<b>"+ JSON.stringify(req.body) +"</b>" // html body
     }, (err, res) => {
         if (err) {
             console.log("Mail ERROR", err);
+            response.status(200).json({
+                status:"failure",
+                message: "Mail Not sent",
+        
+        
+            });
         } else {
             console.log("Here is the response of mail", res);
+            response.status(200).json({
+                status:"success",
+                message: "Mail successfully sent",
+        
+        
+            });
+
         }
     });
 
-    res.status(201).json({
-        message: "Mail successfully sent",
-
-
-    })
+    
 
 })
 module.exports = router;

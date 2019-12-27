@@ -12,7 +12,6 @@
 }
 
 .ad1 {
-    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -22,7 +21,7 @@
 }
 
 .ad2 {
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../../assets/img/AOF_1.jpg) no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(../../assets/img/AOF_1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,8 +42,20 @@
     cursor: pointer;
 }
 
+.back-blue:hover {
+    background-color: #007dfa !important;
+    color: white !important;
+    cursor: pointer;
+}
+
 .open-sans {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.fixed-div {
+    width: 100%;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 @media only screen and (max-width: 768px) {

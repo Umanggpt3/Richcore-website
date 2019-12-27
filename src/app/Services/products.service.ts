@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http'
-import { Subject } from "rxjs";
+import { Subject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
 
@@ -11,32 +11,80 @@ export class ProductsService {
 
   private productID:any;
   private product:any;
+  
+  public protiens: any[]=[];
+  public growthFactors: any[]=[];
+  private protienUpdated = new Subject<any[]>();
+  private gfUpdated = new Subject<any[]>();
+  
   private products:any[]=[];
   private productsUpdated = new Subject<any[]>();
   private productdetailsUpdated = new Subject<any>();
 
 
   constructor(private http:HttpClient,private router:Router) { }
-
+// 
   addProducts(productData:any)
   {
-   console.log("in service",productData);
-   this.http.post<{message:string;productID:string}>("http://localhost:1025/products/info",productData).subscribe(responseData => {
-     console.log("responseData",responseData);
+   this.http.post<{message:string;productID:string}>("http://18.223.232.75:1035/products/info",productData).subscribe(responseData => {
      if(responseData["message"]=="success")
-        alert("Location Added Successfully");
-    //   location.id = responseData.locationId;
-    //   this.locations=[];
-    //   this.locations.push(location);
-    //   this.locationUpdated.next([...this.locations]);
+        alert("{Product} Added Successfully");
+
+   });
+  }
+
+  addProtiens(protienData:any)
+  {
+   this.http.post<{message:string;productID:string}>("http://18.223.232.75:1035/products/addProtien",protienData).subscribe(responseData => {
+     if(responseData["message"]==='success'){
+        alert(responseData);
+     }else{
+      alert("errr");
+
+     }
+   });
+  }
+
+  addGrowthFactor(gfData:any)
+  {
+   this.http.post<{message:string;productID:string}>("http://18.223.232.75:1035/products/addGrowthFactor",gfData).subscribe(responseData => {
+     if(responseData["message"]==='success'){
+        
+     }else{
+
+     }
    });
   }
 
 
+  getProtien(){
+    this.http.get<{message:string,data:any}>("http://18.223.232.75:1035/products/protienInfo"
+    ).subscribe((protData) => {
+      this.protiens = protData.data;
+      this.protienUpdated.next([...this.protiens]);
+    });
+  }
 
+  getProtienByID(ID: any): Observable<any> {
+    var reqPayload = {id : ID};
+    return this.http.post<{message: string, data: any}>('http://18.223.232.75:1035/products/protienInfoById' , reqPayload);
+  }
+
+  getGrowthFactorByID(ID: any): Observable<any> {
+    var reqPayload = {id : ID};
+    return this.http.post<{message: string, data: any}>('http://18.223.232.75:1035/products/growthFactorInfoById' , reqPayload);
+  }
+
+  getGrowthFactors() {
+    this.http.get<{message: string, data: any}>
+    ('http://18.223.232.75:1035/products/growthFactorInfo').subscribe((gfData) => {
+      this.growthFactors = gfData.data;
+      this.gfUpdated.next([...this.growthFactors]);
+    });
+  }
 
   getProducts(){
-    this.http.get<{message:string,data:any}>("http://localhost:1025/products/info"
+    this.http.get<{message:string,data:any}>("http://18.223.232.75:1035/products/info"
     ).pipe(map((productData)=>{
       return productData.data.map(
         product=>{
@@ -49,62 +97,67 @@ export class ProductsService {
     }))
     .subscribe(responseData => {
         var productData = responseData;
-        console.log("product dat in service",productData);
         this.products = [];
         this.products.push(productData);
         this.productsUpdated.next([...this.products]);
-        console.log(responseData);
     })
   }
 
-  getProductID(productID:any){
+  getProductID(productID:any) {
     this.productID = productID;
-    console.log("id in service",productID)
     this.getProduct(productID);
   }
 
-  getProduct(productID){
-    return this.http.get<{message:string,product:any}>("http://localhost:1025/products/info/" + productID).subscribe(productDetails => {
-      this.product = productDetails.product 
+  getProtineListener() {
+    return this.protienUpdated.asObservable();
+  }
+
+  getProduct(productID) {
+    return this.http.get<{message: string, product: any}>
+      ('http://18.223.232.75:1035/products/info/' + productID).subscribe(productDetails => {
+      this.product = productDetails.product;
       this.productdetailsUpdated.next(this.product);
-      console.log("product data in service ",productDetails);
-      })
-    
+      });
+  }
+
+  getGFListener() {
+    return this.gfUpdated.asObservable();
   }
 
 
   updateProduct(productID:any,proteinName:any,proteinDescription:any){
-    console.log("in updateProduct",productID,proteinName,proteinDescription);
     var proteinData = {proteinName:proteinName,proteinDescription:proteinDescription}
 
-    this.http.put<{data:any}>("http://localhost:1025/products/info/"+ productID,proteinData).subscribe(responseData =>{
+    this.http.put<{data:any}>("http://18.223.232.75:1035/products/info/"+ productID,proteinData).subscribe(responseData =>{
         if(responseData["status"]=="success")
         {
-          console.log("response data afetr update",responseData);
-          // var productData = responseData["data"];
-          // const updatedLocation = [...this.locations];
-          // console.log("updated location data",locationData);
-          // const oldLocationIndex = updatedLocation.findIndex(p => p.id === id);
-          // updatedLocation[oldLocationIndex]= locationData;
-          // this.locations = updatedLocation;
-          // this.locationUpdated.next([...this.locations]);
-          // alert("Location Updated Successfully");
         }
     })
 
   }
 
+  uploadImageAndgetURL(file: any): Observable<any> {
+    return this.http.post<{fileUrl: string}>('http://18.223.232.75:1035/products/upload', file);
+  }
+
+  getSavedProtiens() {
+    return [...this.protiens];
+  }
+
+  getSavedGrowthFactors() {
+    return [...this.growthFactors];
+  }
 
 
 
 
-getproductdetailsUpdateListener(){
+getproductdetailsUpdateListener() {
   return this.productdetailsUpdated.asObservable();
 }
 
 
 
-getProductUpdateListener(){
+getProductUpdateListener() {
   return this.productsUpdated.asObservable();
 }
 

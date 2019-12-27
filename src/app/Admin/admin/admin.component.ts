@@ -78,26 +78,27 @@ export class AdminComponent implements OnInit {
 
   }
 
-  onImagePicked(event:Event){
+  onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({image:file});
+    this.form.patchValue({image: file});
     this.form.get('image').updateValueAndValidity();
     const reader = new FileReader();
-    reader.onload = ()=>{
+    reader.onload = () => {
       this.imagePreview = reader.result as string;
     };
-    reader.readAsDataURL(file); 
+    reader.readAsDataURL(file);
   }
 
-  onUpdateImage(imageID:string){
-    this.homeInfoService.updateImage(imageID,this.form.value.image);
+  onUpdateImage(imageID: string) {
+    this.homeInfoService.updateImage(imageID, this.form.value.image);
   }
-  onDeleteImage(imageID:string){
+
+  onDeleteImage(imageID: string) {
     this.homeInfoService.deleteImage(imageID);
   }
 
-  onAddImage(){
-    this.homeInfoService.uploadImage(this.form.value.image)
+  onAddImage() {
+    this.homeInfoService.uploadImage(this.form.value.image);
   }
 
 
@@ -111,38 +112,39 @@ export class AdminComponent implements OnInit {
 
 /*FUNCTION CALL TO UPDATE HOME SECTION DATA IN  SERVICE */
 
-onUpdateInfo(infoID:string){
-  
-     this.homeInfoService.updateHomeInfo(infoID,this.form.value.infoText);
-
+onUpdateInfo(infoID: string) {
+     this.homeInfoService.updateHomeInfo(infoID, this.form.value.infoText);
   }
 
 /*FUNCTION CALL TO SEND WHY US SECTION DATA TO SERVICE */
-  onAddWhyUsInfo(){
-
-    this.homeInfoService.addWhyUsInfo(this.form.value.qualityText,this.form.value.innovationText,this.form.value.facilityText,this.form.value.locationText)
-
+  onAddWhyUsInfo() {
+    this.homeInfoService.addWhyUsInfo(
+      this.form.value.qualityText,
+      this.form.value.innovationText,
+      this.form.value.facilityText,
+      this.form.value.locationText
+    );
   }
 
 
-  onUpdateWhyUsQualityInfo(whyusID:string){
+  onUpdateWhyUsQualityInfo(whyusID: string) {
     console.log("why us id",whyusID);
-    this.homeInfoService.updateWhyusQualityInfo(whyusID,this.form.value.qualityText);
+    this.homeInfoService.updateWhyusQualityInfo(whyusID, this.form.value.qualityText);
   }
 
-  onUpdateWhyUsInnovationInfo(whyusID:string){
+  onUpdateWhyUsInnovationInfo(whyusID: string) {
     console.log("why us id",whyusID);
-    this.homeInfoService.updateWhyusInnovationInfo(whyusID,this.form.value.innovationText);
+    this.homeInfoService.updateWhyusInnovationInfo(whyusID, this.form.value.innovationText);
   }
 
-  onUpdateWhyUsFacilityInfo(whyusID:string){
+  onUpdateWhyUsFacilityInfo(whyusID: string) {
     console.log("why us id",whyusID);
-    this.homeInfoService.updateWhyusFacilityInfo(whyusID,this.form.value.facilityText);
+    this.homeInfoService.updateWhyusFacilityInfo(whyusID, this.form.value.facilityText);
   }
 
-  onUpdateWhyUsLocationInfo(whyusID:string){
+  onUpdateWhyUsLocationInfo(whyusID: string) {
     console.log("why us id",whyusID);
-    this.homeInfoService.updateWhyusLocationInfo(whyusID,this.form.value.locationText);
+    this.homeInfoService.updateWhyusLocationInfo(whyusID, this.form.value.locationText);
   }
 
 }

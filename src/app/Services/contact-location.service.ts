@@ -24,7 +24,7 @@ export class ContactLocationService {
   {
    const location:locationInfo= {id:null,location1:location1,location2:location2,location3:location3,location4:location4};
    console.log("in service",location);
-   this.http.post<{message:string;locationId:string}>("http://localhost:1025/location/info",location).subscribe(responseData => {
+   this.http.post<{message:string;locationId:string}>("http://18.223.232.75:1035/location/info",location).subscribe(responseData => {
      console.log("responseData",responseData);
      if(responseData["message"]=="success")
         alert("Location Added Successfully");
@@ -36,7 +36,7 @@ export class ContactLocationService {
   }
 
   getLocation(){
-    this.http.get<{message:string,data:any}>("http://localhost:1025/location/info"
+    this.http.get<{message:string,data:any}>("http://18.223.232.75:1035/location/info"
     ).pipe(map((locationData)=>{
       return  locationData.data.map(location =>{
         return {
@@ -61,7 +61,7 @@ export class ContactLocationService {
   updateLocation(id:string,location1:string,location2:string,location3:string,location4:string){
     const location:locationInfo= {id:id,location1:location1,location2:location2,location3:location3,location4:location4};
     console.log("in updateLocation",location);
-    this.http.put("http://localhost:1025/location/update",location).subscribe(responseData =>{
+    this.http.put("http://18.223.232.75:1035/location/update",location).subscribe(responseData =>{
         if(responseData["status"]=="success")
         {
           var locationData = responseData["data"];
@@ -78,7 +78,7 @@ export class ContactLocationService {
   }
 
   deleteLocation(locationID:string){
-    this.http.delete("http://localhost:1025/location/" + locationID)
+    this.http.delete("http://18.223.232.75:1035/location/" + locationID)
     .subscribe(() => {
      const locationUpdated = this.locations.filter(locationItem => locationItem[0]._id !== locationID);
      this.locations = locationUpdated;

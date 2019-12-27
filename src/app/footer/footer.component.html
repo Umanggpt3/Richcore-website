@@ -3,26 +3,33 @@
         <div class="row">
             <div class="col-md-5">
                 <h1 class="fmb-3 fontsize12 fontweigth900">RICHCORE LIFESCIENCES PVT LTD</h1>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <img src="../../assets/img/logo1.jpg" alt="" height="80px" width="80px">
-                        </div>
-                        <div class="col-xs-4 mx-4">
-                            <img src="../../assets/img/logo2.jpg" alt="" height="80px" width="80px">
-                        </div>
-                        <div class="col-xs-4">
-                            <img src="../../assets/img/logo3.jpg" alt="" height="80px" width="80px">
-                        </div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-xs-4">
+                        <img src="../../assets/img/logo1.png" alt="" height="80px" width="80px">
                     </div>
-                <p class="fontsize12" style="margin-top:10px;">Copyright Platform Inc. All Rights Reserved</p>
+                    <div class="col-xs-4 mx-4">
+                        <img src="../../assets/img/logo2.jpeg" alt="" height="80px" width="80px">
+                    </div>
+                    <div class="col-xs-4">
+                        <img src="../../assets/img/logo3.png" alt="" height="80px" width="80px">
+                    </div>
+                </div>
+                <p class="fontsize12" style="margin-top:20px;">Copyright Platform Inc. All Rights Reserved</p>
             </div>
             <div class="col-md-4">
                 <ul class="list">
-                    <li class="mb-3 fontsize12"><a href="#">Products</a></li>
-                    <li class="mb-3 fontsize12"><a href="#">Careers</a></li>
                     <li class="mb-3 fontsize12">
-                        <a (click)="navtoabout()">About Us</a></li>
-                    <li class="fontsize12"><a (click)=" navtocontact() ">Contact Us</a></li>
+                        <a [routerLink]="['/products']">Products</a>    
+                    </li>
+                    <li class="mb-3 fontsize12">
+                        <a [routerLink]="['/admin']">Admin</a>        
+                    </li>
+                    <li class="mb-3 fontsize12">
+                        <a [routerLink]="['/about']">About Us</a>            
+                    </li>
+                    <li class="fontsize12">
+                        <a [routerLink]="['/contact']">Contact Us</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -31,7 +38,7 @@
                 </address>
                 <p class="fontsize12">Phone : +91-8110-419777<br>Telefax : +91-80-27839574</p>
             </div>
-            
+
         </div>
     </div>
 </div>

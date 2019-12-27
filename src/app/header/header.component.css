@@ -1,12 +1,12 @@
 .navbar li a{
-    border-bottom: 7px solid white;
+    border-bottom: 3px solid white;
 }
 .navbar li a:hover {
-    border-bottom: 7px solid #3399ff;
+    border-bottom: 3px solid #3399ff;
     cursor: pointer;
 }
 .navbar li a:active {
-    border-bottom: 7px solid #3399ff;
+    border-bottom: 3px solid #3399ff;
     font-weight: bold;
 }
 .open-sans {
@@ -30,16 +30,16 @@
         margin-left: 20px !important;
     }
     .navbar li a{
-        border-bottom: 7px solid white;
+        border-bottom: 3px solid white;
         width: 25%;
     }
     .navbar li a:hover {
-        border-bottom: 7px solid #3399ff;
+        border-bottom: 3px solid #3399ff;
         cursor: pointer;
         width: 25%;
     }
     .navbar li a:active {
-        border-bottom: 7px solid #3399ff;
+        border-bottom: 3px solid #3399ff;
         width: 25%;
     }
 }

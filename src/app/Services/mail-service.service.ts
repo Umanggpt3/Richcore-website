@@ -9,13 +9,11 @@ import { from } from 'rxjs';
 export class MailServiceService {
 
   constructor(private http: HttpClient) { }
-
+//18.223.232.75:1035
   contactMail(contactData:contactusMail){
     console.log("in contact us service ",contactData);
-    this.http.post(
-      "http://localhost:1025/mail/contactUs",contactData).subscribe(responseData =>{
-        console.log(responseData);
-      })
+   return this.http.post(
+      "http://localhost:1035/mail/contactUs",contactData);
 
   }
 }

@@ -22,17 +22,28 @@
             <small style="color: red;">Each advantage must be separated by comma(,)</small>
         </div>
         <div class="form-group">
+            <input type="file" formControlName="ppimagePath" class="custom-file-input" id="" (change)="onImagePickedpl($event)">
+            <label class="custom-file-label" for="validatedCustomFile">Choose Powder Image</label>
+        </div>
+        <div class="form-group">
             <textarea class="form-control" formControlName="lapplication" placeholder="ADD LIQUID PROTEIN APPLICATIONS" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each application must be separated by comma(,)</small>
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="ladvantages" placeholder="ADD LIQUID PROTEIN ADVANTAGES" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each advantage must be separated by comma(,)</small>
-
         </div>
+        <div class="form-group">
+            <input type="file" formControlName="plimagePath" class="custom-file-input" id="" (change)="onImagePickedpp($event)">
+            <label class="custom-file-label" for="validatedCustomFile">Choose Liquid Image</label>
+        </div>
+        <div class="form-row m-3 justify-content-center">
+                <button (click)="onAddProduct()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD PROTIEN</button>
+            </div>
+    </form>
 
 
-
+    <form [formGroup]="form2">
         <div class="form-group">
             <input type="text" class="form-control" id="growthName" class="form-control" formControlName="growthName" placeholder="ADD GROWTH FACTOR NAME">
         </div>
@@ -47,8 +58,13 @@
         <div class="form-group">
             <textarea class="form-control" formControlName="gpadvantages" placeholder="ADD POWDER GROWTH FACTORADVANTAGES" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each advantage must be separated by comma(,)</small>
-
         </div>
+
+        <div class="form-group" style="background: blue;">
+            <input type="file" formControlName="gpimagePath" class="custom-file-input" id="validatedCustomFile" required (change)="onImagePickedgp($event)">
+            <label class="custom-file-label" for="validatedCustomFile">Choose Powder Image</label>
+        </div>
+
         <div class="form-group">
             <textarea class="form-control" formControlName="glapplication" placeholder="ADD LIQUID GROWTH FACTOR APPLICATIONS" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each application must be separated by comma(,)</small>
@@ -57,10 +73,15 @@
         <div class="form-group">
             <textarea class="form-control" formControlName="gladvantages" placeholder="ADD LIQUID GROWTH FACTOR ADVANTAGES" id="" cols="30" rows="7"></textarea>
             <small style="color: red;">Each advantage must be separated by comma(,)</small>
-
         </div>
+
+        <div class="form-group" style="background: blue;">
+            <input type="file" formControlName="glimagePath" class="custom-file-input" id="validatedCustomFile" required (change)="onImagePickedgl($event)">
+            <label class="custom-file-label" for="validatedCustomFile">Choose Liquid Image</label>
+        </div>
+        
         <div class="form-row m-3 justify-content-center">
-            <button (click)="onAddProduct()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD PRODUCT</button>
+            <button (click)="onAddGrowthFactors()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD Growth Factor</button>
         </div>
     </form>
 
@@ -78,7 +99,7 @@
                 <h3>UPDATE PROTEIN</h3>
                 <div class="form-group" *ngFor="let j of i">
                     <label for="exampleInputEmail1">{{j.protein.proteinName}}</label>
-                    <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME">
+                    <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME" value="{{j.protein.proteinName}}">
                     <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{j.protein.proteinDescription}}>{{j.protein.proteinDescription}}</textarea>
                     <button (click)="onUpdateProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
                 </div>
