@@ -197,6 +197,39 @@ router.post('/updateGrowthFactor' , (req,res,next) => {
     } );
 });
 
+router.post('/deleteProtien' , (req,res,next) =>{
+    console.log(req.body);
+        protienSchema.remove({_id : req.body.id} , (err, result)=>{
+            if(err){
+                console.log(err);
+                res.status(500).send();
+            }else{
+                res.status(200).json({
+                    status: 'success',
+                    data: result
+                })
+            }
+
+        })
+});
+
+router.post('/deleteGrowthFactor' , (req,res,next) =>{
+    console.log(req.body);
+    growthFactorSchema.remove({_id : req.body.id} , (err, result)=>{
+            if(err){
+                console.log(err);
+                res.status(500).send();
+            }else{
+                res.status(200).json({
+                    status: 'success',
+                    data: result
+                })
+            }
+
+        })
+        
+});
+
 router.put('/info/:id', (req, res, next) => {
     console.log("Update product", req.body);
     productInfoSchema.findOne({ _id: req.params.id }, function(err, foundObject) {
