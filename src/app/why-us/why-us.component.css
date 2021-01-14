@@ -3,12 +3,20 @@
 .nav-pills .nav-link:hover {
     color: #000000;
     background-color: #ffffff;
-    border-bottom: 4px solid #d8ecff;
+    border-bottom: 4px solid #45a6b1;
 }
 
 .nav-pills .nav-link {
     border-radius: 0rem;
     cursor: pointer;
+}
+
+.margin60bottom{
+    margin-bottom: 60px;
+}
+
+.fontsize15px{
+    font-size: 1rem;
 }
 
 @media only screen and (max-width: 768px) {

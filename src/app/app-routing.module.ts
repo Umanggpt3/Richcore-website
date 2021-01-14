@@ -18,7 +18,7 @@ const routes: Routes = [
       path: 'about', component: AboutComponent
   },
   {
-    path: 'growthFactors-info/:productID', component: GrothFacotorDisplayComponent
+    path: 'growthFactors-info/:productID/:index', component: GrothFacotorDisplayComponent
   },
   {
     path: 'contact', component: ContactFormComponent

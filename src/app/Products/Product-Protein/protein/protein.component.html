@@ -1,5 +1,4 @@
 <div class="container my-5">
-    <ngx-spinner></ngx-spinner>
     <div class="row">
         <div class="col">
             <h3 class="arialfont" style="font-size: 1.75em; font-weight: bold;">Proteins</h3>
@@ -7,7 +6,8 @@
     </div>
     <div class="row"><p> </p></div>
     <div class="row" >
-        <div id="{{product._id}}" class="col-lg-3 onHover"  (click)="navToProductsInfo(product._id)" *ngFor=" let product of productInfoDisplay; let k = index;" style=" margin-left: 20px;">
+        <ngx-spinner type="ball-spin" [fullScreen]="false" size="medium"></ngx-spinner>
+        <div id="{{product._id}}" class="col-lg-3 width20perc onHover"  (click)="navToProductsInfo(product._id)" *ngFor=" let product of productInfoDisplay; let k = index;" style=" margin-left: 20px;">    
            <a [routerLink]="['/products-info',  product._id,  k]"> 
                 <div style="border: 2px solid #cbcaca; border-radius: 5px;">
                     <img [src]="product.liquid.plimagePath" alt="" width="400px" height="200px">
@@ -24,7 +24,7 @@
         </div>
         <div class="row"><p> </p></div>
         <div class="row" >
-            <div id="{{gproduct._id}}" class="col-lg-3 onHover" (click)="navToGProductsInfo(gproduct._id)" *ngFor=" let gproduct of growthInfoDisplay; let k = index;" style=" margin-left: 20px;">
+            <div id="{{gproduct._id}}" class="col-lg-3 width20perc onHover" (click)="navToGProductsInfo(gproduct._id)" *ngFor=" let gproduct of growthInfoDisplay; let k = index;" style=" margin-left: 20px;">
                 <a [routerLink]="['/growthFactors-info', gproduct._id, k]">
                     <div style="border: 2px solid #cbcaca; border-radius: 5px;">
                         <img [src]="gproduct.liquid.glimagePath"  alt="" width="400px" height="200px">

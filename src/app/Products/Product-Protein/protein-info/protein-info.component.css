@@ -20,9 +20,9 @@
 }
 
 .activeTab{
-    color: black;
-    border-bottom: 2px solid blue;
-    font-weight: 500;
+    color: #45a6b1;
+    border-bottom: 2px solid #45a6b1;
+    font-weight: 600;
 }
 
 .bordergray{
@@ -34,7 +34,7 @@
 }
 
 .aactiveTab{
-    color: blue;
+    color: #45a6b1;
     border: none;
 }
 

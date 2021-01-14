@@ -1,11 +1,12 @@
 <app-admin-dashboard></app-admin-dashboard>
+<ngx-spinner></ngx-spinner>
 <div class="container">
     <div class="row">
         <div class="col">
             <!-- <app-protein-menu></app-protein-menu> -->
         </div>
     </div>
-    <h3>ADD PRODUCT</h3>
+    <h3>ADD PROTEIN</h3>
     <form [formGroup]="form">
         <div class="form-group">
             <input type="text" class="form-control" id="proteinName" class="form-control" formControlName="proteinName" placeholder="ADD PROTEIN NAME">
@@ -15,34 +16,39 @@
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="papplication" placeholder="ADD POWDER PROTEIN APPLICATIONS " id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each application must be separated by comma(,)</small>
+            <small style="color: red;">Each application must be separated by semicolon(;)</small>
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="padvantages" placeholder="ADD POWDER PROTEIN ADVANTAGES" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+            <small style="color: red;">Each advantage must be separated by semicolon(;)</small>
         </div>
-        <div class="form-group">
-            <input type="file" formControlName="ppimagePath" class="custom-file-input" id="" (change)="onImagePickedpl($event)">
+        <p style="color: black; text-align: center;" >Choose Image for Powder below</p>
+        <div class="form-group" style="background: blue; height: 30px;">
+            <input type="file" formControlName="ppimagePath" class="custom-file-input" id="" (change)="onImagePickedpp($event)">
             <label class="custom-file-label" for="validatedCustomFile">Choose Powder Image</label>
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="lapplication" placeholder="ADD LIQUID PROTEIN APPLICATIONS" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each application must be separated by comma(,)</small>
+            <small style="color: red;">Each application must be separated by semicolon(;)</small>
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="ladvantages" placeholder="ADD LIQUID PROTEIN ADVANTAGES" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+            <small style="color: red;">Each advantage must be separated by semicolon(;)</small>
         </div>
-        <div class="form-group">
-            <input type="file" formControlName="plimagePath" class="custom-file-input" id="" (change)="onImagePickedpp($event)">
+        <p style="color: black; text-align: center;" >Choose Image for Liquid below</p>
+        <div class="form-group" style="background: blue; height: 30px;">
+            <input  type="file" formControlName="plimagePath" class="custom-file-input" id="" (change)="onImagePickedpl($event)">
             <label class="custom-file-label" for="validatedCustomFile">Choose Liquid Image</label>
         </div>
         <div class="form-row m-3 justify-content-center">
-                <button (click)="onAddProduct()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD PROTIEN</button>
+                <button (click)="onAddProduct()" type="submit" class="btn btn-lg text-white ml-3" style="background-color: midnightblue">ADD PROTEIN</button>
             </div>
     </form>
 
-
+    <div style="border-bottom: 2px solid black; margin-bottom: 100px; margin-top: 100px;">
+        <p> </p>
+    </div>
+    <h3>ADD GROWTH FACTOR</h3>
     <form [formGroup]="form2">
         <div class="form-group">
             <input type="text" class="form-control" id="growthName" class="form-control" formControlName="growthName" placeholder="ADD GROWTH FACTOR NAME">
@@ -52,14 +58,14 @@
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="gpapplication" placeholder="ADD POWDER GROWTH FACTORAPPLICATIONS" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each application must be separated by comma(,)</small>
+            <small style="color: red;">Each application must be separated by semicolon(;)</small>
 
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="gpadvantages" placeholder="ADD POWDER GROWTH FACTORADVANTAGES" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+            <small style="color: red;">Each advantage must be separated by semicolon(;)</small>
         </div>
-
+        <p style="color: black; text-align: center;" >Choose Image for Powder below</p>
         <div class="form-group" style="background: blue;">
             <input type="file" formControlName="gpimagePath" class="custom-file-input" id="validatedCustomFile" required (change)="onImagePickedgp($event)">
             <label class="custom-file-label" for="validatedCustomFile">Choose Powder Image</label>
@@ -67,17 +73,18 @@
 
         <div class="form-group">
             <textarea class="form-control" formControlName="glapplication" placeholder="ADD LIQUID GROWTH FACTOR APPLICATIONS" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each application must be separated by comma(,)</small>
+            <small style="color: red;">Each application must be separated by semicolon(;)</small>
 
         </div>
         <div class="form-group">
             <textarea class="form-control" formControlName="gladvantages" placeholder="ADD LIQUID GROWTH FACTOR ADVANTAGES" id="" cols="30" rows="7"></textarea>
-            <small style="color: red;">Each advantage must be separated by comma(,)</small>
+            <small style="color: red;">Each advantage must be separated by semicolon(;)</small>
         </div>
 
-        <div class="form-group" style="background: blue;">
+        <p style="color: black; text-align: center;" >Choose Image for Liquid below</p>
+        <div class="form-group" style="background: blue; height: 30px;">
             <input type="file" formControlName="glimagePath" class="custom-file-input" id="validatedCustomFile" required (change)="onImagePickedgl($event)">
-            <label class="custom-file-label" for="validatedCustomFile">Choose Liquid Image</label>
+            <label class="custom-file-label" for="validatedCustomFile" style="color: white;">Choose Liquid Image</label>
         </div>
         
         <div class="form-row m-3 justify-content-center">
@@ -93,17 +100,27 @@
 
 
 
-    <div class="row">
-        <div class="col">
-            <form [formGroup]="form" *ngFor=" let i of productInfoDisplay">
-                <h3>UPDATE PROTEIN</h3>
-                <div class="form-group" *ngFor="let j of i">
-                    <label for="exampleInputEmail1">{{j.protein.proteinName}}</label>
-                    <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME" value="{{j.protein.proteinName}}">
-                    <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{j.protein.proteinDescription}}>{{j.protein.proteinDescription}}</textarea>
-                    <button (click)="onUpdateProductName(j._id)" class="btn btn-primary mt-2">UPDATE</button>
-                </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-lg-4">
+            <h3>Delete PROTEIN</h3>
+            <form [formGroup]="form" *ngFor=" let i of productInfoDisplay; let k = index;">
+                    <label for="exampleInputEmail1" style="width: 250px;">{{k+1}}) {{i.proteinName}} : &nbsp;</label>
+                    <!-- <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME" value="{{i.proteinName}}"> -->
+                    <!-- <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{i.proteinDescription}}>{{i.proteinDescription}}</textarea> -->
+                    <button (click)="deleteProtien(i._id)" class="btn btn-primary mt-2">Delete</button>
             </form>
         </div>
     </div>
+
+    <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-4">
+                <h3>Delete Growth Factors</h3>
+                <form [formGroup]="form" *ngFor=" let i of growthInfoDisplay; let k = index;">
+                        <label for="exampleInputEmail1" style="width: 250px;">{{k+1}}) {{i.growthFactorName}} : &nbsp;</label>
+                        <!-- <input type="email" class="form-control" formControlName="productName" placeholder="NEW PROTEIN NAME" value="{{i.proteinName}}"> -->
+                        <!-- <textarea class="form-control mt-2" name="productDescription" cols="100" rows="10" formControlName="productDescription" value={{i.proteinDescription}}>{{i.proteinDescription}}</textarea> -->
+                        <button (click)="deleteGF(i._id)" class="btn btn-primary mt-2">Delete</button>
+                </form>
+            </div>
+        </div>
 </div>

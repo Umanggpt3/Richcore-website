@@ -2,18 +2,18 @@
     border-bottom: 3px solid white;
 }
 .navbar li a:hover {
-    border-bottom: 3px solid #3399ff;
+    border-bottom: 3px solid #45a6b1;
     cursor: pointer;
 }
 .navbar li a:active {
-    border-bottom: 3px solid #3399ff;
+    border-bottom: 3px solid #45a6b1;
     font-weight: bold;
 }
 .open-sans {
     font-family: Arial, Helvetica, sans-serif;
 }
 .back-blue {
-    background-color: #3399ff !important;
+    background-color: #45a6b1 !important;
     color: white !important;
     cursor: pointer;
 }

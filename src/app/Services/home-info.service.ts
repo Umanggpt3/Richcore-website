@@ -8,6 +8,7 @@ import {whyUsInfo} from "../models/whyusinfoModel"
 import { FormControl } from '@angular/forms';
 import {imagePathInfo} from "../models/imagePathModel"
 import { map } from 'rxjs/operators';
+import { RootServiceService } from './root-service.service';
 
 
 
@@ -29,7 +30,11 @@ export class HomeInfoService {
   whyusDetails:whyUsInfo;
   private whyusInfoUpdated = new Subject<whyUsInfo>();
 
-  constructor(private http: HttpClient) { }
+  private url: any;
+
+  constructor(private http: HttpClient, private rootService: RootServiceService) {
+    this.url = rootService.getUrlwithPort();
+  }
 
 uploadImage(image:File){
   console.log("Image data in service", image)
@@ -37,7 +42,7 @@ uploadImage(image:File){
    imageData.append("image",image);
    console.log("Image data in service", imageData)
 
-   this.http.post<{message:string,imageID:string,imagePath:string}>("http://18.223.232.75:1035/home/uploadImage",imageData).subscribe(responseData =>{
+   this.http.post<{message:string,imageID:string,imagePath:string}>(this.url + "/home/uploadImage",imageData).subscribe(responseData =>{
      console.log("Image upload response data",responseData);
      alert("image updated successfully")
    })
@@ -48,21 +53,21 @@ updateImage(imageID:string,image:File){
   const imageData = new FormData();
   imageData.append("id",imageID)
   imageData.append("image",image);
-  this.http.put("http://18.223.232.75:1035/home/imageUpdate",imageData).subscribe(responseData =>{
+  this.http.put(this.url + "/home/imageUpdate",imageData).subscribe(responseData =>{
     console.log("response data in update image function",responseData);
     alert("Successfully updated image");
   })
 }
 
 deleteImage(imageID:string){
-  this.http.delete("http://18.223.232.75:1035/home/"+ imageID).subscribe(()=>{
+  this.http.delete(this.url + "/home/"+ imageID).subscribe(()=>{
     console.log("image deleted");
     alert("image deleted");
   })
 }
 
 getImagepath(){
-  this.http.get("http://18.223.232.75:1035/home/imagePath").subscribe(ImageData =>{
+  this.http.get(this.url + "/home/imagePath").subscribe(ImageData =>{
     console.log("inside getImagePath in service",ImageData);
 
    var imagePathData = ImageData;
@@ -81,7 +86,7 @@ getImagepath(){
    const homeDetails:homeInfo = {id:null,data:homeInfo}
    console.log("In service homeDetails ",homeDetails);
 
-   this.http.post<{message:string;dataID:string}>("http://18.223.232.75:1035/home/info",homeDetails).subscribe(responseData => {
+   this.http.post<{message:string;dataID:string}>(this.url + "/home/info",homeDetails).subscribe(responseData => {
      console.log(responseData);
      homeDetails.id = responseData.dataID;
    });
@@ -90,7 +95,7 @@ getImagepath(){
   /*FUNCTION TO GET HOME DATA FROM DATABASE */
 
   getInfo(){
-    this.http.get("http://18.223.232.75:1035/home/info").subscribe(responseData =>{
+    this.http.get(this.url + "/home/info").subscribe(responseData =>{
       console.log("Response Data",responseData);
       var homeDetails = responseData["data"];
       console.log("Response Data 2",homeDetails);
@@ -107,7 +112,7 @@ getImagepath(){
     const homeDetails:homeInfo = {id:id,data:data};
     console.log("in updateHomeInfo",homeDetails);
 
-    this.http.put("http://18.223.232.75:1035/home/update",homeDetails).subscribe(responseData =>{
+    this.http.put(this.url + "/home/update",homeDetails).subscribe(responseData =>{
         console.log("After info update",responseData);
         if(responseData["status"]=="success")
         {
@@ -134,7 +139,7 @@ getImagepath(){
   const whyusDetails:whyUsInfo = {id:null,quality:qualityInfo,innovation:innovationInfo,facility:facilityInfo,location:locationInfo}
   console.log("In service whyusDetails ",whyusDetails);
 
-  this.http.post<{message:string;dataID:string}>("http://18.223.232.75:1035/home/whyus",whyusDetails).subscribe(responseData => {
+  this.http.post<{message:string;dataID:string}>(this.url + "/home/whyus",whyusDetails).subscribe(responseData => {
     console.log(responseData);
     whyusDetails.id = responseData.dataID;
     console.log("response data");
@@ -143,7 +148,7 @@ getImagepath(){
 
 
  getWhyIUsInfo(){
-  this.http.get("http://18.223.232.75:1035/home/whyus").subscribe(responseData =>{
+  this.http.get(this.url + "/home/whyus").subscribe(responseData =>{
     console.log("Response Data of WHY US",responseData);
     var whyusDetails = responseData["data"];
     console.log("Response Data 2",whyusDetails);
@@ -161,7 +166,7 @@ getImagepath(){
     const whyusQualityInfo:any = {id:id,quality:qualityInfo};
     console.log("in updatequality Info",whyusQualityInfo);
 
-    this.http.put("http://18.223.232.75:1035/home/update-quality",whyusQualityInfo).subscribe(responseData =>{
+    this.http.put(this.url + "/home/update-quality",whyusQualityInfo).subscribe(responseData =>{
         console.log("After qualityinfo update",responseData);
         if(responseData["status"]=="success")
         {
@@ -180,7 +185,7 @@ getImagepath(){
       console.log("in updateInnovation Info",whyusInnovationInfo);
 
   
-      this.http.put("http://18.223.232.75:1035/home/update-innovation",whyusInnovationInfo).subscribe(responseData =>{
+      this.http.put(this.url + "/home/update-innovation",whyusInnovationInfo).subscribe(responseData =>{
           if(responseData["status"]=="success")
           {
             var whyusQualityInfoResponse:whyUsInfo = responseData["data"];
@@ -196,7 +201,7 @@ getImagepath(){
         const whyusFacilitynInfo:any = {id:id,facility:facilityInfo};
   
     
-        this.http.put("http://18.223.232.75:1035/home/update-facility",whyusFacilitynInfo).subscribe(responseData =>{
+        this.http.put(this.url + "/home/update-facility",whyusFacilitynInfo).subscribe(responseData =>{
             if(responseData["status"]=="success")
             {
               var whyusFacilityInfoResponse:whyUsInfo = responseData["data"];
@@ -212,7 +217,7 @@ getImagepath(){
               const whyusLocationInfo:any = {id:id,location:locationInfo};
         
               console.log("in update why us loation",whyusLocationInfo)
-              this.http.put("http://18.223.232.75:1035/home/update-location",whyusLocationInfo).subscribe(responseData =>{
+              this.http.put(this.url + "/home/update-location",whyusLocationInfo).subscribe(responseData =>{
                   if(responseData["status"]=="success")
                   {
                     var whyusLocationInfoResponse:whyUsInfo = responseData["data"];

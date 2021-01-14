@@ -37,9 +37,7 @@ export class ProteinInfoComponent implements OnInit {
   ngOnInit() {
     this.routesub = this.route.params.subscribe(params => {
         this.productID = params.productID;
-        console.log(params);
         const ind = params.index;
-        // this.initActive = ind;
         this.protiens = this.productService.getSavedProtiens();
         if (this.protiens.length === 0) {
           this.spinner.show();
@@ -50,6 +48,11 @@ export class ProteinInfoComponent implements OnInit {
             this.product = this.protiens.filter(item => item._id === this.productID)[0];
             this.vwidth = 100 / this.product.length;
             setTimeout(() => {
+              if (!document.getElementById('navbtn').classList.contains('collapsed')) {
+                document.getElementById('navbtn').classList.add('collapsed');
+                document.getElementById('navbarNavDropdown').classList.remove('show');
+                document.getElementById('navbarNavDropdown').classList.remove('in');
+              }
               this.spinner.hide();
               this.setToActive(ind);
               if (this.product.liquid.plApplication.length !== 0) {
@@ -62,6 +65,12 @@ export class ProteinInfoComponent implements OnInit {
         } else {
           this.product = this.protiens.filter(item => item._id === this.productID)[0];
           setTimeout(() => {
+            if (document.getElementById('navbtn').classList.length > 0 &&
+              !document.getElementById('navbtn').classList.contains('collapsed')) {
+              document.getElementById('navbtn').classList.add('collapsed');
+              document.getElementById('navbarNavDropdown').classList.remove('show');
+              document.getElementById('navbarNavDropdown').classList.remove('in');
+            }
             this.setToActive(ind);
             if (this.product.powder.ppApplication.length !== 0) {
               document.getElementById('powder-tab').classList.add('active');
@@ -95,11 +104,22 @@ export class ProteinInfoComponent implements OnInit {
 
 
   addblueBorder(id: string) {
-    document.getElementById(id).classList.add('activeTab');
+    if (!document.getElementById('typebtn').classList.contains('collapsed')) {
+      document.getElementById('typebtn').classList.add('collapsed');
+      document.getElementById('navbarNavDropdowns').classList.remove('show');
+      document.getElementById('navbarNavDropdowns').classList.remove('in');
+    }
+    if (document.getElementById(id).classList) {
+      document.getElementById(id).classList.add('activeTab');
+    }
     if (id === 'lpowder-tab') {
-      document.getElementById('lliquid-tab').classList.remove('activeTab');
+      if (document.getElementById('lliquid-tab').classList != null) {
+        document.getElementById('lliquid-tab').classList.remove('activeTab');
+      }
     } else {
-      document.getElementById('lpowder-tab').classList.remove('activeTab');
+      if (document.getElementById('lliquid-tab').classList != null) {
+        document.getElementById('lpowder-tab').classList.remove('activeTab');
+      }
     }
   }
 

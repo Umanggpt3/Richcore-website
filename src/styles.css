@@ -7,3 +7,28 @@
 .arialfont{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+.richcoreColorBackground{
+    background-color: #45a6b1 !important;
+}
+
+.whiteColor{
+    color: white;
+}
+
+.colorblack{
+    color: black !important;
+}
+
+.font1rem{
+    font-size: 1rem !important;
+}
+
+.fontw600{
+    font-weight: 600;
+}
+
+.richcoreColor{
+    color: #45a6b1 !important;
+}

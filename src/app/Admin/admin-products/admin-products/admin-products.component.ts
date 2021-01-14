@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ProductsService } from 'src/app/Services/products.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-products',
@@ -29,9 +30,11 @@ export class AdminProductsComponent implements OnInit {
   public ppfileURL: any;
   // public gimage: any[] = [];
 
-  private productInfoSub: Subscription;
+  private productSub: Subscription;
+  private gproductSub: Subscription;
   public productInfoDisplay: any;
-  constructor(public productService: ProductsService) { }
+  public growthInfoDisplay: any;
+  constructor(public productService: ProductsService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
@@ -78,12 +81,24 @@ export class AdminProductsComponent implements OnInit {
       })
     });
 
-
-    this.productService.getProducts();
-    this.productInfoSub = this.productService.getProductUpdateListener().subscribe((productDetails:any)=>{
-      console.log("products details protein menu component",productDetails);
-      this.productInfoDisplay = productDetails;
-    });
+    this.productInfoDisplay = this.productService.getSavedProtiens();
+    this.growthInfoDisplay = this.productService.getSavedGrowthFactors();
+    if (this.productInfoDisplay.length === 0) {
+      this.spinner.show();
+      this.productService.getProtien();
+      this.productSub = this.productService.getProtineListener().subscribe(
+        (protiens: any[]) => {
+        this.productInfoDisplay = protiens;
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 500);
+      });
+      this.productService.getGrowthFactors();
+      this.gproductSub = this.productService.getGFListener().subscribe(
+        (gfs: any[]) => {
+        this.growthInfoDisplay = gfs;
+      });
+    }
   }
 
   fileChange(event) {
@@ -234,7 +249,13 @@ export class AdminProductsComponent implements OnInit {
     this.productService.addGrowthFactor(growthFactorProduct);
   }
 
-  
+  deleteProtien(id: any) {
+    this.productService.deleteProtien(id);
+  }
+
+  deleteGF(id: any) {
+    this.productService.deleteGF(id);
+  }
 
   onAddProduct() {
     console.log('application data', this.form.value.padvantages);
@@ -255,37 +276,6 @@ export class AdminProductsComponent implements OnInit {
 
     console.log(this.form);
 
-    // var productObj = {
-    //   protein:{
-    //     proteinName : this.form.value.proteinName,
-    //     proteinDescription:this.form.value.proteinDescription,
-    //     powder: {
-    //         ppAdvantages: this.pAdvantagesArr,
-    //         ppApplication:this.pApplicationArr ,
-    //         ppimagePath:null
-    //     },
-    //       liquid: {
-    //         plAdvantages: this.lAdvantagesArr,
-    //         plApplication:this.lApplicationArr ,
-    //         plimagePath:null
-    //     }
-    //   },
-    //   growthFactor:{
-    //     growthFactorName :this.form.value.growthName,
-    //     growthFactorDescription:this.form.value.growthDescription,
-    //     powder: {
-    //         gpApplication: this.gpApplicationArr,
-    //         gpAdvantages:this.gpAdvantagesArr,
-    //         gpimagePath:null
-    //     },
-    //       liquid: {
-    //         glAdvantages:this.glAdvantagesArr,
-    //         glApplication:this.glApplicationArr,
-    //         glimagePath:null
-    //     }
-    //   }
-    // }
-    // tslint:disable-next-line:one-variable-per-declaration
     const protienProduct = {
       proteinName : this.form.value.proteinName,
       proteinDescription: this.form.value.proteinDescription,

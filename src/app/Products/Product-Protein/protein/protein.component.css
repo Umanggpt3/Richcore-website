@@ -7,6 +7,19 @@
     height: auto;
 }
 
+.width20perc{
+    max-width: 20% !important;
+    margin-top: 20px;
+} 
+
+
+@media only screen and (max-width: 450px) {
+    .width20perc{
+        max-width: 40% !important;
+        margin-top: 10px;
+    } 
+}
+
 .onHover:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     /* box-shadow: 1px 1px 10px 0px rgba(138,138,138,1); */

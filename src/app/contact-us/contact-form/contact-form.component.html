@@ -19,6 +19,7 @@
                 </div>
             </div>
             <form [formGroup]="form">
+                <ngx-spinner id="headerMailer" name="headerMailer" type="ball-spin" size="medium" [fullScreen]="false"></ngx-spinner>
                 <div class="form-row px-4 ">
                     <div class="form-group col-md-6 pr-3 ">
                         <label for="inputEmail4 ">Your Name</label>
@@ -52,20 +53,20 @@
 
             </form>
         </div>
-        <div class="col-lg-4 bg-primary d-flex flex-column justify-content-around contact-info">
+        <div class="col-lg-4 richcoreColorBackground d-flex flex-column justify-content-around contact-info">
             <div class="row">
                 <div class="offset-1 col-11">
                     <p class="text-white mt-0" style="font-size: 25px;">Contact Information</p>
                 </div>
             </div>
             <div class="row d-flex align-items-center idk" style="height:50px;">
-                <div class="offset-1 col-md-2 text-white">
+                <a class="offset-1 col-md-2 text-white" href="https://goo.gl/maps/ybPzJdEBEBEc43ey5" target="_blank">
                     <img src="../../../assets/img/location.png" width="30px" height="30px" />
-                </div>
+                </a>
                 <div class="col-md-9">
-                    <address class="text-white m-0 addr" style="font-size:12px;font-family: arial;">
-                        Plot No. 204 and 237,<br>Bommasandra-Jigani Link Road,<br>K.I.A.D.B Industrial Area,<br>Bengaluru-560105, Karnataka
-                    </address>
+                    <a class="text-white m-0 addr" style="font-size:12px;font-family: arial; color: black" href="https://goo.gl/maps/ybPzJdEBEBEc43ey5" target="_blank" >
+                        Plot No. 204 and 237,<br>Bommasandra-Jigani Link Road,<br>K.I.A.D.B Industrial Area,<br>Bengaluru-560105, Karnataka<br>
+                    </a>
                 </div>
             </div>
             <div class="row d-flex align-items-center idk">
@@ -81,23 +82,25 @@
                     <img src="../../../assets/img/mail.png" width="30px" height="30px" />
                 </div>
                 <div class="col-md-9 text-white" style="font-size:12px;">
-                    <p>info@richcoreindia.com<br>hr@richcoreindia.com</p>
+                    <a href="mailto:info@richcoreindia.com" class="whiteColor">info@richcoreindia.com</a>
+                    <br><a href="mailto:hr@richcoreindia.com" class="whiteColor">hr@richcoreindia.com</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row col-md-12">
-        <h2 class="mb-5" style="font-size: 1.5rem;">Other Office Locations</h2>
+        <h2 class="mb-5" style="font-size: 1.5rem;">Other Locations</h2>
     </div>
     <div class="row mb-5 " *ngFor=" let i of locationDisplay ">
         <div class="col " *ngFor=" let j of i ">
-
-            <p>{{j.location1}}</p>
-            <p>{{j.location2}}</p>
-            <p>{{j.location3}}</p>
-            <p>{{j.location4}}</p>
-
+            <a href="https://goo.gl/maps/4M9rj2HV5vNHto9v8" target="_blank" style="color:black">
+                {{j.location1}}<br>
+                {{j.location2}}<br>
+                {{j.location3}}<br>
+                {{j.location4}}<br>
+            </a>
+            <a href="https://goo.gl/maps/4M9rj2HV5vNHto9v8" target="_blank" class="richcoreColor">Locate Us</a>
         </div>
     </div>
 

@@ -1,11 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light open-sans font-weight-bold p-1">
     <a (click)="navtohome()" class="navbar-brand"><img src="../../assets/img/richcore_logo.png" alt="RICHCORE" width="150"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button  id="headnavbtn"class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto justify-content-end" routerLinkActive="active">
+            <li class="nav-item">
+                <a (click)="navtohome()" class="nav-link" routerLink="/"><b>Home</b></a>
+            </li>
             <li class="nav-item">
                 <a (click)="navtoproducts()" class="nav-link" ><b>Products</b> <span class="sr-only">(current)</span></a>
             </li>
@@ -13,17 +16,15 @@
                 <a (click)="navtoabout()" class="nav-link" routerLink="about"><b>About Us</b></a>
             </li>
             <li class="nav-item">
-                <a (click)="navtoadmin()" class="nav-link" routerLink="admin"><b>Admin</b></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" (click)="navtocontact()" aria-disabled="true" style="min-width: 100px;"><b>Contact Us</b></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 ml-3 mr-5">
+        <form [formGroup]="form" class="form-inline my-2 my-lg-0 ml-3 mr-5">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Send us your mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <ngx-spinner type="ball-spin" [fullScreen]="false" size="small"></ngx-spinner>
+                <input  type="text" class="form-control" formControlName="userEmail" name="userEmail" placeholder="Enter your mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="input-group-text back-blue" id="basic-addon2">Send</button>
+                    <button (click)="sendMailFromheader()" class="input-group-text back-blue" id="basic-addon2">Know More</button>
                 </div>
             </div>
         </form>

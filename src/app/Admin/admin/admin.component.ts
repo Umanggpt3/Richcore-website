@@ -7,6 +7,7 @@ import { Subscription, from } from 'rxjs';
 import {homeInfo} from "../../models/homeInfoModel";
 import {whyUsInfo} from "../../models/whyusinfoModel";
 import {mimeType} from "./mime-type.validator";
+import { RootServiceService } from '../../Services/root-service.service';
 
 @Component({
   selector: 'app-admin',
@@ -19,16 +20,18 @@ export class AdminComponent implements OnInit {
   imagePreview:string;
 
   private imagePathInfoSub :Subscription;
-  public imagePathInfoDisplay:any;
+  public imagePathInfoDisplay = [];
 
   private homeInfoSub : Subscription;
   public homeInfoDisplay:homeInfo;
 
   private whyusInfoSub :Subscription;
   public whyusInfoDisplay:whyUsInfo;
+  private url: any;
 
-
-  constructor(public homeInfoService:HomeInfoService) { }
+  constructor(public homeInfoService:HomeInfoService, private rootService: RootServiceService) {
+    this.url = rootService.getURL(); 
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -65,8 +68,13 @@ export class AdminComponent implements OnInit {
     this.imagePathInfoSub = this.homeInfoService.getImagePathUpdateListener().subscribe((imagePathDetails)=>{
       console.log("Image path details admin ts file",imagePathDetails);
       this.imagePathInfoDisplay = imagePathDetails;
-
-    })
+      for (var i=0; i<this.imagePathInfoDisplay[0].length; i++){
+        this.imagePathInfoDisplay[0][i]['imagePath'] = this.url + this.imagePathInfoDisplay[0][i]['imagePath'].toString().substring(20);
+      }
+      this.imagePathInfoDisplay = this.imagePathInfoDisplay[0];
+      console.log('helasd');
+      console.log(this.imagePathInfoDisplay);
+    });
 
 
       /*****GET WHY US DATA ON INITIALIZATION*******/

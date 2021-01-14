@@ -1,0 +1,44 @@
+.open-sans {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.powdercss{
+    border: none;
+}
+
+.liquidcss{
+    border: none;
+}
+
+.ltab:hover{
+    background: #efefef;
+}
+
+.activeTab{
+    color: black;
+    border-bottom: 2px solid #45a6b1;
+    font-weight: 600;
+}
+
+.bordergray{
+    border-bottom: 0.2px solid #efefef;
+    width: 100%;
+}
+
+.nactiveTab{
+}
+
+.aactiveTab{
+    color: #45a6b1;
+    border: none;
+}
+
+.anactiveTab{
+    color: black;
+    border: none;
+}

@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
 
+import { RootServiceService } from './root-service.service';
 import {locationInfo} from "../models/locationInfoModel";
 import { AdminComponent } from '../Admin/admin/admin.component';
 
@@ -16,15 +17,17 @@ export class ContactLocationService {
   private location:locationInfo;
   private id:string=null;
   private locationUpdated = new Subject<locationInfo[]>();
+  private url: any;
 
 
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http: HttpClient, private router: Router, private rootService: RootServiceService) {
+    this.url = rootService.getUrlwithPort();
+  }
 
-  addLocation(location1:string,location2:string,location3:string,location4:string)
-  {
+  addLocation(location1:string,location2:string,location3:string,location4:string) {
    const location:locationInfo= {id:null,location1:location1,location2:location2,location3:location3,location4:location4};
    console.log("in service",location);
-   this.http.post<{message:string;locationId:string}>("http://18.223.232.75:1035/location/info",location).subscribe(responseData => {
+   this.http.post<{message:string;locationId:string}>(this.url + "/location/info",location).subscribe(responseData => {
      console.log("responseData",responseData);
      if(responseData["message"]=="success")
         alert("Location Added Successfully");
@@ -36,7 +39,7 @@ export class ContactLocationService {
   }
 
   getLocation(){
-    this.http.get<{message:string,data:any}>("http://18.223.232.75:1035/location/info"
+    this.http.get<{message:string,data:any}>(this.url + "/location/info"
     ).pipe(map((locationData)=>{
       return  locationData.data.map(location =>{
         return {
@@ -61,7 +64,7 @@ export class ContactLocationService {
   updateLocation(id:string,location1:string,location2:string,location3:string,location4:string){
     const location:locationInfo= {id:id,location1:location1,location2:location2,location3:location3,location4:location4};
     console.log("in updateLocation",location);
-    this.http.put("http://18.223.232.75:1035/location/update",location).subscribe(responseData =>{
+    this.http.put(this.url + "/location/update",location).subscribe(responseData =>{
         if(responseData["status"]=="success")
         {
           var locationData = responseData["data"];
@@ -78,7 +81,7 @@ export class ContactLocationService {
   }
 
   deleteLocation(locationID:string){
-    this.http.delete("http://18.223.232.75:1035/location/" + locationID)
+    this.http.delete(this.url + "/location/" + locationID)
     .subscribe(() => {
      const locationUpdated = this.locations.filter(locationItem => locationItem[0]._id !== locationID);
      this.locations = locationUpdated;

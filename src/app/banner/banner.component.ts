@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { homeInfo} from "../models/homeInfoModel";
 import {HomeInfoService} from "../Services/home-info.service"
+import { RootServiceService } from '../Services/root-service.service';
 
 @Component({
   selector: 'app-banner',
@@ -10,19 +11,22 @@ import {HomeInfoService} from "../Services/home-info.service"
 })
 export class BannerComponent implements OnInit {
 
-  private homeInfoSub : Subscription;
-  private homeInfoDisplay:homeInfo;
+  private homeInfoSub: Subscription;
+  private homeInfoDisplay: homeInfo;
 
-  private imagePathInfoSub :Subscription;
-  public imagePathInfoDisplay:any;
+  private imagePathInfoSub: Subscription;
+  public imagePathInfoDisplay = [];
+  private url: any;
 
-  constructor(private homeInfoService:HomeInfoService) { }
+  constructor(private homeInfoService: HomeInfoService, private rootService: RootServiceService) {
+    this.url = rootService.getURL();
+  }
 
 
   ngOnInit() {
 
     this.homeInfoService.getInfo();
-    this.homeInfoSub = this.homeInfoService.gethomeUpdateListener().subscribe((homeDetails:homeInfo)=>{
+    this.homeInfoSub = this.homeInfoService.gethomeUpdateListener().subscribe((homeDetails: homeInfo) => {
       this.homeInfoDisplay = homeDetails;
 
     });
@@ -30,10 +34,12 @@ export class BannerComponent implements OnInit {
 
     this.homeInfoService.getImagepath();
     this.imagePathInfoSub = this.homeInfoService.getImagePathUpdateListener().subscribe((imagePathDetails)=>{
-      console.log("Image path details admin ts file",imagePathDetails);
-      this.imagePathInfoDisplay = imagePathDetails;
-
-    })
+      for (var i=0; i<imagePathDetails[0].length; i++) {
+        var imgPath = imagePathDetails[0][i]['imagePath'];
+        this.imagePathInfoDisplay.push(this.url + imgPath.toString().substring(20));
+      }
+      console.log(this.imagePathInfoDisplay);
+    });
 
   }
 

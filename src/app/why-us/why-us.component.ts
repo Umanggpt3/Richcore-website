@@ -1,7 +1,6 @@
-import { Renderer2, Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { HomeInfoService } from '../Services/home-info.service'
-import { whyUsInfo } from "../models/whyusinfoModel";
+import { Component, OnInit, HostListener } from '@angular/core';
+import { HomeInfoService } from '../Services/home-info.service';
+import { whyUsInfo } from '../models/whyusinfoModel';
 import { Subscription } from 'rxjs';
 
 declare var $: any;
@@ -13,12 +12,23 @@ declare var $: any;
 })
 export class WhyUsComponent implements OnInit {
 
-  private whyusInfoSub :Subscription;
-  public whyusInfoDisplay:whyUsInfo;
+  private whyusInfoSub: Subscription;
+  public whyusInfoDisplay: whyUsInfo;
+
+  public ismobile: boolean;
 
   constructor(
-    public homeInfoService:HomeInfoService,
-  ) { }
+    public homeInfoService: HomeInfoService,
+  ) {
+    this.ismobile = true;
+    this.getScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+    getScreenSize(event?) {
+        this.ismobile = window.innerWidth > 768;
+        console.log(this.ismobile);
+    }
 
   ngOnInit() {
 
@@ -27,7 +37,8 @@ export class WhyUsComponent implements OnInit {
       this.whyusInfoSub = this.homeInfoService.getwhyusUpdateListener().subscribe((whyusDetails:whyUsInfo)=>{
         console.log("IN why us component why us data",whyusDetails);
         this.whyusInfoDisplay = whyusDetails;
-      })
+        // console.log('quality: ', this.whyusInfoDisplay[0].quality);
+      });
 
   }
 

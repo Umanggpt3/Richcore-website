@@ -24,6 +24,50 @@
     font-weight: 900;
 }
 
+.footerAddress{
+    text-align: right;
+}
+
+
+.footerLogos{
+    text-align: left;
+}
+
+.logogs{
+    margin-left: -20px;
+}
+
+.boldbottom{
+    font-weight: 550;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .footerAddress{
+        text-align: center;
+    }
+
+    .footerLogos{
+        text-align: center;
+    }
+
+    .logogs{
+        margin-left: 25%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .logogs{
+        margin-left: 15%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .logogs{
+        margin-left: 0px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .jumbotron {
         margin-left: 0% !important;
